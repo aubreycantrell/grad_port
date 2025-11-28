@@ -171,10 +171,10 @@
   <!-- Side navigation -->
   <nav class="side">
     <a href="#purpose">Purpose</a>
-    <a href="#what">What It Does</a>
-    <a href="#address">Addresses</a>
-    <a href="#research">Research</a>
+    <a href="#what">Problem Statement</a>
+    <a href="#address">Solution</a>
     <a href="#design">Design</a>
+    <a href="#research">Research</a>
     <a href="#testing">Testing</a>
     <a href="#reflections">Reflections</a>
   </nav>
@@ -204,12 +204,12 @@
   </section>
 
     <section id="what">
-      <h2>What It Does</h2>
+      <h2>Problem Statement</h2>
       <p>The assistant provides real-time verbal guidance through recipe steps, manages timers, converts measurements, and suggests substitutions dynamically. Users engage entirely by voice—allowing them to focus attention on physical preparation rather than device interaction. In doing so, BakeBot supports both cognitive and physical flow, positioning voice interaction as an aid rather than an interruption to embodied activity.</p>
     </section>
 
     <section id="address">
-      <h2>What the App Addresses</h2>
+      <h2>Solution</h2>
       <p>Existing recipe tools fragment attention across multiple platforms, tabs, or devices. This context switching leads to frustration and error—particularly in high-attention tasks like baking. BakeBot consolidates these interactions through a single conversational interface, replacing manual navigation with direct, context-aware dialogue.</p>
 
       <h3>Central Question</h3>
@@ -222,6 +222,27 @@
         <li>Maintain low cognitive load in multitasking environments.</li>
       </ul>
     </section>
+
+    <section id="design">
+      <h2>Design</h2>
+      <h3>User Flow</h3>
+      <p>We mapped three main flows—recipe selection, step-by-step guidance, and workflow optimization—around cognitive continuity: keep hands free, keep attention on making, and let voice handle the orchestration.</p>
+      
+      <div class="imgrow">
+        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/AhuIj4XhvRxJLbWQooz1kQ/Figma-to-HTML-with-Framer--Community-?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+      </div>
+
+      <h3>Final Flows</h3>
+      <ul>
+        <li>Conversational step guidance.</li>
+        <li>Dynamic conversion and substitution assistance.</li>
+        <li>Personalized prompts based on inventory, pacing, and preferences.</li>
+      </ul>
+
+        
+          <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/yiPmCAvBOy8FuZWzdmkyfR/VoiceFlow-Diagram?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+    </section>
+
 
     <section id="research">
       <h2>Research</h2>
@@ -410,26 +431,7 @@
       </div>
     </section>
 
-    <section id="design">
-      <h2>Design Prototype</h2>
-      <h3>User Flow</h3>
-      <p>We mapped three main flows—recipe selection, step-by-step guidance, and workflow optimization—around cognitive continuity: keep hands free, keep attention on making, and let voice handle the orchestration.</p>
-      
-      <div class="imgrow">
-        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/AhuIj4XhvRxJLbWQooz1kQ/Figma-to-HTML-with-Framer--Community-?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-      </div>
-
-      <h3>Final Flows</h3>
-      <ul>
-        <li>Conversational step guidance.</li>
-        <li>Dynamic conversion and substitution assistance.</li>
-        <li>Personalized prompts based on inventory, pacing, and preferences.</li>
-      </ul>
-
-        
-          <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/yiPmCAvBOy8FuZWzdmkyfR/VoiceFlow-Diagram?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-    </section>
-
+  
     <section id="testing">
       <h2>Testing</h2>
       <p>Moderated scenario-based testing measured completion time, step accuracy, and satisfaction. Remote conditions limited realism; feedback prompted tighter dialogue pacing, clearer confirmations, and more natural rhythm.</p>

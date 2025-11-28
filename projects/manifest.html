@@ -117,10 +117,10 @@
 <!-- Sidebar -->
 <nav class="side">
   <a href="#purpose">Purpose</a>
-  <a href="#what">What It Does</a>
-  <a href="#addresses">Addresses</a>
-  <a href="#research">Research</a>
+  <a href="#what">Problem Statement</a>
+  <a href="#addresses">Solution</a>
   <a href="#design">Process & Design</a>
+  <a href="#research">Research</a>
   <a href="#testing">Testing</a>
   <a href="#how">How It Works</a>
   <a href="#next">What’s Next</a>
@@ -137,7 +137,7 @@
 </header>
 
 <div class="hero">
-  <img src="../media/manifest/manifest_hero.png" alt="Manifest hero preview">
+  <img src="../media/manifest/manifest_mock.png" alt="Manifest hero preview">
 </div>
 
 <main>
@@ -171,7 +171,7 @@
 
 <!-- WHAT IT DOES -->
 <section id="what">
-  <h2>What It Does</h2>
+  <h2>Problem Statement</h2>
   <p>
     Manifest turns drawing gestures into geometry in a way that feels immediate and
     physical. Instead of navigating menus, users simply draw, orbit, and extend the form.
@@ -186,7 +186,7 @@
 
 <!-- WHAT IT ADDRESSES -->
 <section id="addresses">
-  <h2>What the Tool Addresses</h2>
+  <h2>Solution</h2>
   <p>
     Traditional 3D modeling tools demand abstract spatial reasoning and precise 
     manipulation—skills that take years to develop. Manifest reframes modeling as something
@@ -207,6 +207,37 @@
     <li>Design a visual, language-light interface for early learners</li>
   </ul>
 </section>
+
+<!-- DESIGN -->
+<section id="design">
+    <h2>Process & Design</h2>
+  
+    <h3>Interface Design</h3>
+    <p>
+      The interface layers a transparent sketching canvas over a WebGL viewport. Large touch
+      targets make it tablet-friendly, and the camera never moves unexpectedly—spatial trust
+      was essential. A “must-touch” rule guarantees that new geometry always grows from the
+      existing form.
+    </p>
+  
+    <h3>Geometry Pipeline</h3>
+    <ul>
+      <li><strong>Extrude / Lathe:</strong> Base shapes close loops automatically.</li>
+      <li><strong>Perpendicular Patches:</strong> Raycasts define local planes for surface extension.</li>
+      <li><strong>Lofting:</strong> Clean stitching of resampled cross-sections.</li>
+      <li><strong>Export:</strong> GLB/GLTF/OBJ/STL for fabrication and editing.</li>
+    </ul>
+  
+    <div class="imgrow">
+      <div class="slot">
+        <img src="../media/manifest/ex1.png" alt="Manifest logo">
+      </div>
+      <div class="slot">
+        <img src="../media/manifest/ex2.png" alt="UI preview">
+      </div>
+    </div>
+  </section>
+  </section>
 
 <!-- RESEARCH -->
 <section id="research">
@@ -257,36 +288,6 @@
   
 </section>
 
-<!-- DESIGN -->
-<section id="design">
-  <h2>Process & Design</h2>
-
-  <h3>Interface Design</h3>
-  <p>
-    The interface layers a transparent sketching canvas over a WebGL viewport. Large touch
-    targets make it tablet-friendly, and the camera never moves unexpectedly—spatial trust
-    was essential. A “must-touch” rule guarantees that new geometry always grows from the
-    existing form.
-  </p>
-
-  <h3>Geometry Pipeline</h3>
-  <ul>
-    <li><strong>Extrude / Lathe:</strong> Base shapes close loops automatically.</li>
-    <li><strong>Perpendicular Patches:</strong> Raycasts define local planes for surface extension.</li>
-    <li><strong>Lofting:</strong> Clean stitching of resampled cross-sections.</li>
-    <li><strong>Export:</strong> GLB/GLTF/OBJ/STL for fabrication and editing.</li>
-  </ul>
-
-  <div class="imgrow">
-    <div class="slot">
-      <img src="../media/manifest/ex1.png" alt="Manifest logo">
-    </div>
-    <div class="slot">
-      <img src="../media/manifest/ex2.png" alt="UI preview">
-    </div>
-  </div>
-</section>
-</section>
 
 <!-- TESTING -->
 <section id="testing">

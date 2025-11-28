@@ -346,10 +346,10 @@
   <!-- Side navigation -->
   <nav class="side">
     <a href="#purpose">Purpose</a>
-    <a href="#what">What It Does</a>
-    <a href="#address">Addresses</a>
-    <a href="#research">Research</a>
+    <a href="#what">Problem Statement</a>
+    <a href="#address">Solution</a>
     <a href="#design">Design</a>
+    <a href="#research">Research</a>
     <a href="#testing">Testing</a>
     <a href="#reflections">Reflections</a>
   </nav>
@@ -365,35 +365,28 @@
   </header>
 
   <div class="hero">
-    <div class="hero split">
-      <div class="hero-left">
-        <iframe
-          src="https://embed.figma.com/proto/HXwxA0l1LalGGDlRpDEQQm/SPAM-?node-id=1-1061&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A1061&embed-host=share"
-          allowfullscreen></iframe>
-      </div>
-    
-      <div class="hero-right">
-          <section id="purpose">
-            <h2>Purpose</h2>
-            <p>
-              Over seven weeks in Human-Computer Interaction (CS220), our team of four
-              designed <strong>Spam!</strong>, a mobile web prototype to increase student
-              civic participation and organizational transparency at Wellesley College.
-              Modeled after the school’s iconic “spam boards,” the app reimagines physical
-              flyers as a centralized, accessible, and interactive digital platform for civic
-              engagement — making it easier to vote, discover events, and stay informed.
-            </p>
-    
-           
-          </section>
-      </div>
-    </div>
+    <img src="../media/spam.png" alt="Collage Co-Creator Interface Placeholder">
+  </div>
     <main>
     
 
     <!-- WHAT IT DOES -->
+
+    <section id="purpose">
+      <h2>Purpose</h2>
+      <p>
+        Over seven weeks in Human-Computer Interaction, our team of four
+        designed <strong>Spam!</strong>, a mobile web prototype to increase student
+        civic participation and organizational transparency at Wellesley College.
+        Modeled after the school’s iconic “spam boards,” the app reimagines physical
+        flyers as a centralized, accessible, and interactive digital platform for civic
+        engagement — making it easier to vote, discover events, and stay informed.
+      </p>
+
+     
+    </section>
     <section id="what">
-      <h2>What It Does</h2>
+      <h2>Problem Statement</h2>
       <p><strong>Spam!</strong> serves as a civic engagement hub for college students — consolidating elections, events, and volunteering opportunities into a clean mobile interface. Students can:</p>
       <ul>
         <li>Browse upcoming activism and community events</li>
@@ -413,7 +406,7 @@
 
     <!-- WHAT IT ADDRESSES -->
     <section id="address">
-      <h2>What the App Addresses</h2>
+      <h2>Solution</h2>
       <p>Interviews revealed that most students rely on posters, word of mouth, and social media for event awareness — channels that are fragmented and easy to forget. Physical spam boards promote visibility but not follow-through. Many students reported missing events simply because they forgot details after walking by a poster. <strong>Spam!</strong> transforms that analog discovery process into a persistent, digital, and personalized experience that still retains the energy of campus life.</p>
       <h3>Central Question</h3>
       <blockquote>How might we increase civic participation and transparency in student life by transforming campus “spam culture” into a digital, interactive system?</blockquote>
@@ -426,6 +419,102 @@
         <li>Encourage consistent engagement through motivational badges</li>
       </ul>
     </section>
+
+    
+
+       <!-- DESIGN -->
+    <section id="design">
+      <h2>Design Prototype</h2>
+      <iframe
+          style="width: 100%; height: 900px;"
+          src="https://embed.figma.com/proto/HXwxA0l1LalGGDlRpDEQQm/SPAM-?node-id=1-1061&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A1061&embed-host=share"
+          allowfullscreen></iframe>
+      </div>
+      <h3>Design Guidelines</h3>
+      <ul>
+        <li><strong>Accessibility:</strong> High contrast, low-cognitive-load layouts</li>
+        <li><strong>Energetic clarity:</strong> Retain the playfulness of physical spam without the clutter</li>
+        <li><strong>Motivation:</strong> Reward engagement without creating noise</li>
+        <li><strong>Transparency:</strong> Clear ownership, timelines, and accountability in votes</li>
+      </ul>
+
+      <h3>Branding</h3>
+      <p>The palette reinterprets the Spam can’s blue and yellow — blue (#253A77) for structure and yellow (#E4BF47) for calls to action — balancing trustworthiness and energy.</p>
+      <div class="imgrow">
+        <div class="slot"><img src="../media/spam/spam_branding.png" alt="Spam! branding board"><small>Brand palette</small></div>
+      </div>
+
+      <h3>Wireframes</h3>
+
+      <section id="lofi">
+        <h2>Low-Fidelity Wireframes</h2>
+        <p>Early navigation and interaction sketches which we later created in Balsamiq helped us validate the tab model (Events, Voting, Resources, Profile), test filtering affordances, and tune copy before visual styling.</p>
+        <small>Click below for enlarged low fidelity wireframes.</small>
+    
+            <div class="lofi-grid">
+              <figure class="lofi-card">
+                <div class="lofi-imgwrap">
+                  <img src="../media/spam/lfw1.png" alt="Low-fi — Events list with filters" />
+                </div>
+              </figure>
+              
+              <figure class="lofi-card">
+                <div class="lofi-imgwrap">
+                  <img src="../media/spam/lfw3.png" alt="Low-fi — Voting flow & confirmation" />
+                </div>
+              </figure>
+              <figure class="lofi-card">
+                <div class="lofi-imgwrap">
+                  <img src="../media/spam/lfw4.png" alt="Low-fi — Profile with badges & RSVPs" />
+                </div>
+              </figure>
+              <figure class="lofi-card">
+                <div class="lofi-imgwrap">
+                  <img src="../media/spam/lfw5.png" alt="Low-fi — Resources tab & links" />
+                </div>
+              </figure>
+            </div>
+        
+          
+          <!-- Lightbox -->
+          <div class="lightbox" id="lofiLightbox" aria-hidden="true">
+            <span class="close" aria-label="Close">×</span>
+            <img id="lofiLightboxImg" alt="">
+          </div>
+          
+    
+      </section>
+      
+      <p>Our low Low-Fidelity wireframes tested navigation and task flow. Each tab was structured around a core function:</p>
+      <ul>
+        <li>Events — Filter, RSVP, and share</li>
+        <li>Voting — Transparent elections with results pages</li>
+        <li>Resources — Educational materials and registration links</li>
+        <li>Profile — Track badges, RSVPs, and event history</li>
+      </ul>
+      
+      
+      <h3>Iterations</h3>
+      <ul>
+        <li>Simplified landing page with onboarding text</li>
+        <li>Added clearer confirmation for votes and RSVPs</li>
+        <li>Introduced badges for engagement and event attendance</li>
+        <li>Improved hierarchy for mobile readability</li>
+      </ul>
+
+      <h3>Risky Interactions</h3>
+      <ul>
+        <li><strong>Badge Collection:</strong> Rewards engagement with badges like “Green Voter” or “Out and About.”</li>
+        <li><strong>Voting Confirmation:</strong> Clear feedback via “Vote Sent” screens; supports multiple concurrent elections securely.</li>
+      </ul>
+
+      <h3>User Flow Screens</h3>
+      <p>Below are representative screens from the final user-flow prototype, showing navigation across the Events, Voting, and Profile tabs within the Spam! app.</p>
+      
+      <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/HXwxA0l1LalGGDlRpDEQQm/SPAM-?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+      
+    </section>
+
 
     <!-- RESEARCH -->
     <section id="research">
@@ -523,9 +612,7 @@
 
       </ul>
       <p>Existing systems like WeEngage, 25Live, and Google Calendar were siloed. <strong>Spam!</strong> merges them into one cohesive platform.</p>
-      <p>
-        Below is our task analysis flow, where the left is the current method of information finding, and right is with <strong>Spam!</strong>
-      </p>
+     
 
       <div class="slideshow" id="needsSlideshow">
       
@@ -540,100 +627,17 @@
 
         </div>
         <button class="slide-btn next" aria-label="Next slide">›</button>
+        <small>Above is our task analysis flow, where the current method of information finding and <strong>Spam!</strong> work flows are compared for 1. Finding an Event, 2. Joining a Club, and 3. Voting and Advocating.
+        </small>
       </div>
     </section>
 
-    <!-- DESIGN -->
-    <section id="design">
-      <h2>Design Prototype</h2>
-      <h3>Design Guidelines</h3>
-      <ul>
-        <li><strong>Accessibility:</strong> High contrast, low-cognitive-load layouts</li>
-        <li><strong>Energetic clarity:</strong> Retain the playfulness of physical spam without the clutter</li>
-        <li><strong>Motivation:</strong> Reward engagement without creating noise</li>
-        <li><strong>Transparency:</strong> Clear ownership, timelines, and accountability in votes</li>
-      </ul>
-
-      <h3>Branding</h3>
-      <p>The palette reinterprets the Spam can’s blue and yellow — blue (#253A77) for structure and yellow (#E4BF47) for calls to action — balancing trustworthiness and energy.</p>
-      <div class="imgrow">
-        <div class="slot"><img src="../media/spam/spam_branding.png" alt="Spam! branding board"><small>Brand palette</small></div>
-      </div>
-
-      <h3>Wireframes</h3>
-
-      <section id="lofi">
-        <h2>Low-Fidelity Wireframes</h2>
-        <p>Early navigation and interaction sketches which we later created in Balsamiq helped us validate the tab model (Events, Voting, Resources, Profile), test filtering affordances, and tune copy before visual styling.</p>
-        <small>Click below for enlarged low fidelity wireframes.</small>
-    
-            <div class="lofi-grid">
-              <figure class="lofi-card">
-                <div class="lofi-imgwrap">
-                  <img src="../media/spam/lfw1.png" alt="Low-fi — Events list with filters" />
-                </div>
-              </figure>
-              
-              <figure class="lofi-card">
-                <div class="lofi-imgwrap">
-                  <img src="../media/spam/lfw3.png" alt="Low-fi — Voting flow & confirmation" />
-                </div>
-              </figure>
-              <figure class="lofi-card">
-                <div class="lofi-imgwrap">
-                  <img src="../media/spam/lfw4.png" alt="Low-fi — Profile with badges & RSVPs" />
-                </div>
-              </figure>
-              <figure class="lofi-card">
-                <div class="lofi-imgwrap">
-                  <img src="../media/spam/lfw5.png" alt="Low-fi — Resources tab & links" />
-                </div>
-              </figure>
-            </div>
-        
-          
-          <!-- Lightbox -->
-          <div class="lightbox" id="lofiLightbox" aria-hidden="true">
-            <span class="close" aria-label="Close">×</span>
-            <img id="lofiLightboxImg" alt="">
-          </div>
-          
-    
-      </section>
-      
-      <p>Our low Low-Fidelity wireframes tested navigation and task flow. Each tab was structured around a core function:</p>
-      <ul>
-        <li>Events — Filter, RSVP, and share</li>
-        <li>Voting — Transparent elections with results pages</li>
-        <li>Resources — Educational materials and registration links</li>
-        <li>Profile — Track badges, RSVPs, and event history</li>
-      </ul>
-      
-      
-      <h3>Iterations</h3>
-      <ul>
-        <li>Simplified landing page with onboarding text</li>
-        <li>Added clearer confirmation for votes and RSVPs</li>
-        <li>Introduced badges for engagement and event attendance</li>
-        <li>Improved hierarchy for mobile readability</li>
-      </ul>
-
-      <h3>Risky Interactions</h3>
-      <ul>
-        <li><strong>Badge Collection:</strong> Rewards engagement with badges like “Green Voter” or “Out and About.”</li>
-        <li><strong>Voting Confirmation:</strong> Clear feedback via “Vote Sent” screens; supports multiple concurrent elections securely.</li>
-      </ul>
-    </section>
-
+   
     <!-- TESTING -->
     <section id="testing">
       <h2>Prototyping & Evaluation</h2>
       <p>We developed a clickable prototype in Balsamiq and a high-fidelity Figma mockup for final presentation. The layout used modular blocks and generous white space for readability while maintaining the vibrancy of campus life.</p>
 
-      <h3>User Flow Screens</h3>
-<p>Below are representative screens from the final user-flow prototype, showing navigation across the Events, Voting, and Profile tabs within the Spam! app.</p>
-
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/HXwxA0l1LalGGDlRpDEQQm/SPAM-?node-id=0-1&embed-host=share" allowfullscreen></iframe>
 
 
       <h3>Testing</h3>
