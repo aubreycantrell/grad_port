@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Collage Co-Creator — Aubrey Cantrell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#0c0f10; --ink:#eaf1f3; --muted:#9fb0b6;
+      --accent:#77c7c9; --sand:#77c7c9; --line:#1f2628;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family:'Space Grotesk';
+      line-height:1.7; font-size:17px; scroll-behavior:smooth;
+    }
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    nav.side {
+      position:fixed; top:50%; left:32px; transform:translateY(-50%);
+      display:flex; flex-direction:column; gap:10px; z-index:50;
+    }
+    nav.side a {
+      color:var(--muted); font-size:14px;
+      padding:4px 0; border-left:2px solid transparent; padding-left:10px;
+      transition:.2s;
+    }
+    nav.side a.active, nav.side a:hover {
+      color:var(--accent); border-left-color:var(--accent);
+    }
+
+    header {
+      max-width:850px; margin:100px auto 60px; padding:0 24px;
+    }
+    h1 {
+      font-size:clamp(40px,5vw,68px); font-weight:600;
+      margin:0 0 0.3em; color:var(--sand);
+    }
+    .subtitle {
+      font-size:20px; color:var(--muted); max-width:650px;
+    }
+
+    .hero {
+      width:100%; max-width:1000px; margin:60px auto;
+      border-radius:16px; overflow:hidden;
+    }
+    .hero img{width:100%;display:block;}
+
+    main {
+      max-width:750px; margin:0 auto; padding:0 24px 100px;
+    }
+    section{margin:80px 0;}
+    section:first-of-type{margin-top:0;}
+
+    h2 {
+      font-size:26px; font-weight:600; color:var(--sand);
+      margin-bottom:12px;
+    }
+    h3 {
+      font-size:20px; color:var(--accent); margin:36px 0 8px;
+    }
+    p, ul {color:var(--muted);}
+    ul{padding-left:22px;}
+
+    blockquote {
+      border-left:3px solid var(--accent);
+      margin:20px 0; padding-left:16px; color:var(--muted); font-style:italic;
+    }
+
+    .imgrow{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:14px; margin:18px 0 8px;
+    }
+    .slot{
+      border-radius:10px; padding:10px; display:flex;
+      flex-direction:column; gap:8px; align-items:center; text-align:center;
+    }
+    .slot img{
+      width:100%; border-radius:8px; object-fit:cover;
+    }
+    .slot small{font-size:12px; color:var(--muted);}
+
+    footer {
+      max-width:850px; margin:80px auto; text-align:center;
+      color:var(--muted); font-size:15px;
+    }
+    @media (max-width:780px){ nav.side{display:none;} }
+  </style>
+</head>
+
+<body>
+
+  <!-- Side Navigation -->
+  <nav class="side">
+    <a href="#intro">1. Introduction</a>
+    <a href="#related">2. Related Works</a>
+    <a href="#system">3. System Overview</a>
+    <a href="#findings">4. Preliminary Findings</a>
+  </nav>
+
+  <header>
+    <a href="../index.html#work">← Back</a>
+    <h1>Collage Co-Creator</h1>
+    <div class="subtitle">
+      An abriviated IUI 2025 demo submission exploring creativity through human–AI collage ideation.<br>
+      <em>Generative AI · Creativity Support · 2025</em>
+    </div>
+  </header>
+
+  <!-- HERO IMAGE -->
+  <div class="hero">
+    <img src="../media/cccc.png" alt="Collage Co-Creator Interface Placeholder">
+  </div>
+
+  <main>
+
+    <!-- 1. INTRODUCTION -->
+    <section id="intro">
+      <h2>1. Introduction</h2>
+      <p>
+        Human–AI creativity collaboration helps creators generate ideas, visualize alternatives, and explore beyond
+        their technical skill level. But these capabilities also raise concerns: When AI proposes most options, does the
+        user still direct the creative arc? How does rapid iteration shift authorship? And how can systems avoid
+        overwhelming users with too many possibilities?
+      </p>
+      <p>
+        This work emphasizes <strong>co-creation</strong>, where AI and user engage in reciprocal ideation while preserving
+        the user’s agency. Drawing on mini-c creativity—everyday creative interpretation—we explore how generative AI
+        can support broad, low-pressure idea expansion without overtaking artistic intent.
+      </p>
+      <p>
+        Collage offers a uniquely open, material-rich domain for this exploration. Its flexibility supports divergence,
+        experimentation, and playful visual thinking. Our system uses AI only to <em>suggest</em> additions, never to implement
+        or replace, preserving authorship while expanding creative adjacency.
+      </p>
+      <p><strong>Research Questions:</strong></p>
+      <ul>
+        <li>How does generative AI influence material, color, and texture choices in collage?</li>
+        <li>Does interaction with AI shift a creator’s perception of the collage they produce?</li>
+      </ul>
+
+      <div class="imgrow">
+        <div class="slot"><img src="../media/cs-2.png" alt=""><small></small></div>
+        <div class="slot"><img src="../media/cs-3.png" alt=""><small></small></div>
+      </div>
+    </section>
+
+    <!-- 2. RELATED WORKS -->
+    <section id="related">
+      <h2>2. Related Works</h2>
+
+      <h3>2.1 Tangible Co-Creation Interfaces</h3>
+      <p>
+        Existing creativity support tools heavily emphasize execution—sculpting, painting, rendering—and often limit user
+        control by placing the AI on the output side. Systems such as Sculpt-to-Image, FreeD, AIRBrush, and Sandbox focus
+        on convergent outcomes, helping users produce a specific finished artifact.
+      </p>
+      <p>
+        While powerful, they rarely support ideation itself: the divergent exploration of possibilities, themes, and
+        material directions that form the core of early creative development.
+      </p>
+
+      <h3>2.2 Collage as Interaction Material</h3>
+      <p>
+        Collage has been underexplored in computational creativity despite its strong ideational qualities. Work such
+        as Interactive Photo Book and Opal show computational manipulation of imagery, but not collage-specific
+        ideation workflows, nor hybrid tangible–digital feedback loops.
+      </p>
+
+      <h3>2.3 Co-Creation Workflows</h3>
+      <p>
+        Systems like AI-supported choreography and FashionQ demonstrate structured iteration cycles where users expand,
+        refine, and selectively adopt AI suggestions. Visual art, however, centers on a single continuously evolving
+        composition, making it harder to introduce AI without disrupting flow or authorship.
+      </p>
+
+      <div class="imgrow">
+        <div class="slot"><img src="../media/cs-1.png" alt=""><small></small></div>
+      </div>
+    </section>
+
+    <!-- 3. SYSTEM OVERVIEW -->
+    <section id="system">
+      <h2>3. System Overview</h2>
+      <p>
+        The Collage Co-Creator generates visual suggestions layered onto a user’s in-progress collage. Rather than
+        producing finished images, the system outputs conceptual prompts across materials, colors, textures, and themes.
+      </p>
+
+      <h3>3.1 Workflow & Interface</h3>
+      <ul>
+        <li>Step 1: User photographs or uploads their in-progress collage.</li>
+        <li>Step 2: System generates five blurred suggestion cards.</li>
+        <li>Step 3: User reveals each card to explore visual directions.</li>
+        <li>Step 4: User implements ideas physically using their own materials.</li>
+        <li>Step 5: Custom prompting unlocks for targeted ideation.</li>
+      </ul>
+
+      <div class="imgrow">
+        <div class="slot"><img src="../media/demo.png" alt=""></div>
+      </div>
+
+      <h3>3.2 Variation Types</h3>
+      <ul>
+        <li><strong>New Materials:</strong> fabric, foil, feathers, yarn, tactile elements</li>
+        <li><strong>Color & Mark-Making:</strong> strokes, shapes, contrast</li>
+        <li><strong>Paper & Texture:</strong> layered scraps, torn edges</li>
+        <li><strong>Ironic Imagery:</strong> playful objects, humor, narrative twists</li>
+        <li><strong>Theme Reinforcement:</strong> symbols or motifs aligned with the collage</li>
+      </ul>
+
+      <h3>3.3 Custom Prompting</h3>
+      <p>
+        After exploring the five base variations, users can specify intentional directions—materials, theme, imagery,
+        mood, or spatial placement. Prompts are converted into structured instructions that maintain collage integrity
+        (“add but never replace,” “preserve edges”).
+      </p>
+
+      <h3>3.4 Implementation & Safeguards</h3>
+      <p>
+        The system uses <code>gpt-image-1</code> with strict “add-only” constraints to preserve authorship. Prompts filter
+        out faces, text, and sensitive imagery. If a collage contains faces, users are asked to mask them physically
+        before uploading to ensure safe generation.
+      </p>
+    </section>
+
+    <!-- 4. PRELIMINARY FINDINGS -->
+    <section id="findings">
+      <h2>4. Preliminary Findings</h2>
+      <p>Preliminary findings look at user's reflections on interacting with the Collage Co-Creator, responding to the quesiton: </p>
+      <blockquote>To what extent did using the collage co-creator affect your creation and artistic process?</blockquote>
+
+
+      <h3>Strengths: Material & Micro-Ideation Support</h3>
+      <ul>
+        <li>Most effective at suggesting material additions (paint, thread, foil, ripped paper)</li>
+        <li>Helped address dead space and small compositional gaps</li>
+        <li>Useful when users felt “stuck” mid-process</li>
+        <li>Outputs were described as “surprisingly 3D” or “cool”</li>
+      </ul>
+      <blockquote>“It inspired me to use paint.”</blockquote>
+      <blockquote>“It helped me fill in the empty spaces.”</blockquote>
+
+      <h3>Limitations: Context Blindness & Practicality</h3>
+      <ul>
+        <li>Occasional misinterpretation of tone (“horror/unhinged”)</li>
+        <li>Faces sometimes generated despite constraints</li>
+        <li>Suggestions sometimes required disassembling the collage</li>
+        <li>Material suggestions were sometimes unrealistic to implement</li>
+        <li>Users with strong initial visions found the tool less helpful</li>
+      </ul>
+
+      <h3>Creative Agency & Emotional Boundaries</h3>
+      <p>
+        For collages with personal meaning, users resisted AI influence, noting it could not understand emotional
+        contexts. Some worried about over-reliance or loss of authorship.
+      </p>
+      <blockquote>“It doesn’t understand my relationship with my sister.”</blockquote>
+
+      <h3>Summary</h3>
+      <p>
+        Overall, early findings identify the system functioning as a light ideation companion—good for micro-additions, material ideas, and
+        dead-space resolution. Limitations centered on context understanding and feasibility. Continued research will analyze creative efficacy, attitudes toward AI and human collaboration, attitudes of AI's ability to facilitate art, artistic experience, and a qualitative analysis of the iterative collage making process, comparing the results and applications of AI and non AI conditions in collage development.
+      </p>
+
+      <div class="imgrow">
+        <div class="slot"><img src="" alt=""><small>Study workspace</small></div>
+        <div class="slot"><img src="" alt=""><small>Example outputs</small></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="../index.html#work">← Back to Portfolio</a>
+  </footer>
+
+  <script>
+    /* Highlight active sidebar section */
+    const sections = document.querySelectorAll('main section');
+    const links = document.querySelectorAll('nav.side a');
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          links.forEach(a=>a.classList.remove('active'));
+          const active=document.querySelector(`nav.side a[href="#${entry.target.id}"]`);
+          if(active) active.classList.add('active');
+        }
+      });
+    },{threshold:0.45});
+    sections.forEach(sec=>observer.observe(sec));
+  </script>
+
+</body>
+</html>

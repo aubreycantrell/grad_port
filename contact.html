@@ -76,8 +76,8 @@ body.light .filter-btn.active {
       --sand:#77c7c9;       /* sand */
       --terra:#77c7c9;      /* terracotta */
       --leaf:#cc7a4a;       /* olive leaf */
-      --card:#ffffff;
-      --line:#ffffff;
+      --card:#eaf1f3;
+      --line:#eaf1f3;
     }
     *{box-sizing:border-box}
     html,body{margin:0;height:100%;scroll-behavior:smooth}
@@ -587,45 +587,30 @@ body.light .filter-btn.active {
     <a class="dot" href="contact.html"><span>Contact</span></a>
   </nav>
 
-  <!-- HERO -->
-  <section id="home" class="section hero">
-    
-    
-    <div class="scrim"></div>
-    <div class="container content">
-      <p class="lede reveal">Hi I'm Aubrey!</p>
-      <p class="lede reveal"> Designer • Researcher • Creative Technologist</p>
-      <h1 class="reveal">Exploring the edges of <span style="color:var(--terra)">interaction</span>,
-        <span style="color:var(--sand)">learning</span>, and <span style="color:var(--terra)">expression</span>.</h1>
-      <p class="lede reveal">My work focuses on developing creative educational tools and interactive experiences that make complex ideas more intuitive.
+  
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-combo">
+    <div class="contact-pane">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>
+          Email <a style="color:#77c7c9"href="mailto:aubrey.cantrell@wellesley.edu">aubrey.cantrell@wellesley.edu</a> ·
+          <a style="color: #cc7a4a;" href="https://www.linkedin.com/in/aubrey-cantrell/">LinkedIn</a> ·
+          <!--<a style="color:#8fa76b" href="#">Resume</a>-->
         </p>
-        <p class="lede reveal"> I am passionate about designing technologies that empower curious minds.
-        
-      </p>
-      <p>&#8595;</p>
-    </div>
-  </section>
-
-  <!-- WORK GRID -->
-  <section id="work" class="section work">
-    <div class="container">
-      <h2 class="reveal">Work & Projects</h2>
-  
-      <!-- filter pills -->
-      <div class="filters" role="toolbar" aria-label="Project filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="UX">UX</button>
-        <button class="filter-btn" data-filter="Creative Tech">Creative Tech</button>
-        <button class="filter-btn" data-filter="Research">Research</button>
       </div>
+    </div>
   
-      <div id="grid" class="grid"></div>
+    <div class="ask-pane">
+      <div class="ask-container">
+        <p>Ask Me About</p>
+        <div class="ask-slideshow">
+          <img id="ask-image" src="media/ask/ask1.jpg" alt="Ask me about" />
+        </div>
+      </div>
     </div>
   </section>
   
-
-
-
   
 
   <!-- Projects data (edit me) -->
@@ -653,18 +638,6 @@ body.light .filter-btn.active {
       "images": ["media/spam_login.png"],
       "desc": "Mobile app to make on-campus civic life visible and actionable.",
       "link": "projects/spam.html"
-    },
-    {
-      "slug": "media-lab",
-      "title": "MIT Media Lab — MRAC '25 Publication" ,
-      "role": "Research · Prototyping",
-      "sub": " Personalized Animations for Affective Feedback: Generative AI Helps to Visualize Skin Conductance",
-      "year": "2025",
-      "tags": ["HCI", "Creative Tech", "Research", "AI"],
-      "cover": "media/r-1.gif",
-      "images": ["media/r-1.gif"],
-      "desc": " Personalized Animations for Affective Feedback: Generative AI Helps to Visualize Skin Conductance",
-      "link": "projects/medialab.html"
     },
   
   {
@@ -719,13 +692,24 @@ body.light .filter-btn.active {
     "slug": "urbanity-dance",
     "title": "Urbanity Dance — Heartbeat to Music",
     "role": "Creative Tech · Research",
-    "sub": "An interoceptive performance exploring AI, human connection, and the body as instrument. ",
+    "sub": "Heart-Driven Improvisation: An interoceptive performance exploring AI, human connection, and the body as instrument. ",
     "year": "2025",
     "tags": ["Creative Tech", "Research"],
     "cover": "media/urbanity.JPG",
     "images": ["media/urbanity.JPG"],
     "desc": "Wearable sensor behavior and audio design for a non-profit dance performance.",
     "link": "projects/urbanity.html"
+  },
+  {
+    "slug": "media-lab",
+    "title": "Media Lab — GenAI Personalized Animations",
+    "role": "Research · Prototyping",
+    "year": "2025",
+    "tags": ["HCI", "Creative Tech", "Research", "AI"],
+    "cover": "media/r-1.gif",
+    "images": ["media/r-1.gif"],
+    "desc": "Turning natural-language prompts and signals into live Processing sketches.",
+    "link": "project.html?id=media-lab"
   }
 ]
 

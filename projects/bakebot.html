@@ -11,12 +11,12 @@
   <style>
     :root {
       --bg:#0c0f10; --ink:#eaf1f3; --muted:#9fb0b6;
-      --accent:#77c7c9; --sand:#e8d9c5; --line:#1f2628;
+      --accent:#77c7c9; --sand:#77c7c9; --line:#1f2628;
     }
     *{box-sizing:border-box;}
     body{
       margin:0; background:var(--bg); color:var(--ink);
-      font-family:'Space Grotesk',system-ui,sans-serif;
+      font-family:'Space Grotesk';
       line-height:1.7; font-size:17px; scroll-behavior:smooth;
     }
     a{color:var(--accent);text-decoration:none;}
@@ -49,7 +49,7 @@
 
     .hero {
       width:100%; max-width:1000px; margin:60px auto;
-      border-radius:16px; overflow:hidden; border:1px solid var(--line);
+      border-radius:16px; overflow:hidden; 
     }
     .hero img{width:100%;height:auto;display:block;}
 
@@ -192,7 +192,7 @@
   </header>
 
   <div class="hero">
-    <img src="../media/bakebot/flow2.png" alt="BakeBot main flow diagram" />
+    <img src="../media/bakebot/flow.png" alt="BakeBot main flow diagram" />
   </div>
 
   <main>
@@ -201,18 +201,7 @@
       <p><strong>BakeBot</strong> is an intelligent, voice-activated assistant designed to simplify baking and support users through every stage of recipe preparation. Developed collaboratively, the project applies structured needs analysis and human-computer interaction (HCI) methodologies to transform a cognitively demanding, multi-step activity into a seamless, hands-free experience.</p>
       <p>At its core, BakeBot examines how conversational technology can reduce task friction and enhance focus during an activity that traditionally requires both precision and multitasking.</p>
 
-      <div class="imgrow">
-        <div class="slot">
-          <img src="../media/bakebot/bakebot_cover.png" alt="BakeBot prototype interface">
-        </div>
-        <div class="slot">
-          <img src="../media/bakebot/work-flow.png" alt="Workflow screenshot (teaser)">
-        </div>
-        <div class="slot">
-          <img src="../media/bakebot/voiceflow.png" alt="Voiceflow nodes (teaser)">
-        </div>
-      </div>
-    </section>
+  </section>
 
     <section id="what">
       <h2>What It Does</h2>
@@ -277,17 +266,141 @@
 
       <h3>User Studies</h3>
       <p>Surveys and interviews with home bakers (novice to experienced) surfaced confusion around measurements, uncertainty about substitutions, and difficulty keeping track of steps when multitasking.</p>
+      
+      <h3>Stakeholder Analysis</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Who</th>
+            <th>Why We Care About Them</th>
+            <th>How to Satisfy</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr>
+            <td>
+              <strong>Users / Directly Affected</strong><br>
+              Person following a recipe
+            </td>
+            <td>
+              Primary users of recipe assistance tools.<br>
+              <strong>Priority: High</strong>
+            </td>
+            <td>
+              Ease of following directions, measurement and substitution conversion tools, 
+              accurate and timely updates.
+            </td>
+          </tr>
+      
+          <tr>
+            <td>
+              <strong>Approvers / Blockers and Concerned</strong><br>
+              Recipe Websites / Cookbook Providers
+            </td>
+            <td>
+              Help bakers with recipes, conversions, and preparation steps and logistics. 
+              Recipe publishers are affected if bakers are able to use their own recipes 
+              or come up with it themselves.<br>
+              <strong>Priority: Medium</strong>
+            </td>
+            <td>
+              Expect clarity on recipes, ingredients, preparation times, and specific details.
+            </td>
+          </tr>
+      
+          <tr>
+            <td>
+              <strong>Transformers</strong><br>
+              Appliance Salesman / Maintenance
+            </td>
+            <td>
+              Install ovens, stoves, refrigerators, and other machinery necessary for baking.<br>
+              <strong>Priority: Low</strong>
+            </td>
+            <td>
+              Ensure there is a workspace that is useable and dependable for baking and preparation needs.
+            </td>
+          </tr>
+      
+          <tr>
+            <td>
+              <strong>Suppliers</strong><br>
+              Grocery Stores
+            </td>
+            <td>
+              Easy and dependable access to groceries and ingredients for baking needs.<br>
+              <strong>Priority: Medium</strong>
+            </td>
+            <td>
+              Need information on what ingredients are popular and in high demand 
+              for baking and preparation.
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-      <div class="imgrow">
-        <div class="slot">
-          <img src="../media/bakebot/stakeholder analysis.png" alt="Stakeholder analysis">
-          <small>Stakeholder analysis</small>
-        </div>
-        <div class="slot">
-          <img src="../media/bakebot/boundary.png" alt="Boundary & hazard map 1">
-          <small>Boundary & hazard map</small>
-        </div>
-      </div>
+      <h3>Boundary & Hazard Mitigation</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Boundaries / Hazards</th>
+            <th>Likelihood (0–10)</th>
+            <th>Severity (0–10)</th>
+            <th>Expected Impact</th>
+            <th>Mitigation Strategy</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr>
+            <td><strong>Externalities</strong><br>Appliance Malfunction</td>
+            <td>2</td>
+            <td>9</td>
+            <td>18</td>
+            <td>
+              Incorporate a troubleshooting option in the assistant.<br>
+              <strong>Cost Effectiveness:</strong> Medium ($$)
+            </td>
+          </tr>
+      
+          <tr>
+            <td><strong>Resources</strong><br>Unavailable Ingredients</td>
+            <td>4</td>
+            <td>8</td>
+            <td>32</td>
+            <td>
+              Depending on user preference, provide alternative stores, 
+              shipping options, or substitute ingredients.<br>
+              <strong>Cost Effectiveness:</strong> Medium ($$)
+            </td>
+          </tr>
+      
+          <tr>
+            <td><strong>Operations / Use</strong><br>Cost of Ingredients, Bakeware, etc.</td>
+            <td>6</td>
+            <td>8</td>
+            <td>48</td>
+            <td>
+              Offer alternative methods, ingredients, or recipes to accommodate budget.
+              Incorporate a budget tool specific to weekly baking.<br>
+              <strong>Cost Effectiveness:</strong> Medium ($$)
+            </td>
+          </tr>
+      
+          <tr>
+            <td><strong>Externalities</strong><br>Possible Allergies</td>
+            <td>3</td>
+            <td>9</td>
+            <td>27</td>
+            <td>
+              Make users aware of any present allergens in recipes immediately. 
+              Offer substitute ingredients.<br>
+              <strong>Cost Effectiveness:</strong> High ($)
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <h3>Personas</h3>
       <div class="imgrow">
@@ -301,16 +414,9 @@
       <h2>Design Prototype</h2>
       <h3>User Flow</h3>
       <p>We mapped three main flows—recipe selection, step-by-step guidance, and workflow optimization—around cognitive continuity: keep hands free, keep attention on making, and let voice handle the orchestration.</p>
-
+      
       <div class="imgrow">
-        <div class="slot">
-          <img src="../media/bakebot/work-flow.png" alt="User workflow diagram">
-          <small>User workflow</small>
-        </div>
-        <div class="slot">
-          <img src="../media/bakebot/voiceflow.png" alt="Voiceflow diagram">
-          <small>Voiceflow logic</small>
-        </div>
+        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/AhuIj4XhvRxJLbWQooz1kQ/Figma-to-HTML-with-Framer--Community-?node-id=0-1&embed-host=share" allowfullscreen></iframe>
       </div>
 
       <h3>Final Flows</h3>
@@ -320,15 +426,8 @@
         <li>Personalized prompts based on inventory, pacing, and preferences.</li>
       </ul>
 
-      <div class="gallery">
         
-        <div class="slot">
-          <img src="../media/bakebot/flow1.png" alt="Flow 1">
-          <img src="../media/bakebot/flow2.png" alt="Flow 2">
-          <img src="../media/bakebot/flow3.png" alt="Flow 3">
-          <small>Flow structure</small>
-        </div>
-      </div>
+          <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/yiPmCAvBOy8FuZWzdmkyfR/VoiceFlow-Diagram?node-id=0-1&embed-host=share" allowfullscreen></iframe>
     </section>
 
     <section id="testing">
@@ -342,7 +441,38 @@
           <a class="report-btn" href="https://docs.google.com/document/d/1IQVtFRvpOTC2cQWP-sWg-_ffgkV8T5ejB_Ew3BExuIw/edit?tab=t.0" target="_blank">Report 1: Initial Testing</a>
           <a class="report-btn" href="https://docs.google.com/document/d/1NzAQHA-miOI5hsof5nbH3rOOe5BJbroSoB-PdrNGsl4/edit?tab=t.0" target="_blank">Report 2: Iteration & Findings</a>
         </div>
-        <img src="../media/bakebot/usability.png" alt="Voiceflow structure diagram">
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Enjoyment of using Bakebot</th>
+      <th>Ease of Use</th>
+      <th>Preference Over Current Methods</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        <strong>Round 1</strong>
+      </td>
+      <td>7</td>
+      <td>8</td>
+      <td>3.5</td>
+    </tr>
+
+    <tr>
+      <td>
+        <strong>Round 2</strong>
+      </td>
+      <td>6</td>
+      <td>9</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+
       </div>
     </section>
 

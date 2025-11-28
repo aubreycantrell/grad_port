@@ -11,12 +11,12 @@
   <style>
     :root {
       --bg:#0c0f10; --ink:#eaf1f3; --muted:#9fb0b6;
-      --accent:#77c7c9; --sand:#e8d9c5; --line:#1f2628;
+      --accent:#77c7c9; --sand:#77c7c9; --line:#1f2628;
     }
     *{box-sizing:border-box;}
     body{
       margin:0; background:var(--bg); color:var(--ink);
-      font-family:'Space Grotesk',system-ui,sans-serif;
+      font-family:'Space Grotesk';
       line-height:1.7; font-size:17px; scroll-behavior:smooth;
     }
     a{color:var(--accent);text-decoration:none;}
@@ -52,6 +52,52 @@
       border-radius:16px; overflow:hidden; 
     }
     .hero img{width:100%;height:auto;display:block;}
+    /* turn hero into a responsive split screen */
+.hero.split {
+  display: flex;
+  gap: 0;
+}
+
+/* left side: keeps a phone-like shape */
+.hero-left {
+  flex: 1 1 50%;
+  min-width: 0;
+  /* controls overall height of the hero */
+  min-height: 500px; /* tweak this number as you like */
+}
+
+.hero-left iframe {
+  width: 100%;
+  height: 100%;
+  display:block;
+  border: 0;
+}
+
+
+/* right side: your text content */
+.hero-right {
+  flex: 1 1 50%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+/* responsive: stack on mobile */
+@media (max-width: 900px) {
+  .hero.split {
+    flex-direction: column;
+  }
+
+  .hero-right {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-left iframe {
+    aspect-ratio: 9 / 16;
+    min-height: 400px;
+  }
+}
+
 
     main {
       max-width:750px; margin:0 auto; padding:0 24px 100px;
@@ -273,12 +319,12 @@
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  background:rgba(0,0,0,0.4);
+  background:rgba(0,0,0,0.001);
   border:none;
   color:#fff;
   font-size:32px;
   padding:6px 12px;
-  border-radius:50%;
+  border-radius:100%;
   cursor:pointer;
   transition:background 0.2s ease;
   z-index:5;
@@ -319,20 +365,31 @@
   </header>
 
   <div class="hero">
-    <img src="../media/spam/spam_login.png" alt="Spam! mobile app prototype">
-  </div>
-
-  <main>
-    <!-- PURPOSE -->
-    <section id="purpose">
-      <h2>Purpose</h2>
-      <p>Over seven weeks in Human-Computer Interaction (CS220), our team of four designed <strong>Spam!</strong>, a mobile web prototype to increase student civic participation and organizational transparency at Wellesley College. Modeled after the school’s iconic “spam boards,” the app reimagines physical flyers as a centralized, accessible, and interactive digital platform for civic engagement — making it easier to vote, discover events, and stay informed.</p>
-      <div class="imgrow">
-        <div class="slot">
-          <img  src="../media/spam/spam.jpg" alt="Spam! logo or branding preview">
-        </div>
+    <div class="hero split">
+      <div class="hero-left">
+        <iframe
+          src="https://embed.figma.com/proto/HXwxA0l1LalGGDlRpDEQQm/SPAM-?node-id=1-1061&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A1061&embed-host=share"
+          allowfullscreen></iframe>
       </div>
-    </section>
+    
+      <div class="hero-right">
+          <section id="purpose">
+            <h2>Purpose</h2>
+            <p>
+              Over seven weeks in Human-Computer Interaction (CS220), our team of four
+              designed <strong>Spam!</strong>, a mobile web prototype to increase student
+              civic participation and organizational transparency at Wellesley College.
+              Modeled after the school’s iconic “spam boards,” the app reimagines physical
+              flyers as a centralized, accessible, and interactive digital platform for civic
+              engagement — making it easier to vote, discover events, and stay informed.
+            </p>
+    
+           
+          </section>
+      </div>
+    </div>
+    <main>
+    
 
     <!-- WHAT IT DOES -->
     <section id="what">
@@ -345,6 +402,13 @@
         <li>Access civic resources like voter registration and educational materials</li>
       </ul>
       <p>The app fosters both transparency (through visible election results and activity tracking) and motivation (through gamified engagement badges).</p>
+
+      <div class="imgrow">
+        <div class="slot">
+          <img src="../media/spam/spam.jpg" alt="Spam! logo or branding preview">
+        </div>
+      </div>
+
     </section>
 
     <!-- WHAT IT ADDRESSES -->
@@ -387,12 +451,7 @@
         “If I could just filter by what’s happening soon or what I actually care about, I’d go to more events.”
       </blockquote>
 
-      <div class="imgrow">
-        <div class="slot">
-          <img src="../media/spam/empathy_map.png" alt="Interview empathy map">
-          <small>Empathy map visualization</small>
-        </div>
-      </div>
+      <iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVJj0yZVY=/?embedMode=view_only_without_ui&moveToViewport=11896,159,5752,3047&embedId=29315496104" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
 
       <h3>Personas & Flows</h3>
       <section id="personas">
@@ -475,6 +534,10 @@
           <img src="../media/spam/ta1.png" alt="User flow screen 1">
           <img src="../media/spam/ta2.png" alt="User flow screen 2">
           <img src="../media/spam/ta3.png" alt="User flow screen 3">
+          <img src="../media/spam/ta4.png" alt="User flow screen 3">
+          <img src="../media/spam/ta5.png" alt="User flow screen 3">
+          <img src="../media/spam/ta6.png" alt="User flow screen 3">
+
         </div>
         <button class="slide-btn next" aria-label="Next slide">›</button>
       </div>
@@ -570,17 +633,7 @@
       <h3>User Flow Screens</h3>
 <p>Below are representative screens from the final user-flow prototype, showing navigation across the Events, Voting, and Profile tabs within the Spam! app.</p>
 
-<div class="slideshow" id="flowSlideshow">
-  <button class="slide-btn prev" aria-label="Previous slide">‹</button>
-  <div class="slides">
-    <img src="../media/spam/flow1.png" alt="User flow screen 1">
-    <img src="../media/spam/flow2.png" alt="User flow screen 2">
-    <img src="../media/spam/flow3.png" alt="User flow screen 3">
-    <img src="../media/spam/flow4.png" alt="User flow screen 4">
-    <img src="../media/spam/flow5.png" alt="User flow screen 5">
-  </div>
-  <button class="slide-btn next" aria-label="Next slide">›</button>
-</div>
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/HXwxA0l1LalGGDlRpDEQQm/SPAM-?node-id=0-1&embed-host=share" allowfullscreen></iframe>
 
 
       <h3>Testing</h3>
