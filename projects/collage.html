@@ -92,6 +92,45 @@
       color:var(--muted); font-size:15px;
     }
     @media (max-width:780px){ nav.side{display:none;} }
+
+    .case-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+  margin:1.5rem 0;
+}
+
+.case-cell{
+  margin:0;
+  background:rgba(255,255,255,0.02);
+  border-radius:12px;
+  padding:8px;
+  border:1px solid rgba(255,255,255,0.04);
+}
+
+.case-cell img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:8px;
+}
+
+.case-cell figcaption{
+  margin-top:6px;
+  font-size:0.85rem;
+  line-height:1.3;
+}
+
+.prompt-text{
+  font-weight:400;
+  opacity:0.9;
+}
+.blue-row{
+  background:var(--accent); /* deep blue */
+  border-color:rgba(255,255,255,0.1);
+  color: black;
+}
+
   </style>
 </head>
 
@@ -231,50 +270,191 @@
       </p>
     </section>
 
-    <!-- 4. PRELIMINARY FINDINGS -->
-    <section id="findings">
-      <h2>4. Preliminary Findings</h2>
-      <p>Preliminary findings look at user's reflections on interacting with the Collage Co-Creator, responding to the quesiton: </p>
-      <blockquote>To what extent did using the collage co-creator affect your creation and artistic process?</blockquote>
-
-
-      <h3>Strengths: Material & Micro-Ideation Support</h3>
-      <ul>
-        <li>Most effective at suggesting material additions (paint, thread, foil, ripped paper)</li>
-        <li>Helped address dead space and small compositional gaps</li>
-        <li>Useful when users felt “stuck” mid-process</li>
-        <li>Outputs were described as “surprisingly 3D” or “cool”</li>
-      </ul>
-      <blockquote>“It inspired me to use paint.”</blockquote>
-      <blockquote>“It helped me fill in the empty spaces.”</blockquote>
-
-      <h3>Limitations: Context Blindness & Practicality</h3>
-      <ul>
-        <li>Occasional misinterpretation of tone (“horror/unhinged”)</li>
-        <li>Faces sometimes generated despite constraints</li>
-        <li>Suggestions sometimes required disassembling the collage</li>
-        <li>Material suggestions were sometimes unrealistic to implement</li>
-        <li>Users with strong initial visions found the tool less helpful</li>
-      </ul>
-
-      <h3>Creative Agency & Emotional Boundaries</h3>
-      <p>
-        For collages with personal meaning, users resisted AI influence, noting it could not understand emotional
-        contexts. Some worried about over-reliance or loss of authorship.
-      </p>
-      <blockquote>“It doesn’t understand my relationship with my sister.”</blockquote>
-
-      <h3>Summary</h3>
-      <p>
-        Overall, early findings identify the system functioning as a light ideation companion—good for micro-additions, material ideas, and
-        dead-space resolution. Limitations centered on context understanding and feasibility. Continued research will analyze creative efficacy, attitudes toward AI and human collaboration, attitudes of AI's ability to facilitate art, artistic experience, and a qualitative analysis of the iterative collage making process, comparing the results and applications of AI and non AI conditions in collage development.
-      </p>
-
-      <div class="imgrow">
-        <div class="slot"><img src="" alt=""><small>Study workspace</small></div>
-        <div class="slot"><img src="" alt=""><small>Example outputs</small></div>
-      </div>
-    </section>
+    <section id="preliminary-findings">
+        <h2>4. Preliminary Findings</h2>
+      
+        <h3>4.1 Study Outline</h3>
+        <p>
+          We conducted a user study with <strong>n = 31</strong> participants during an in-person creative workshop.
+          Participants created physical collages for 20 minutes, then were asked to add at least three new additions.
+          They then used the Collage Co-Creator to add at least three additional collage pieces. Afterwards, they
+          provided open-ended reflections on how the AI influenced (or failed to influence) their artistic decisions.
+          We performed qualitative coding of these responses to identify emergent patterns in how users engaged with
+          AI-driven visual suggestions.
+        </p>
+      
+        <h3>4.2 Qualitative Results</h3>
+        <p>
+          Across participants, the Collage Co-Creator functioned primarily as an ideation tool for material expansion
+          and thematic reinforcement. Approximately <strong>63%</strong> of participants described clear benefits and
+          implementation—especially for suggesting materials, textures, or ways to fill empty space. 
+          <strong>46%</strong> reported neutral experiences, using the AI for sparks of inspiration while maintaining their own
+          artistic direction, and <strong>30%</strong> reported negative experiences, citing unoriginality or lack of feasibility.
+        </p>
+      
+        <h3>Case Study 1 — Material Expansion</h3>
+        <p>
+          This participant used the Collage Co-Creator to expand their palette of materials and lean into a 
+          “fun, whimsical vibe.” After exploring the AI-generated variations, they selectively incorporated details
+          from the <strong>New Materials</strong> prompt—most notably the iridescent sheet and feather—alongside their own
+          playful additions like a googly eye, buttons, ribbon, and gems. While they chose not to base their full
+          composition on the custom collage they generated, the diversity of automated examples proved useful. One
+          particular mock-up sparked new ideas, prompting experimentation with embellishments they “hadn't thought of
+          earlier.” In this case, the tool enriched the collage through material and stylistic exploration rather than
+          replacing the artist’s creative direction.
+        </p>
+      
+        <blockquote>
+          <strong>Describe your recent additions (After AI):</strong><br>
+          “I added small details, such as a googly eye for the cow, buttons, a feather, a ribbon, gems, etc. I added
+          these to give it a more fun, whimsical vibe which I think it accomplished. I added an iridescent sheet and
+          a feather because of one of the automated collages from the collage co-creator.”
+        </blockquote>
+      
+        <blockquote>
+          <strong>Collage Co-Creator Effect on the artistic process:</strong><br>
+          “I used one of the given, automated collages made by the collage co-creator. It inspired me to add items
+          onto my collage that I hadn't thought of earlier. I enjoyed how the collage co-creator provided many,
+          different types/styles of collages. I also liked how there was a custom option, even though I did not end
+          up using my custom image as inspiration.”
+        </blockquote>
+      
+        <div class="case-grid">
+            <!-- Row 1 -->
+            <figure class="case-cell blue-row">
+              <img src="../media/collage /601.png" alt="First Iteration collage">
+              <figcaption>First Iteration</figcaption>
+            </figure>
+          
+            <figure class="case-cell blue-row">
+              <img src="../media/collage /602.png" alt="New additions without AI">
+              <figcaption> New Additions (No AI)</figcaption>
+            </figure>
+          
+            <figure class="case-cell blue-row">
+              <img src="../media/collage /603.png" alt="Three new additions with AI">
+              <figcaption> New Additions (With AI)</figcaption>
+            </figure>
+          
+            <!-- Row 2 -->
+            <figure class="case-cell">
+              <img src="../media/collage /6.1.png" alt="New materials variation">
+              <figcaption>New Materials</figcaption>
+            </figure>
+          
+            <figure class="case-cell">
+              <img src="../media/collage /6.2.png" alt="Contemporary shapes variation">
+              <figcaption>Contemporary Shapes</figcaption>
+            </figure>
+          
+            <figure class="case-cell">
+              <img src="../media/collage /6.3.png" alt="Paper manipulation variation">
+              <figcaption>Paper Manipulation</figcaption>
+            </figure>
+          
+            <!-- Row 3 -->
+            <figure class="case-cell">
+              <img src="../media/collage /6.4.png" alt="Playful thematic variation">
+              <figcaption>Thematic Playful</figcaption>
+            </figure>
+          
+            <figure class="case-cell">
+              <img src="../media/collage /6.5.png" alt="Thematic reinforcing variation">
+              <figcaption>Thematic Reinforcing</figcaption>
+            </figure>
+          
+            <figure class="case-cell">
+              <img src="../media/collage /6.6.png" alt="Custom prompt collage">
+              <figcaption>
+                Custom Prompt:<br>
+                <span class="prompt-text">cutesy 2000s underground junk, more various textures, lots of color, surrealism</span>
+              </figcaption>
+            </figure>
+          </div>
+          
+      
+        <h3>Case Study 2 — Contextual Additions</h3>
+        <p>
+          This participant used the Collage Co-Creator to explore how to treat the empty green margins of their collage.
+          Instead of adopting the AI’s “bright and sparkly” suggestions, the generated mock-ups helped clarify the thematic
+          direction they wanted to emphasize. Seeing the system fill that space with natural darker colors and botanical
+          elements confirmed that the borders could carry visual weight, but they chose a different direction—adding trees,
+          birds, and organic textures from magazines. In this case, the tool acted as a <strong>visual preview mechanism</strong> rather
+          than a materials generator, allowing the participant to test possibilities in unused space and commit to a theme
+          aligned with their own vision.
+        </p>
+      
+        <blockquote>
+          <strong>Describe your recent additions (After AI):</strong><br>
+          “I took inspiration from the AI tool when it added natural stuff to the green parts of my image in the custom
+          image I made. But, I turned away from the bright and sparkly idea and went further into the more natural darker
+          colors of nature, taking images of trees, birds, and natural things from magazines. I like it much better now.”
+        </blockquote>
+      
+        <blockquote>
+          <strong>Collage Co-Creator Effect on the artistic process:</strong><br>
+          “A little bit, I wanted to put stuff in the margins (green space) of my collage but I wasn't sure how it'd look
+          so it was helpful to see how it would look with the AI and realize I want something similar but a bit different
+          than what it generated.”
+        </blockquote>
+      
+        <div class="case-grid">
+            <!-- Row 1 -->
+            <figure class="case-cell blue-row">
+              <img src="../media/collage /501.png" alt="First Iteration collage">
+              <figcaption>First Iteration</figcaption>
+            </figure>
+          
+            <figure class="case-cell blue-row">
+              <img src="../media/collage /502.png" alt="Three new additions without AI">
+              <figcaption> New Additions (No AI)</figcaption>
+            </figure>
+          
+            <figure class="case-cell blue-row">
+              <img src="../media/collage /503.png" alt="Three new additions with AI">
+              <figcaption> New Additions (With AI)</figcaption>
+            </figure>
+          
+            <!-- Row 2 -->
+            <figure class="case-cell">
+              <img src="../media/collage /5.1.png" alt="New materials variation">
+              <figcaption>New Materials</figcaption>
+            </figure>
+          
+            <figure class="case-cell">
+              <img src="../media/collage /5.2.png" alt="Contemporary shapes variation">
+              <figcaption>Contemporary Shapes</figcaption>
+            </figure>
+          
+            <figure class="case-cell">
+              <img src="../media/collage /5.3.png" alt="Paper manipulation variation">
+              <figcaption>Paper Manipulation</figcaption>
+            </figure>
+          
+            <!-- Row 3 -->
+            <figure class="case-cell">
+              <img src="../media/collage /5.4.png" alt="Playful thematic variation">
+              <figcaption>Thematic Playful</figcaption>
+            </figure>
+          
+            <figure class="case-cell">
+              <img src="../media/collage /5.5.png" alt="Thematic reinforcing variation">
+              <figcaption>Thematic Reinforcing</figcaption>
+            </figure>
+          
+            <figure class="case-cell">
+              <img src="../media/collage /5.6.png" alt="Custom prompt collage">
+              <figcaption>
+                Custom Prompt:<br>
+                <span class="prompt-text">"magazine imagery", "botanical"
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+          
+      
+      </section>
+      
 
   </main>
 
