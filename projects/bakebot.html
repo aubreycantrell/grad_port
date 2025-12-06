@@ -214,6 +214,21 @@
   pointer-events:auto;
   transition:color .2s;
 }
+.tiff-viewer {
+  width: 800px;        /* preset box width  */
+  height: 450px;       /* preset box height */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: auto;      /* scroll if the (scaled) image is still larger */
+}
+
+/* make the image render at a smaller scale */
+.tiff-viewer img {
+  display: block;
+  max-width: none;          /* use the image’s full resolution */
+  transform: scale(0.6);    /* <— tweak this number (0.3–0.8) */
+  transform-origin: top left;
+}
+
 
 
 
@@ -282,10 +297,11 @@
       <h2>Design</h2>
       <h3>User Flow</h3>
       <p>We mapped three main flows—recipe selection, step-by-step guidance, and workflow optimization—around cognitive continuity: keep hands free, keep attention on making, and let voice handle the orchestration.</p>
-      
-      <div class="imgrow">
-        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/AhuIj4XhvRxJLbWQooz1kQ/Figma-to-HTML-with-Framer--Community-?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-      </div>
+       
+<div class="imgrow">
+  <div class="slot">  <img src="../media/bakebot/work_flow.png" alt="VoiceFlow Diagram">
+  </div>
+</div>
 
       <h3>Final Flows</h3>
       <ul>
@@ -295,7 +311,11 @@
       </ul>
 
         
-          <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/yiPmCAvBOy8FuZWzdmkyfR/VoiceFlow-Diagram?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+<!-- Scrollable TIFF container -->
+ 
+<div class="tiff-viewer">
+  <img src="../media/flow_voiceflow.jpg" alt="VoiceFlow Diagram">
+</div>
     </section>
 
 

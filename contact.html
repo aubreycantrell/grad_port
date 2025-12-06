@@ -525,6 +525,7 @@ body.light .filter-btn.active {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .ask-container {
@@ -532,29 +533,30 @@ body.light .filter-btn.active {
   z-index: 2;
   text-align: center;
   color: var(--ink);
+  transform: translateX(-200%); /* re-centers so it doesn't drift too far right */
+
+  
 }
 
 .ask-container h2 {
   color: var(--sand);
   margin-bottom: 20px;
   font-size: clamp(26px, 2.6vw, 40px);
+
+  
 }
 
 .ask-slideshow {
-  width: 140%;
-  max-width: 850px;
-
   position: relative;
-  width: 100%;
+  width: 450%;           /* makes the slideshow larger than its container */
+  max-width: 750px;      /* prevents it from becoming too huge */
   aspect-ratio: 4 / 3;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid var(--line);
 }
 
 .ask-slideshow img {
-  width: 140%;
-  max-width: 850px;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
@@ -600,7 +602,7 @@ body.light .filter-btn.active {
         <h2>Contact</h2>
         <p>
           Email <a style="color:#77c7c9"href="mailto:aubrey.cantrell@wellesley.edu">aubrey.cantrell@wellesley.edu</a> ·
-          <a style="color: #cc7a4a;" href="https://www.linkedin.com/in/aubrey-cantrell/">LinkedIn</a> ·
+          <a style="color: #cc7a4a;" href="https://www.linkedin.com/in/aubrey-cantrell/">LinkedIn</a>
           <!--<a style="color:#8fa76b" href="#">Resume</a>-->
         </p>
       </div>
