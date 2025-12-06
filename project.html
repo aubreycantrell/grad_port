@@ -29,9 +29,70 @@ Project detail template — loads content by ?id=slug from the same JSON.
     .section h3{margin:0 0 6px}
     p{color:var(--muted)}
     .chip{display:inline-block;font-size:12px;padding:4px 8px;border:1px solid var(--line);border-radius:999px;color:var(--muted);margin-right:6px}
+    /* Top-right vertical menu */
+.sidenav{
+  position:fixed;
+  top:24px;
+  right:32px;
+  display:flex;
+  flex-direction:column;  /* stack items */
+  gap:10px;
+  z-index:50;
+  align-items:flex-end;   /* right-align text */
+  line-height: 1.3;
+
+}
+
+
+/* turn dots into text links */
+.dot{
+  width:auto;
+  height:auto;
+  border:none;
+  border-radius:0;
+  background:transparent;
+  cursor:pointer;
+  position:relative;
+  font-size:14px;
+  color:var(--muted);
+  padding:4px 0;
+}
+
+/* active + hover state */
+.dot[aria-current="true"],
+.dot:hover{
+  color:var(--accent);
+}
+
+/* the <span> becomes the visible label, no tooltip behavior */
+.dot span{
+  position:static;
+  right:auto;
+  top:auto;
+  transform:none;
+  background:transparent;
+  backdrop-filter:none;
+  padding:0;
+  border-radius:0;
+  color:inherit;
+  font-size:inherit;
+  opacity:1;
+  pointer-events:auto;
+  transition:color .2s;
+}
+
+
+
   </style>
 </head>
 <body>
+    <!-- Floating side nav dots -->
+    <nav class="sidenav" aria-label="Section navigation">
+      <a class="dot" href="../index.html"><span>Home</span></a>
+      <a class="dot" href="../index.html#work"><span>Work</span></a>
+      <a class="dot" href="../about.html"><span>About</span></a>
+      <a class="dot" href="../contact.html"><span>Contact</span></a>
+    </nav>
   <div class="wrap">
     <header>
       <a href="index.html#work">← Back</a>
@@ -52,6 +113,23 @@ Project detail template — loads content by ?id=slug from the same JSON.
       </div>
     </main>
   </div>
+  <script>
+    // ---- side dots ----
+     const section1 = ['home','work','about','contact']
+       .map(id=>document.getElementById(id)).filter(Boolean);
+     const dots = document.querySelectorAll('.sidenav .dot');
+     const spy = new IntersectionObserver((entries)=>{
+       entries.forEach(e=>{
+         if(e.isIntersecting){
+           const id = e.target.id;
+           dots.forEach(d=>d.setAttribute('aria-current','false'));
+           const active = document.querySelector(`.sidenav a[href="#${id}"]`);
+           if(active) active.setAttribute('aria-current','true');
+         }
+       });
+     },{threshold:.6});
+     section1.forEach(s=>spy.observe(s));
+   </script>
 
   <!-- Same projects JSON (you can refactor to a separate .json file later) -->
   <script id="projects-data" type="application/json">
