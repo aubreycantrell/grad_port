@@ -575,6 +575,21 @@ body.light .filter-btn.active {
   }
 }
 
+#spin-image {
+  position: fixed;          /* or absolute, if you prefer */
+  width: 200px;             /* tweak size */
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  #spin-image {
+    display: none;
+  }
+}
+
+
 
 
 
@@ -597,14 +612,26 @@ body.light .filter-btn.active {
     <div class="container content">
       <p class="lede reveal">Hi I'm Aubrey!</p>
       <p class="lede reveal"> Designer • Researcher • Creative Technologist</p>
-      <h1 class="reveal">Exploring the edges of <span style="color:var(--terra)">interaction</span>,
-        <span style="color:var(--sand)">learning</span>, and <span style="color:var(--terra)">expression</span>.</h1>
+      <h1 class="reveal">Exploring the edges of <span
+        style="
+          background: linear-gradient(to right, var(--terra), #cc7a4a);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        "
+      >
+        interaction, learning, and expression.
+      </span>
+      </h1>
       <p class="lede reveal">My work focuses on developing creative educational tools and interactive experiences that make complex ideas more intuitive.
         </p>
         <p class="lede reveal"> I am passionate about designing technologies that empower curious minds.
         
       </p>
+    
+
       <p>&#8595;</p>
+      <img id="spin-image" src="dolphin.png" alt="">
     </div>
   </section>
 
@@ -746,6 +773,107 @@ body.light .filter-btn.active {
 
   
   </script>
+  <script>
+    const img = document.getElementById("spin-image");
+    const workSection = document.getElementById("work");
+  
+    if (img) {
+      img.style.position = "fixed";
+      img.style.transition = "opacity 0.25s ease-out";
+  
+      // --- starting position (right side of hero) ---
+      let startX = window.innerWidth * 0.82;
+      let startY = window.innerHeight * 0.55;
+  
+      let cursorX = startX;
+      let cursorY = startY;
+  
+      let x = startX;
+      let y = startY;
+  
+      let angle = 0;
+      let lastX = x;
+  
+      const followSpeed = 0.02;
+      const rotationEase = 0.15;
+      const angleSensitivity = 2.0;
+      const maxAngle = 20;
+  
+      function getBounds() {
+        const rect = img.getBoundingClientRect();
+        const halfW = rect.width / 2;
+        const halfH = rect.height / 2;
+  
+        let minX = halfW;
+        let maxX = window.innerWidth - halfW;
+        let minY = halfH;
+        let maxY = window.innerHeight - halfH;
+  
+        // keep dolphin above #work if visible
+        if (workSection) {
+          const workRect = workSection.getBoundingClientRect();
+          if (workRect.top < window.innerHeight) {
+            const limitY = workRect.top - halfH;
+            maxY = Math.min(maxY, limitY);
+          }
+        }
+  
+        return { minX, maxX, minY, maxY };
+      }
+  
+      window.addEventListener("mousemove", (e) => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+      });
+  
+      window.addEventListener("resize", () => {
+        startX = window.innerWidth * 0.8;
+        startY = window.innerHeight * 0.55;
+      });
+  
+      function animate() {
+        const { minX, maxX, minY, maxY } = getBounds();
+  
+        // follow cursor with lag
+        const dx = cursorX - x;
+        const dy = cursorY - y;
+        x += dx * followSpeed;
+        y += dy * followSpeed;
+  
+        // clamp inside viewport / above #work
+        x = Math.max(minX, Math.min(maxX, x));
+        y = Math.max(minY, Math.min(maxY, y));
+  
+        // rotation based on horizontal velocity
+        const velX = x - lastX;
+        let targetAngle = velX * angleSensitivity;
+        targetAngle = Math.max(-maxAngle, Math.min(maxAngle, targetAngle));
+        angle += (targetAngle - angle) * rotationEase;
+  
+        img.style.left = x + "px";
+        img.style.top = y + "px";
+        img.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+  
+        // --- hide dolphin when user is "in" #work ---
+        if (workSection) {
+          const workRect = workSection.getBoundingClientRect();
+          const workVisible =
+            workRect.top < window.innerHeight && workRect.bottom > 0;
+          img.style.opacity = workVisible ? "0" : "1";
+        }
+  
+        lastX = x;
+        requestAnimationFrame(animate);
+      }
+  
+      animate();
+    }
+  </script>
+  
+  
+  
+  
+    
   <script>
     const data = JSON.parse(document.getElementById('projects-data').textContent);
     const grid = document.getElementById('grid');
@@ -915,6 +1043,8 @@ body.light .filter-btn.active {
         : "Light Mode";
     };
   </script>
+
+    
   
   
   
