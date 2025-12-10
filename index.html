@@ -588,6 +588,15 @@ body.light .filter-btn.active {
     display: none;
   }
 }
+.fit_left {
+  justify-content: left;
+  width: 47%;
+}
+@media (max-width: 768px) {
+  .fit_left{
+    width: 100%;
+  }
+}
 
 
 
@@ -610,9 +619,10 @@ body.light .filter-btn.active {
     
     <div class="scrim"></div>
     <div class="container content">
-      <p class="lede reveal">Hi I'm Aubrey!</p>
-      <p class="lede reveal"> Designer • Researcher • Creative Technologist</p>
-      <h1 class="reveal">Exploring the edges of <span
+      <div style="padding-bottom: 1%;"><p class="lede reveal">Hi I'm Aubrey!</p>
+        <p class="lede reveal"> Designer • Researcher • Creative Technologist</p></div>
+      
+      <h1 class=" fit_left reveal">Exploring the edges of <span
         style="
           background: linear-gradient(to right, var(--terra), #cc7a4a);
           -webkit-background-clip: text;
@@ -623,9 +633,9 @@ body.light .filter-btn.active {
         interaction, learning, and expression.
       </span>
       </h1>
-      <p class="lede reveal">My work focuses on developing creative educational tools and interactive experiences that make complex ideas more intuitive.
+      <p class="fit_left lede reveal">My work focuses on developing creative educational tools and interactive experiences that make complex ideas more intuitive.
         </p>
-        <p class="lede reveal"> I am passionate about designing technologies that empower curious minds.
+        <p class="fit_left lede reveal"> I am passionate about designing technologies that empower curious minds.
         
       </p>
     
@@ -782,8 +792,8 @@ body.light .filter-btn.active {
       img.style.transition = "opacity 0.25s ease-out";
   
       // --- starting position (right side of hero) ---
-      let startX = window.innerWidth * 0.82;
-      let startY = window.innerHeight * 0.55;
+      let startX = window.innerWidth * 0.67;
+      let startY = window.innerHeight * 0.50;
   
       let cursorX = startX;
       let cursorY = startY;
