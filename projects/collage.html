@@ -206,6 +206,8 @@
     <a href="#related">2. Related Works</a>
     <a href="#system">3. System Overview</a>
     <a href="#preliminary-findings">4. Preliminary Findings</a>
+    <a href="#conclusions">4. Conclusion</a>
+
 
   </nav>
 
@@ -346,7 +348,7 @@
       
         <h3>4.1 Study Outline</h3>
         <p>
-          We conducted a user study with <strong>n = 31</strong> participants during an in-person creative workshop.
+          We conducted a user study with <strong>n = 30</strong> participants during an in-person creative workshop.
           Participants created physical collages for 20 minutes, then were asked to add at least three new additions.
           They then used the Collage Co-Creator to add at least three additional collage pieces. Afterwards, they
           provided open-ended reflections on how the AI influenced (or failed to influence) their artistic decisions.
@@ -356,11 +358,9 @@
       
         <h3>4.2 Qualitative Results</h3>
         <p>
-          Across participants, the Collage Co-Creator functioned primarily as an ideation tool for material expansion
-          and thematic reinforcement. Approximately <strong>63%</strong> of participants described clear benefits and
-          implementation—especially for suggesting materials, textures, or ways to fill empty space. 
-          <strong>46%</strong> reported neutral experiences, using the AI for sparks of inspiration while maintaining their own
-          artistic direction, and <strong>30%</strong> reported negative experiences, citing unoriginality or lack of feasibility.
+          Across participants, the Collage Co-Creator functioned primarily as an ideation tool for material expansion and existing thematic enforcement. In the inductive thematic analysis of an open response question asking how the Collage Co-Creator contributed to the participant’s final collage, categories were coded independently – positive, neutral, negative – and were not mutually exclusive. 19/30 of participants described clear benefits and implementation, especially for suggesting materials, textures, or ways to fill empty space. 14/30 responses reported instances of neutral experiences, mentioning gaining small sparks of inspiration while maintaining their own creative direction, and 9/30 responses reported negative experiences, discussing unoriginality and lack of feasibility in the results.
+We describe a case study that illustrates how a participant responds positively and neutrally to generated imagery, both through direct implementations of visual material, and conceptually through custom prompting:
+
         </p>
       
         <h3>Case Study 1 — Material Expansion</h3>
@@ -525,23 +525,13 @@
           
       
       </section>
-      <script>
-        // ---- side dots ----
-         const section1 = ['home','work','about','contact']
-           .map(id=>document.getElementById(id)).filter(Boolean);
-         const dots = document.querySelectorAll('.sidenav .dot');
-         const spy = new IntersectionObserver((entries)=>{
-           entries.forEach(e=>{
-             if(e.isIntersecting){
-               const id = e.target.id;
-               dots.forEach(d=>d.setAttribute('aria-current','false'));
-               const active = document.querySelector(`.sidenav a[href="#${id}"]`);
-               if(active) active.setAttribute('aria-current','true');
-             }
-           });
-         },{threshold:.6});
-         section1.forEach(s=>spy.observe(s));
-       </script>
+      <section id="conclusions">
+        <h2>5. Conclusions and Future Work</h2>
+              <p>
+          This paper introduces an interactive AI-based system designed to support small, iterative creative steps in art-making contexts such as collaging, with the goal of enabling creative autonomy and early-stage divergence. The system integrates an interactive web interface with a generative AI backend that enables rapid image generation, iterative variations across medium, color, and theme, automatic documentation of collage possibilities, and opportunities for customization of collage generation through the users’ articulation of their concepts. We report initial feedback on the system’s strengths and limitations from preliminary evaluation studies. Future work will refine the system and conduct more extensive evaluations to better understand its impact and inform the design of next-generation iterative, collaborative AI creativity-support tools.
+
+        </p>
+      
 
 
       
@@ -551,7 +541,23 @@
   <footer>
     <a href="../index.html#work">← Back to Portfolio</a>
   </footer>
-
+  <script>
+    // ---- side dots ----
+     const section1 = ['home','work','about','contact']
+       .map(id=>document.getElementById(id)).filter(Boolean);
+     const dots = document.querySelectorAll('.sidenav .dot');
+     const spy = new IntersectionObserver((entries)=>{
+       entries.forEach(e=>{
+         if(e.isIntersecting){
+           const id = e.target.id;
+           dots.forEach(d=>d.setAttribute('aria-current','false'));
+           const active = document.querySelector(`.sidenav a[href="#${id}"]`);
+           if(active) active.setAttribute('aria-current','true');
+         }
+       });
+     },{threshold:.6});
+     section1.forEach(s=>spy.observe(s));
+   </script>
   <script>
     /* Highlight active sidebar section */
     const sections = document.querySelectorAll('main section');
