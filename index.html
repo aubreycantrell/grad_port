@@ -85,55 +85,109 @@ body.light .filter-btn.active {
     body{font-family:'Space Grotesk';background:var(--bg);color:var(--ink)}
     a{color:inherit;text-decoration:none}
     img,video{max-width:100%;display:block}
-/* Top-right menu */
-/* Top-right vertical menu */
-.sidenav{
-  position:fixed;
-  top:24px;
-  right:32px;
-  display:flex;
-  flex-direction:column;  /* stack items */
-  gap:10px;
-  z-index:50;
-  align-items:flex-end;   /* right-align text */
+
+/* Centered floating top menu */
+.sidenav {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  z-index: 200;
+  line-height: 1.3;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background: rgba(255,255,255,0.45);
+  padding: 8px 18px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap;
 }
 
-
-/* turn dots into text links */
-.dot{
-  width:auto;
-  height:auto;
-  border:none;
-  border-radius:0;
-  background:transparent;
-  cursor:pointer;
-  position:relative;
-  font-size:14px;
-  color:var(--muted);
-  padding:4px 0;
+.sidenav.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-18px);
 }
 
-/* active + hover state */
-.dot[aria-current="true"],
-.dot:hover{
-  color:var(--accent);
+.dot {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--bg);
+  padding: 4px 0;
+  text-decoration: none;
 }
 
-/* the <span> becomes the visible label, no tooltip behavior */
-.dot span{
-  position:static;
-  right:auto;
-  top:auto;
-  transform:none;
-  background:transparent;
-  backdrop-filter:none;
-  padding:0;
-  border-radius:0;
-  color:inherit;
-  font-size:inherit;
-  opacity:1;
-  pointer-events:auto;
-  transition:color .2s;
+.dot:hover,
+.dot:focus,
+.dot:active,
+.dot[aria-current="true"] {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.dot span {
+  color: inherit;
+  font-size: inherit;
+  transition: color 0.2s;
+}
+/* Tablet */
+@media (max-width: 900px) {
+  .sidenav {
+    top: 14px;
+    gap: 16px;
+    padding: 7px 14px;
+  }
+
+  .dot {
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .sidenav {
+    top: 10px;
+    gap: 6px 18px;
+    padding: 10px 14px;
+    border-radius: 18px;
+    text-align: center;
+  }
+
+  .sidenav.hide {
+    transform: translateY(-18px);
+  }
+
+  .dot {
+    font-size: 12px;
+    padding: 2px 0;
+  }
+}@media (max-width: 400px) {
+  .dot {
+    font-size: 11px;
+  }
+
+  .sidenav {
+    padding: 8px 12px;
+    gap: 6px 12px;
+  }
+
+}
+.home-icon img {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
+.home-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -598,21 +652,60 @@ body.light .filter-btn.active {
   }
 }
 
+.site-footer{
+  padding: 28px 0;
+  margin-top: 80px;
+}
+
+.footer-inner{
+  width: auto;
+  margin: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left p{
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.footer-credit{
+  margin-top: 4px;
+}
+
+.back-to-top{
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.back-to-top:hover{
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);}
 
 
 
 
   </style>
 </head>
-<body>
+<body id="top">
   <!-- Floating side nav dots -->
   <nav class="sidenav" aria-label="Section navigation">
-    <a class="dot" href="index.html"><span>Home</span></a>
-    <a class="dot" href="index.html#work"><span>Work</span></a>
-    <a class="dot" href="about.html"><span>About</span></a>
-    <a class="dot" href="contact.html"><span>Contact</span></a>
-  </nav>
-
+    <a href="index.html" class="dot home-icon">
+      <img src="media/dolphin.png" alt="Home" />
+      </a>     
+     <a class="dot" href="index.html#work"><span>Work</span></a>
+        <a class="dot" href="research.html"><span>Research</span></a>
+        <a class="dot" href="about.html"><span>About</span></a>
+      </nav>
+  
   <!-- HERO -->
   <section id="home" class="section hero">
     
@@ -648,7 +741,7 @@ body.light .filter-btn.active {
   <!-- WORK GRID -->
   <section id="work" class="section work">
     <div class="container">
-      <h2 class="reveal">Work & Projects</h2>
+      <h2 class="reveal">Work</h2>
   
       <!-- filter pills -->
       <div class="filters" role="toolbar" aria-label="Project filters">
@@ -671,10 +764,10 @@ body.light .filter-btn.active {
   <script id="projects-data" type="application/json">
     [{
       "slug": "collage-co-creator",
-      "title": "Collage Co-Creator",
+      "title": "Collage Co-Collaborator",
       "role": "Research · Prototyping",
       "year": "2025",
-      "sub": "An abriviated IUI 2025 demo submission exploring creativity through human–AI collage ideation.",
+      "sub": "An abriviated IUI 2026 publication exploring creativity through human–AI collage ideation.",
       "tags": ["HCI", "Creative Tech", "Research", "AI"],
       "cover": "media/ccc.png",
       "images": ["media/ccc.png"],
@@ -741,18 +834,6 @@ body.light .filter-btn.active {
     "images": ["media/plantAI.png"],
     "desc": " How Authoritative Framing Shapes Compliance, Confidence, and Accuracy",
     "link": "projects/plantAI.html"
-  },
-  {
-    "slug": "wellesley-work-order",
-    "title": "StreamlineWellesley",
-    "role": "Frontend · UX",
-    "sub": "Redesigning Wellesley’s service ticket system for clarity, transparency, and mobile access.",
-    "year": "2024",
-    "tags": ["UX", "HCI"],
-    "cover": "media/workorder.png",
-    "images": ["media/workorder.png"],
-    "desc": "Case study improving the work order submission process.",
-    "link": "projects/workorder.html"
   },
   {
     "slug": "urbanity-dance",
@@ -930,24 +1011,7 @@ body.light .filter-btn.active {
   
     render('all');
   
-
-  
-    // ---- side dots ----
-    const sections = ['home','work','about','contact']
-      .map(id=>document.getElementById(id)).filter(Boolean);
-    const dots = document.querySelectorAll('.sidenav .dot');
-    const spy = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          const id = e.target.id;
-          dots.forEach(d=>d.setAttribute('aria-current','false'));
-          const active = document.querySelector(`.sidenav a[href="#${id}"]`);
-          if(active) active.setAttribute('aria-current','true');
-        }
-      });
-    },{threshold:.6});
-    sections.forEach(s=>spy.observe(s));
-  
+    
     // ---- accordion ----
     const accordions = document.querySelectorAll(".accordion-item");
     accordions.forEach(item=>{
@@ -1053,8 +1117,45 @@ body.light .filter-btn.active {
         : "Light Mode";
     };
   </script>
+  <script>
+    const sidenav = document.querySelector('.sidenav');
+  
+    let lastScrollY = window.scrollY;
+  
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+  
+      if (currentScrollY <= 10) {
+        // always visible near the top
+        sidenav.classList.remove('hide');
+      } else if (currentScrollY > lastScrollY) {
+        // scrolling down
+        sidenav.classList.add('hide');
+      } else {
+        // scrolling up
+        sidenav.classList.remove('hide');
+      }
+  
+      lastScrollY = currentScrollY;
+    });
+  </script>
+  
 
-    
+  <footer class="site-footer">
+    <div class="footer-inner">
+      
+      <div class="footer-left">
+        <p style="font-size: 18px;"><b>Glad you made it! &#9734; </b></p>
+        <p class="footer-credit"> more @ ac138@wellesley.edu</p>
+      </div>
+  
+      <a href="#top" class="back-to-top">
+        Back to top ↑
+      </a>
+  
+    </div>
+  </footer>
+
   
   
   

@@ -3,492 +3,1074 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Authority CHI Submission — Aubrey Cantrell</title>
+  <title>PlantAI — Aubrey Cantrell</title>
   <link rel="icon" type="image/png" href="../media/dolphin.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    :root {
-      --bg:#0c0f10; --ink:#eaf1f3; --muted:#9fb0b6;
-      --accent:#77c7c9; --sand:#77c7c9; --line:#1f2628;
+    :root{
+      --bg:#0d0e10;
+      --ink:#eaf1f3;
+      --blend:#c2d9ac;
+      --font:#1b1d1f;
+      --muted:#9fb0b6;
+      --accent:#77c7c9;
+      --sand:#77c7c9;
+      --terra:#77c7c9;
+      --leaf:#cc7a4a;
+      --card:#cecece;
+      --line:#000000;
     }
-    *{box-sizing:border-box;}
-    body{
-      margin:0; background:var(--bg); color:var(--ink);
-      font-family:'Space Grotesk';
-      line-height:1.7; font-size:17px; scroll-behavior:smooth;
-    }
-    a{color:var(--accent);text-decoration:none;}
-    a:hover{text-decoration:underline;}
 
-    nav.side {
-      position:fixed; top:50%; left:32px; transform:translateY(-50%);
-      display:flex; flex-direction:column; gap:10px; z-index:50;
+    * {
+      box-sizing: border-box;
     }
-    nav.side a {
-      color:var(--muted); font-size:14px;
-      padding:4px 0; border-left:2px solid transparent; padding-left:10px;
-      transition:.2s;
+
+    html {
+      scroll-behavior: smooth;
     }
-    nav.side a.active, nav.side a:hover {
-      color:var(--accent); border-left-color:var(--accent);
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     header {
-      max-width:850px; margin:100px auto 60px; padding:0 24px;
+      max-width: 850px;
+      margin: 100px auto 60px;
+      padding: 0 24px;
     }
-    h1 {
-      font-size:clamp(40px,5vw,68px); font-weight:600;
-      margin:0 0 0.3em; color:var(--sand);
-    }
-    .subtitle {
-      font-size:20px; color:var(--muted); max-width:650px;
-    }
-
-    .hero {
-      width:100%; max-width:1000px; margin:60px auto;
-      border-radius:16px; overflow:hidden;
-    }
-    .hero img{width:100%;display:block;}
 
     main {
-      max-width:750px; margin:0 auto; padding:0 24px 100px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 100px;
     }
-    section{margin:80px 0;}
-    section:first-of-type{margin-top:0;}
+
+    section {
+      margin: 80px 0;
+    }
+
+    section:first-of-type {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin: 0 0 0.3em;
+      color: var(--sand);
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
 
     h2 {
-      font-size:26px; font-weight:600; color:var(--sand);
-      margin-bottom:12px;
+      margin-bottom: 12px;
+      color: var(--sand);
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
     }
+
     h3 {
-      font-size:20px; color:var(--accent); margin:36px 0 8px;
+      margin: 36px 0 8px;
+      color: var(--accent);
+      font-size: 20px;
+      font-weight: 500;
     }
-    p, ul {color:var(--muted);}
-    ul{padding-left:22px;}
+
+    p,
+    ul,
+    small {
+      color: var(--muted);
+    }
+
+    p,
+    ul {
+      margin-top: 10px;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
 
     blockquote {
-      border-left:3px solid var(--accent);
-      margin:20px 0; padding-left:16px; color:var(--muted); font-style:italic;
+      margin: 20px 0;
+      padding-left: 16px;
+      border-left: 3px solid var(--accent);
+      color: var(--muted);
+      font-style: italic;
     }
 
-    .imgrow{
-      display:grid;
+    /* Top navigation */
+    .sidenav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      line-height: 1.3;
+      white-space: nowrap;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .sidenav.hide {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-18px);
+    }
+
+    .dot {
+      border: none;
+      background: transparent;
+      color: var(--bg);
+      font-size: 14px;
+      cursor: pointer;
+      padding: 4px 0;
+      text-decoration: none;
+    }
+
+    .dot:hover,
+    .dot:focus,
+    .dot:active,
+    .dot[aria-current="true"] {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .dot span {
+      color: inherit;
+      font-size: inherit;
+      transition: color 0.2s;
+    }
+
+    .home-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home-icon img {
+      display: block;
+      width: auto;
+      height: 20px;
+    }
+
+    /* Hero */
+    .hero {
+      width: 100%;
+      max-width: 1000px;
+      margin: 60px auto;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .subtitle {
+      max-width: 900px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 20px;
+      text-align: center;
+    }
+
+    /* Embedded frames */
+    .prototype-frame {
+      display: block;
+      width: 50%;
+      height: 85vh;
+      margin: 0 auto;
+      border: 0;
+    }
+
+    .figma-frame,
+    .miro-frame {
+      display: block;
+      margin: 20px auto 0;
+      border: 0;
+    }
+
+    .figma-frame {
+      width: 800px;
+      max-width: 100%;
+      height: 450px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .miro-frame {
+      width: 768px;
+      max-width: 100%;
+      height: 432px;
+    }
+
+    /* Image rows */
+    .imgrow {
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap:14px; margin:18px 0 8px;
+      gap: 14px;
+      margin: 18px 0 8px;
     }
-    .slot{
-      border-radius:10px; padding:10px; display:flex;
-      flex-direction:column; gap:8px; align-items:center; text-align:center;
+
+    .slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
     }
-    .slot img{
-      width:100%; border-radius:8px; object-fit:cover;
+
+    .slot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
     }
-    .slot small{font-size:12px; color:var(--muted);}
 
-    footer {
-      max-width:850px; margin:80px auto; text-align:center;
-      color:var(--muted); font-size:15px;
+    .slot small {
+      font-size: 12px;
+      line-height: 1.4;
     }
-    @media (max-width:780px){ nav.side{display:none;} }
 
-    .case-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:16px;
-  margin:1.5rem 0;
-}
-
-.case-cell{
-  margin:0;
-  background:rgba(255,255,255,0.02);
-  border-radius:12px;
-  padding:8px;
-  border:1px solid rgba(255,255,255,0.04);
+    /* Personas */
+/* GRID: force 3 columns */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
 }
 
-.case-cell img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:8px;
+/* CARD BASE */
+.persona-card {
+  padding: 24px;
+  border-radius: 16px;
+  color: #1a1a1a;
+  background: #f5f5f5;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 10px;
 }
 
-.case-cell figcaption{
-  margin-top:6px;
-  font-size:0.85rem;
-  line-height:1.3;
+/* TEXT */
+.persona-card h4 {
+  font-size: 14px;
+  margin-bottom: 4px;
 }
 
-.prompt-text{
-  font-weight:400;
-  opacity:0.9;
+/* TAGS */
+.persona-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
-.blue-row{
-  background:var(--accent); /* deep blue */
-  border-color:rgba(255,255,255,0.1);
-  color: black;
+
+.tag {
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.08);
 }
-.imgrow{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:14px;
-      margin:24px 0;
+    /* Low-fi wireframes */
+    .lofi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(200px, 0.5fr));
+      gap: 12px;
+      margin: 10px 0 0;
     }
-    .slot img{
-      width:100%; height:auto;
-      border-radius:8px;
+
+    .lofi-card {
+      padding: 0;
+      background: none;
+      border: none;
     }
-    .slot small{
-      color:var(--muted); font-size:13px; margin-top:6px;
-      display:block;
+
+    .lofi-imgwrap {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 12px;
     }
-    /* Top-right vertical menu */
-.sidenav{
-  position:fixed;
-  top:24px;
-  right:32px;
-  display:flex;
-  flex-direction:column;  /* stack items */
-  gap:10px;
-  z-index:50;
-  align-items:flex-end;   /* right-align text */
-  line-height: 1.3;
+
+    .lofi-imgwrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: center;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+
+    .lofi-imgwrap img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      place-items: center;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .lightbox.open {
+      display: grid;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 14px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      color: #fff;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Slideshow */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 30px auto;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      border-radius: 14px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 100%;
+      background: rgba(0, 0, 0, 0.001);
+      color: #fff;
+      font-size: 32px;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background 0.2s ease;
+    }
+
+    .slide-btn:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .slide-btn.prev {
+      left: 10px;
+    }
+
+    .slide-btn.next {
+      right: 10px;
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 80px;
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: auto;
+      margin: 0 5%;
+    }
+
+    .footer-left p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-credit {
+      margin-top: 4px;
+    }
+
+    .back-to-top {
+      padding: 6px 12px;
+      border: 1px solid var(--muted);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .back-to-top:hover {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+    }
+
+    .project-intro {
+  width: 100%;
+}
+
+.project-intro-inner {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.project-kicker {
+  margin: 0 0 24px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent); /* change to your accent */
+}
+
+.project-title {
+  max-width: 900px;
+  margin: 0 0 56px;
+  font-size: clamp(36px, 4.2vw, 56px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--muted); /* change to your heading color */
+}
+
+.project-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 36px;
+  margin-bottom: 64px;
+}
+
+.project-impact-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.meta-item h3,
+.impact-item h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--terra);
+}
+
+.meta-item p,
+.impact-item p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.split-section {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* text slightly wider */
+  gap: 48px;
+  align-items: center;
+}
+
+.split-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.guidelines-section {
+  margin: 100px 0;
+}
+
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* card base */
+.guidelines-card {
+  padding: 32px 36px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* titles */
+.guidelines-card h3 {
+  margin-bottom: 16px;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+}
+
+/* list */
+.guidelines-card ol {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.guidelines-card li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* specific styles */
+.objectives {
+  background: rgba(255, 255, 255, 0.08);
+  color: #eae6d9;
+}
+
+.design {
+  background: rgba(212, 176, 96, 0.65);
+  color: #2d2018;
+}
+.flow-grid {
+  grid-template-columns: repeat(3, minmax(400px, 1fr));
+  justify-content: center;
 
 }
 
-
-/* turn dots into text links */
-.dot{
-  width:auto;
-  height:auto;
-  border:none;
-  border-radius:0;
-  background:transparent;
-  cursor:pointer;
-  position:relative;
-  font-size:14px;
-  color:var(--muted);
-  padding:4px 0;
+/* just adapt existing persona cards for images */
+/* make images fill more of the card */
+.flow-grid img {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
 }
 
-/* active + hover state */
-.dot[aria-current="true"],
-.dot:hover{
-  color:var(--accent);
+/* reduce extra padding so image feels bigger */
+.flow-grid .persona-card {
+  padding: 8px;
+  
 }
 
-/* the <span> becomes the visible label, no tooltip behavior */
-.dot span{
-  position:static;
-  right:auto;
-  top:auto;
-  transform:none;
-  background:transparent;
-  backdrop-filter:none;
-  padding:0;
-  border-radius:0;
-  color:inherit;
-  font-size:inherit;
-  opacity:1;
-  pointer-events:auto;
-  transition:color .2s;
+/* tighten caption spacing */
+.flow-grid figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+}
+/* mobile */
+@media (max-width: 800px) {
+  .guidelines-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
+/* mobile */
+@media (max-width: 800px) {
+  .split-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
 
+@media (max-width: 900px) {
+  .project-meta-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
 
+  .project-impact-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
 
+@media (max-width: 600px) {
+  .project-intro {
+    padding: 88px 20px 64px;
+  }
+
+  .project-title {
+    margin-bottom: 40px;
+    font-size: 40px;
+  }
+
+  .project-meta-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 44px;
+  }
+
+  .meta-item p,
+  .impact-item p {
+    font-size: 17px;
+  }
+}
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .lofi-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .sidenav {
+        top: 14px;
+        gap: 16px;
+        padding: 7px 14px;
+      }
+
+      .dot {
+        font-size: 13px;
+      }
+
+      .lofi-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .prototype-frame {
+        width: 100%;
+        height: 75vh;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .slide-btn {
+        font-size: 26px;
+      }
+
+      .slides img {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .lofi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .sidenav {
+        top: 10px;
+        gap: 6px 18px;
+        padding: 10px 14px;
+        border-radius: 18px;
+        text-align: center;
+      }
+
+      .sidenav.hide {
+        transform: translateX(-50%) translateY(-18px);
+      }
+
+      .dot {
+        padding: 2px 0;
+        font-size: 12px;
+      }
+
+      .prototype-frame {
+        height: 65vh;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .dot {
+        font-size: 11px;
+      }
+
+      .sidenav {
+        gap: 6px 12px;
+        padding: 8px 12px;
+      }
+    }
+
+    @media (max-width: 900px) {
+  .persona-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 
-<body>
-    <!-- Floating side nav dots -->
-    <nav class="sidenav" aria-label="Section navigation">
-      <a class="dot" href="../index.html"><span>Home</span></a>
-      <a class="dot" href="../index.html#work"><span>Work</span></a>
-      <a class="dot" href="../about.html"><span>About</span></a>
-      <a class="dot" href="../contact.html"><span>Contact</span></a>
-    </nav>
-
-  <!-- Side Navigation -->
-  <nav class="side">
-    <a href="#intro">1. Introduction</a>
-    <a href="#system">2. System</a>
-    <a href="#design">3. Study Design</a>
-    <a href="#measures">4. Measures</a>
-    <a href="#contributions">5. Contributions</a>
-    <a href="#demo">6. Demo Video</a>
-
+<body id="top">
+  <nav class="sidenav" aria-label="Section navigation">
+    <a href="../index.html" class="dot home-icon">
+      <img src="../media/dolphin.png" alt="Home" />
+    </a>
+    <a class="dot" href="../index.html#work"><span>Work</span></a>
+    <a class="dot" href="../research.html"><span>Research</span></a>
+    <a class="dot" href="../about.html"><span>About</span></a>
   </nav>
 
   <header>
-    <a href="../index.html#work">← Back</a>
-    <div class="study-header">
-      <h1 class="study-title">
-        Obedience to AI Advice Under Authority:</h1><h2>
-        How Authoritative Framing Shapes Compliance, Confidence, and Accuracy
-      </h2>
-      <p> Authors: <strong>Aubrey Cantrell</strong>, Emily Hou, Marelyn Gonzalez</p>
-      </div>
-  
-
-
-      <p class="study-subtitle">
-        CHI Student Research Competition Submission · 14-week HAI Advanced Research Study
-      </p>
-      <p>AI Authority · XAI · Trust in AI · Human-AI Interaction · Decision-Making · Over-reliance</p>
-      <a href="../assets/ObedienceAI_366T2 (1).pdf">Access Submission ➡️ </a>
-
-
-
+    <div class="hero">
+      <img src="../media/plantAI_question.png" alt="plantAI Interface "></div>
     </div>
+
+    
   </header>
 
-  <!-- HERO IMAGE -->
-  <div class="hero">
-    <img src="../media/plantAI_hero.png" alt="Collage Co-Creator Interface Placeholder">
-  </div>
-
   <main>
-
-    <!-- 1. INTRODUCTION -->
-    <section class="study-block chi-submission" id="hai-ai-authority-study">
-      <div class="study-meta">
-     
-
-      <div class="study-main">
-    
-        <!-- ABSTRACT -->
-        <section class="chi-section">
-          <h3>Abstract</h3>
-          <p class="study-summary">
-            We examine how authoritative framing in AI-generated recommendations affects user
-            compliance, confidence, and problem-solving accuracy. Using a 20-trial timed greenhouse
-            diagnostic task, participants interacted with either a neutral-tone AI or an
-            authority-tone AI that was sometimes correct and sometimes intentionally incorrect.
-            Mixed-methods ANOVA results show strong overreliance across all conditions, but
-            participants in the authority condition achieved significantly higher accuracy,
-            especially when the AI was incorrect. These findings suggest that authoritative tone
-            does not simply increase blind obedience—it reshapes how people reason through
-            AI-assisted tasks.
-          </p>
-        </section>
-    
-        <!-- INTRODUCTION -->
-        <section class="chi-section" id="intro">
-          <h3>Introduction</h3>
-          <p>
-            Overreliance on AI recommendations is a recurring concern in HCI. While correctness and
-            interface design have been widely studied, the role of *authority framing*—a key factor
-            in human obedience—remains underexplored in AI contexts. We ask:
-            <strong>To what extent does an authoritative tone influence user compliance regardless of AI
-            accuracy?</strong> Our study isolates this variable through tightly controlled framing
-            manipulations and pre-scripted correctness conditions.
-          </p>
-        </section>
-    
-        <!-- SYSTEM -->
-        <section class="chi-section" id="system">
-          <h3>System: Greenhouse Decision-Making Simulator</h3>
-          <ul>
-            <li>20 plant scenarios with symptom descriptions and multiple-choice interventions.</li>
-            <li>Correct vs incorrect AI recommendations scripted for each participant.</li>
-            <li>
-              Two GPT-based personas:
-              <ul>
-                <li><strong>Authority AI:</strong> direct, expert-like, no hedging.</li>
-                <li><strong>Neutral AI:</strong> collaborative, uncertainty-expressing, hedged phrasing.</li>
-              </ul>
-            </li>
-            <li>Timed interface requiring initial answer → AI advice → optional revision.</li>
-          </ul>
-          <div class="imgrow">
-            <div class="slot">
-
-          <img src="../media/plantAI_quiz.png" alt="Collage Co-Creator Interface Placeholder"></div>
+    <!-- OVERVIEW -->
+    <section class="project-intro">
+      <div class="project-intro-inner">
+        <p class="project-kicker">Plant AI</p>
+  
+        <h1 class="project-title">
+          How Authoritative AI Framing Shapes Compliance, Confidence, and Accuracy
+        </h1>
+  
+        <div class="project-meta-grid">
+          <div class="meta-item">
+            <h3>Role & Team</h3>
+            <p>UX Researcher in a team of 3</p>
           </div>
-
-        </section>
-    
-        <!-- STUDY DESIGN -->
-        <section class="chi-section" id="design">
-          <h3>Study Design</h3>
-          <p>
-            <strong>Participants:</strong> 20 undergraduates.  
-            <strong>Design:</strong> 2×2 mixed ANOVA.
-          </p>
-          <ul>
-            <li><strong>Between subjects:</strong> Authority vs Non-Authority tone</li>
-            <li><strong>Within subjects:</strong> AI Correctness (Correct vs Incorrect)</li>
-          </ul>
-          <p>
-            Participants recorded initial answers, post-AI answers, confidence before/after AI,
-            and optional justifications.</p>
-            <div class="imgrow">
-              <div class="slot">
   
-            <img src="../media/plantAI_intro.png" alt="Collage Co-Creator Interface Placeholder"></div>
-            </div>
-            <div class="imgrow">
-              <div class="slot">
+          <div class="meta-item">
+            <h3>Timeline</h3>
+            <p>12 weeks</p>
+          </div>
   
-            <img src="../media/plantAI_question.png" alt="Collage Co-Creator Interface Placeholder"></div>
-            </div>
-        </section>
-    
-        <!-- MEASURES -->
-        <section class="chi-section" id="measures">
-          <h3>Measures</h3>
-          <ul>
-            <li>Compliance (switching to AI’s answer).</li>
-            <li>Accuracy after AI advice.</li>
-            <li>Confidence change (before → after AI).</li>
-            <li>Qualitative reasoning justifications.</li>
-          </ul>
-        </section>
-    
-        <!-- RESULTS -->
-        <section class="chi-section" id="results">
-          <h3>Results</h3>
-          <ul>
-            <li>
-              <strong>Overreliance was strong across conditions:</strong>
-              participants switched to the AI’s answer significantly more often when the AI
-              was incorrect than when it was correct.
-              (Participants were much more likely to adopt wrong AI advice.)
-            </li>
-    
-            <li>
-              <strong>No significant differences in compliance by authority tone:</strong>
-              authority did not make users follow the AI more; both groups complied heavily.
-            </li>
-    
-            <li>
-              <strong>Main effect of Authority on correctness:</strong>
-              Participants in the authority condition achieved significantly higher accuracy overall
-              (p = .01).
-              Critically, when the AI was *incorrect*, participants in the authority condition still produced 
-              more correct answers than those in the non-authority condition.
-            </li>
-    
-            <li>
-              <strong>Main effect of AI Correctness:</strong>
-              Users were far more accurate when the AI was correct than when it was incorrect (p < .001). 
-            </li>
-    
-            <li>
-              <strong>Confidence increases after AI advice regardless of correctness or tone:</strong>
-              participants grew more confident after seeing AI recommendations—even when the AI was wrong.
-            </li>
-    
-            <li>
-              <strong>Reasoning strategies differ by tone:</strong>
-              qualitative responses show more justification- and expert-based reasoning in the authority
-              condition, versus more hedged, exploratory reasoning in the neutral condition.
-            </li>
-          </ul>
-    
-          <p class="finding-highlight">
-            <strong>
-            Because there are significantly more correct answers in the authority condition compared to the
-            non-authority condition, we can say that the authoritative tone affects the manner in which
-            individuals approach problem solving—not by increasing blind compliance, but by shaping how users
-            evaluate and integrate AI recommendations.
-            </strong>
-          </p>
-        </section>
-    
-        <!-- CONTRIBUTIONS -->
-        <section class="chi-section" id="contributions">
-          <h3>Contributions</h3>
-          <ol>
-            <li>
-              A controlled experimental paradigm isolating linguistic authority as a factor in AI reliance.
-            </li>
-            <li>
-              Evidence that authoritative tone improves accuracy and influences reasoning strategies,
-              even without increasing obedience.
-            </li>
-            <li>
-              A deployable simulator enabling fine-grained behavioral and confidence-shift measurement.
-            </li>
-          </ol>
-        </section>
-    
-        <!-- MY ROLE -->
-        <section class="chi-section">
-          <h3>My Role</h3>
-          <ul>
-            <li>Co-led experimental design and AI-tone manipulation.</li>
-            <li>Built GPT prompt logic for authority vs non-authority framing.</li>
-            <li>Ran statistical analyses (3× ANOVAs for compliance, correctness, confidence). </li>
-            <li>Co-authored CHI extended abstract, results section, and research framing.</li>
-          </ul>
-        </section>
-    
-        <!-- STATUS -->
-        <section class="chi-section">
-          <h3>Publication Status</h3>
-          <p>
-            This work is being prepared for submission to the
-            <strong>CHI Student Research Competition</strong>.
-          </p>
-        </section>
-    
+          <div class="meta-item">
+            <h3>Tools</h3>
+            <p>Lovable<br>SPSS<br>OpenAI API</p>
+          </div>
+  
+          <div class="meta-item">
+            <h3>Methods</h3>
+            <p>A/B Testing, Survey</p>
+          </div>
+        </div>
+  
+        <div class="project-impact-grid">
+          <div class="impact-item">
+            <h3>Challenge</h3>
+            <p>
+              Users tend to over-trust AI recommendations, even when they are wrong. 
+              However, little is understood about how subtle interface cues like tone and authority 
+              shape this behavior, limiting our ability to design AI systems that support critical, independent decision-making.
+            </p>
+          </div>
+  
+          <div class="impact-item">
+            <h3>Outcome</h3>
+            <p>
+              Built and tested a simulator that isolates AI tone as a UX variable, showing that 
+              authoritative framing improves user accuracy by reshaping reasoning, not by increasing 
+              compliance. This positions tone as a powerful design lever for more responsible human-AI interaction.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
-          <section id="demo">
-            <h3>Study Interface: Plant AI</h3>
-           
-               <iframe width="100%" height="400px" src="https://www.youtube.com/embed/YzVidFaTgU8?si=8iCg-8zbvt62TqFh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-              </div>
-            </div>
-       
-      </section>
+  
+    <section class="chi-section" id="intro">
+      <h3>Introduction</h3>
+      <p>
+        Overreliance on AI recommendations is a recurring concern in HCI. While correctness and
+        interface design have been widely studied, the role of *authority framing*—a key factor
+        in human obedience—remains underexplored in AI contexts. We ask:
+        <strong>To what extent does an authoritative tone influence user compliance regardless of AI
+        accuracy?</strong> Our study isolates this variable through tightly controlled framing
+        manipulations and pre-scripted correctness conditions.
+      </p>
+    </section>
 
-      
+    <!-- SYSTEM -->
+    <section class="chi-section" id="system">
+      <h3>System: Greenhouse Decision-Making Simulator</h3>
+      <ul>
+        <li>20 plant scenarios with symptom descriptions and multiple-choice interventions.</li>
+        <li>Correct vs incorrect AI recommendations scripted for each participant.</li>
+        <li>
+          Two GPT-based personas:
+          <ul>
+            <li><strong>Authority AI:</strong> direct, expert-like, no hedging.</li>
+            <li><strong>Neutral AI:</strong> collaborative, uncertainty-expressing, hedged phrasing.</li>
+          </ul>
+        </li>
+        <li>Timed interface requiring initial answer → AI advice → optional revision.</li>
+      </ul>
+      <div class="imgrow">
+        <div class="slot">
+
+      <img src="../media/plantAI_quiz.png" alt="Collage Co-Creator Interface Placeholder"></div>
+      </div>
+
+    </section>
+
+    <!-- STUDY DESIGN -->
+    <section class="chi-section" id="design">
+      <h3>Study Design</h3>
+      <p>
+        <strong>Participants:</strong> 20 undergraduates.  
+        <strong>Design:</strong> 2×2 mixed ANOVA.
+      </p>
+      <ul>
+        <li><strong>Between subjects:</strong> Authority vs Non-Authority tone</li>
+        <li><strong>Within subjects:</strong> AI Correctness (Correct vs Incorrect)</li>
+      </ul>
+      <p>
+        Participants recorded initial answers, post-AI answers, confidence before/after AI,
+        and optional justifications.</p>
+        <div class="imgrow">
+          <div class="slot">
+
+        <img src="../media/plantAI_intro.png" alt="Collage Co-Creator Interface Placeholder"></div>
+        </div>
+        <div class="imgrow">
+          <div class="slot">
+
+        <img src="../media/plantAI_hero.png" alt="Collage Co-Creator Interface Placeholder"></div>
+        </div>
+    </section>
+
+    <!-- MEASURES -->
+    <section class="chi-section" id="measures">
+      <h3>Measures</h3>
+      <ul>
+        <li>Compliance (switching to AI’s answer).</li>
+        <li>Accuracy after AI advice.</li>
+        <li>Confidence change (before → after AI).</li>
+        <li>Qualitative reasoning justifications.</li>
+      </ul>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="chi-section" id="results">
+      <h3>Results</h3>
+      <ul>
+        <li>
+          <strong>Overreliance was strong across conditions:</strong>
+          participants switched to the AI’s answer significantly more often when the AI
+          was incorrect than when it was correct.
+          (Participants were much more likely to adopt wrong AI advice.)
+        </li>
+
+        <li>
+          <strong>No significant differences in compliance by authority tone:</strong>
+          authority did not make users follow the AI more; both groups complied heavily.
+        </li>
+
+        <li>
+          <strong>Main effect of Authority on correctness:</strong>
+          Participants in the authority condition achieved significantly higher accuracy overall
+          (p = .01).
+          Critically, when the AI was *incorrect*, participants in the authority condition still produced 
+          more correct answers than those in the non-authority condition.
+        </li>
+
+        <li>
+          <strong>Main effect of AI Correctness:</strong>
+          Users were far more accurate when the AI was correct than when it was incorrect (p < .001). 
+        </li>
+
+        <li>
+          <strong>Confidence increases after AI advice regardless of correctness or tone:</strong>
+          participants grew more confident after seeing AI recommendations—even when the AI was wrong.
+        </li>
+
+        <li>
+          <strong>Reasoning strategies differ by tone:</strong>
+          qualitative responses show more justification- and expert-based reasoning in the authority
+          condition, versus more hedged, exploratory reasoning in the neutral condition.
+        </li>
+      </ul>
+
+      <p class="finding-highlight">
+        <strong>
+        Because there are significantly more correct answers in the authority condition compared to the
+        non-authority condition, we can say that the authoritative tone affects the manner in which
+        individuals approach problem solving—not by increasing blind compliance, but by shaping how users
+        evaluate and integrate AI recommendations.
+        </strong>
+      </p>
+    </section>
+
+    <!-- CONTRIBUTIONS -->
+    <section class="chi-section" id="contributions">
+      <h3>Contributions</h3>
+      <ol>
+        <li>
+          A controlled experimental paradigm isolating linguistic authority as a factor in AI reliance.
+        </li>
+        <li>
+          Evidence that authoritative tone improves accuracy and influences reasoning strategies,
+          even without increasing obedience.
+        </li>
+        <li>
+          A deployable simulator enabling fine-grained behavioral and confidence-shift measurement.
+        </li>
+      </ol>
+    </section>
+
+    <!-- MY ROLE -->
+    <section class="chi-section">
+      <h3>My Role</h3>
+      <ul>
+        <li>Co-led experimental design and AI-tone manipulation.</li>
+        <li>Built GPT prompt logic for authority vs non-authority framing.</li>
+        <li>Ran statistical analyses (3× ANOVAs for compliance, correctness, confidence). </li>
+        <li>Co-authored CHI extended abstract, results section, and research framing.</li>
+      </ul>
+    </section>
+
+    <!-- STATUS -->
+    <section class="chi-section">
+      <h3>Publication Status</h3>
+      <p>
+        This work is being prepared for submission to the
+        <strong>CHI Student Research Competition</strong>.
+      </p>
+    </section>
+
+  </div>
+</section>
+      <section id="demo">
+        <h3>Study Interface: Plant AI</h3>
+       
+           <iframe width="100%" height="400px" src="https://www.youtube.com/embed/YzVidFaTgU8?si=8iCg-8zbvt62TqFh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+   
+  </section>
+
+
 
   </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p style="font-size: 18px;"><b>Glad you made it! &#9734;</b></p>
+        <p class="footer-credit">more @ ac138@wellesley.edu</p>
+      </div>
 
-  <footer>
-    <a href="../index.html#work">← Back to Portfolio</a>
+      <a href="#top" class="back-to-top">Back to top ↑</a>
+    </div>
   </footer>
-  <script>
-    // ---- side dots ----
-     const section1 = ['home','work','about','contact']
-       .map(id=>document.getElementById(id)).filter(Boolean);
-     const dots = document.querySelectorAll('.sidenav .dot');
-     const spy = new IntersectionObserver((entries)=>{
-       entries.forEach(e=>{
-         if(e.isIntersecting){
-           const id = e.target.id;
-           dots.forEach(d=>d.setAttribute('aria-current','false'));
-           const active = document.querySelector(`.sidenav a[href="#${id}"]`);
-           if(active) active.setAttribute('aria-current','true');
-         }
-       });
-     },{threshold:.6});
-     section1.forEach(s=>spy.observe(s));
-   </script>
 
   <script>
-    /* Highlight active sidebar section */
-    const sections = document.querySelectorAll('main section');
-    const links = document.querySelectorAll('nav.side a');
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          links.forEach(a=>a.classList.remove('active'));
-          const active=document.querySelector(`nav.side a[href="#${entry.target.id}"]`);
-          if(active) active.classList.add('active');
-        }
+    const sidenav = document.querySelector(".sidenav");
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 10) {
+        sidenav.classList.remove("hide");
+      } else if (currentScrollY > lastScrollY) {
+        sidenav.classList.add("hide");
+      } else {
+        sidenav.classList.remove("hide");
+      }
+
+      lastScrollY = currentScrollY;
+    });
+
+    (function () {
+      const lightbox = document.getElementById("lofiLightbox");
+      const lightboxImg = document.getElementById("lofiLightboxImg");
+
+      document.querySelectorAll(".lofi-imgwrap img").forEach((img) => {
+        img.addEventListener("click", () => {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt || "Wireframe";
+          lightbox.classList.add("open");
+          lightbox.setAttribute("aria-hidden", "false");
+        });
       });
-    },{threshold:0.45});
-    sections.forEach(sec=>observer.observe(sec));
-  </script>
 
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImg.src = "";
+      }
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      lightbox.querySelector(".close").addEventListener("click", closeLightbox);
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+      });
+    })();
+
+    function initSlideshow(slideshowId) {
+      const slideshow = document.getElementById(slideshowId);
+      if (!slideshow) return;
+
+      const slides = slideshow.querySelector(".slides");
+      const imgs = slides.querySelectorAll("img");
+      const prev = slideshow.querySelector(".prev");
+      const next = slideshow.querySelector(".next");
+      let index = 0;
+
+      function showSlide(i) {
+        index = (i + imgs.length) % imgs.length;
+        slides.style.transform = `translateX(-${index * 100}%)`;
+      }
+
+      prev.addEventListener("click", () => showSlide(index - 1));
+      next.addEventListener("click", () => showSlide(index + 1));
+    }
+
+    initSlideshow("needsSlideshow");
+  </script>
 </body>
 </html>
