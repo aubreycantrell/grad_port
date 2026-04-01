@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIrt Guide — Aubrey Cantrell</title>
+  <link rel="icon" type="image/png" href="../media/dolphin.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+ 
+  <style>
+    :root {
+      --bg: #0d0e10;
+      --ink: #eaf1f3;
+      --blend: #c2d9ac;
+      --muted: #9fb0b6;
+      --accent: #77c7c9;
+      --sand: #77c7c9;
+      --terra: #77c7c9;
+      --leaf: #cc7a4a;
+    }
+ 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Space Grotesk", sans-serif; font-size: 17px; line-height: 1.7; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { max-width: 850px; margin: 100px auto 60px; padding: 0 24px; }
+    main { max-width: 900px; margin: 0 auto; padding: 0 24px 100px; }
+    section { margin: 80px 0; }
+    section:first-of-type { margin-top: 0; }
+    h1 { margin: 0 0 0.3em; color: var(--sand); font-size: clamp(40px, 5vw, 68px); font-weight: 600; letter-spacing: -0.02em; }
+    h2 { margin-bottom: 12px; color: var(--sand); font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+    h3 { margin: 36px 0 8px; color: var(--accent); font-size: 20px; font-weight: 500; }
+    p, ul, small { color: var(--muted); }
+    p, ul { margin-top: 10px; }
+    ul { padding-left: 22px; }
+    blockquote { margin: 20px 0; padding-left: 16px; border-left: 3px solid var(--accent); color: var(--muted); font-style: italic; }
+ 
+    /* Nav */
+    .sidenav { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; align-items: center; justify-content: center; gap: 24px; padding: 8px 18px; border-radius: 999px; background: rgba(255,255,255,0.45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); line-height: 1.3; white-space: nowrap; transition: opacity 0.3s ease, transform 0.3s ease; }
+    .sidenav.hide { opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(-18px); }
+    .dot { border: none; background: transparent; color: var(--bg); font-size: 14px; cursor: pointer; padding: 4px 0; text-decoration: none; }
+    .dot:hover, .dot:focus, .dot:active { color: var(--accent); text-decoration: none; }
+    .dot span { color: inherit; font-size: inherit; transition: color 0.2s; }
+    .home-icon { display: flex; align-items: center; justify-content: center; }
+    .home-icon img { display: block; width: auto; height: 20px; }
+ 
+    /* Hero */
+    .hero { width: 100%; max-width: 1000px; margin: 60px auto; overflow: hidden; border-radius: 16px; }
+    .hero img { display: block; width: 100%; height: auto; }
+ 
+    /* Image placeholders */
+    .img-placeholder { width: 100%; border-radius: 12px; background:none; border: none; display: flex; align-items: center; justify-content: center; color: rgba(119,199,201,0.4); font-size: 13px; letter-spacing: 0.04em; }
+    .img-placeholder.tall { height: 340px; }
+    .img-placeholder.medium { height: 240px; }
+    .img-placeholder.short { height: 160px; }
+ 
+    /* Image rows */
+    .imgrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 18px 0 8px; }
+    .slot { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 10px; text-align: center; border-radius: 10px; }
+    .slot img { display: block; width: 100%; height: auto; border-radius: 8px; object-fit: cover; }
+    .slot small { font-size: 12px; line-height: 1.4; color: var(--muted); }
+ 
+    /* Split layout */
+    .split-section { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+    .split-image img { width: 100%; height: auto; border-radius: 12px; display: block; }
+ 
+    /* Project intro */
+    .project-intro { width: 100%; }
+    .project-intro-inner { max-width: 980px; margin: 0 auto; }
+    .project-kicker { margin: 0 0 24px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); }
+    .project-title { max-width: 900px; margin: 0 0 56px; font-size: clamp(36px, 4.2vw, 56px); line-height: 1.08; font-weight: 500; letter-spacing: -0.03em; color: var(--muted); }
+    .project-meta-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px; margin-bottom: 64px; }
+    .project-impact-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .meta-item h3, .impact-item h3 { margin: 0 0 10px; font-size: 16px; font-weight: 500; color: var(--terra); }
+    .meta-item p, .impact-item p { margin: 0; font-size: 18px; line-height: 1.5; color: var(--muted); }
+ 
+    /* Stat row */
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+    .stat-card { background: rgba(119,199,201,0.06); border: 1px solid rgba(119,199,201,0.15); border-radius: 14px; padding: 20px 18px; text-align: center; }
+    .stat-card .stat-num { display: block; font-size: 26px; font-weight: 600; color: var(--accent); letter-spacing: -0.02em; line-height: 1.1; }
+    .stat-card .stat-label { display: block; font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+ 
+    /* Engagement pattern cards */
+    .pattern-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0; }
+    .pattern-card { border-radius: 14px; padding: 22px 20px; }
+    .pattern-card.value { background: rgba(119,199,201,0.08); border: 1px solid rgba(119,199,201,0.18); }
+    .pattern-card.limitation { background: rgba(204,122,74,0.08); border: 1px solid rgba(204,122,74,0.18); }
+    .pattern-card.neutral { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+    .pattern-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+    .pattern-card.value .pattern-label { color: var(--accent); }
+    .pattern-card.limitation .pattern-label { color: var(--leaf); }
+    .pattern-card.neutral .pattern-label { color: var(--muted); }
+    .pattern-card p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
+ 
+    /* Condition comparison */
+    .condition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+    .condition-card { border-radius: 14px; padding: 24px; }
+    .condition-card.vts { background: rgba(194,217,172,0.07); border: 1px solid rgba(194,217,172,0.18); }
+    .condition-card.fa { background: rgba(119,199,201,0.07); border: 1px solid rgba(119,199,201,0.18); }
+    .condition-card h4 { margin: 0 0 12px; font-size: 15px; font-weight: 600; }
+    .condition-card.vts h4 { color: var(--blend); }
+    .condition-card.fa h4 { color: var(--accent); }
+    .condition-card ul { margin: 0; padding-left: 18px; }
+    .condition-card li { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 6px; }
+ 
+    /* Design principles */
+    .principles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+    .principle-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 22px 24px; }
+    .principle-card .p-num { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); opacity: 0.7; }
+    .principle-card h4 { margin: 6px 0 8px; font-size: 15px; font-weight: 600; color: var(--ink); }
+    .principle-card p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
+ 
+    /* Finding callout */
+    .finding-callout { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 20px 0; }
+    .finding-callout p { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.6; }
+    .finding-callout strong { color: var(--ink); }
+ 
+    /* Quote participant */
+    .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+    .quote-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; }
+    .quote-card blockquote { margin: 0; padding: 0; border: none; font-size: 14px; line-height: 1.6; }
+    .quote-card .quote-attr { margin-top: 10px; font-size: 11px; color: rgba(159,176,182,0.6); text-transform: uppercase; letter-spacing: 0.05em; }
+ 
+    /* Methods cards */
+    .methods-header-row { display: flex; align-items: baseline; gap: 16px; margin: 20px 0 12px; flex-wrap: wrap; }
+    .methods-type-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; white-space: nowrap; }
+    .methods-type-label.quant { background: rgba(119,199,201,0.12); color: var(--accent); border: 1px solid rgba(119,199,201,0.25); }
+    .methods-type-label.qual { background: rgba(194,217,172,0.12); color: var(--blend); border: 1px solid rgba(194,217,172,0.25); }
+    .methods-type-desc { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.5; flex: 1; min-width: 200px; }
+    .methods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 8px; }
+    .method-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 20px; }
+    .method-card.qual-card { background: rgba(194,217,172,0.04); border-color: rgba(194,217,172,0.12); }
+    .method-card h4 { margin: 8px 0 6px; font-size: 14px; font-weight: 600; color: var(--ink); }
+    .method-card p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .method-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: rgba(119,199,201,0.1); color: var(--accent); border: 1px solid rgba(119,199,201,0.18); }
+    .method-tag.qual-tag { background: rgba(194,217,172,0.1); color: var(--blend); border-color: rgba(194,217,172,0.18); }
+    @media (max-width: 700px) { .methods-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .methods-grid { grid-template-columns: 1fr; } }
+ 
+    /* Gallery works grid */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0 40px; }
+    .gallery-cell { margin: 0; display: flex; flex-direction: column; gap: 0; }
+    .gallery-cell .img-placeholder { border-radius: 10px; width: 100%; height: 220px; background: rgba(255,255,255,0.03); border: none; padding: 8px; display: flex; align-items: center; justify-content: center; }
+    .gallery-cell .img-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 6px; display: block; }
+    .gallery-cell figcaption { padding: 10px 4px 4px; display: flex; flex-direction: column; gap: 2px; }
+    .gallery-cell .art-title { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.3; font-style: italic; }
+    .gallery-cell .art-artist { font-size: 12px; color: var(--muted); letter-spacing: 0.02em; }
+ 
+    @media (max-width: 700px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 440px) { .gallery-grid { grid-template-columns: 1fr; } }
+ 
+    /* Case cells */
+    .case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 1.5rem 0; }
+    .case-cell { margin: 0; background: rgba(255,255,255,0.02); border-radius: 12px; padding: 8px; border: 1px solid rgba(255,255,255,0.04); }
+    .case-cell img { width: 100%; height: auto; display: block; border-radius: 8px; }
+    .case-cell figcaption { margin-top: 6px; font-size: 0.85rem; line-height: 1.3; color: var(--muted); }
+ 
+    /* Footer */
+    .site-footer { margin-top: 80px; padding: 28px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; width: auto; margin: 0 5%; }
+    .footer-left p { margin: 0; color: var(--muted); font-size: 14px; }
+    .footer-credit { margin-top: 4px; }
+    .back-to-top { padding: 6px 12px; border: 1px solid var(--muted); border-radius: 999px; color: var(--muted); font-size: 13px; text-decoration: none; transition: all 0.2s ease; }
+    .back-to-top:hover { border-color: var(--accent); background: var(--accent); color: var(--bg); text-decoration: none; }
+ 
+    /* Responsive */
+    @media (max-width: 900px) {
+      .project-meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+      .project-impact-grid { grid-template-columns: 1fr; gap: 28px; }
+      .split-section { grid-template-columns: 1fr; gap: 24px; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .pattern-row { grid-template-columns: 1fr; }
+      .condition-grid { grid-template-columns: 1fr; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .quote-grid { grid-template-columns: 1fr; }
+      .sidenav { gap: 16px; padding: 7px 14px; }
+    }
+    @media (max-width: 600px) {
+      .project-meta-grid { grid-template-columns: 1fr; margin-bottom: 44px; }
+      .project-title { font-size: 40px; margin-bottom: 40px; }
+      .stat-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+ 
+<body id="top">
+  <nav class="sidenav" aria-label="Section navigation">
+    <a href="../index.html" class="dot home-icon">
+      <img src="../media/dolphin.png" alt="Home" />
+    </a>
+    <a class="dot" href="../index.html#work"><span>Work</span></a>
+    <a class="dot" href="../research.html"><span>Research</span></a>
+    <a class="dot" href="../about.html"><span>About</span></a>
+  </nav>
+ 
+  <header>
+    <div class="hero">
+      <!-- REPLACE: hero banner image -->
+      <div class="img-placeholder tall" style="border-radius:16px;">             
+        <img src="../media/museum/gallery.JPG" alt="gallery hero image" />
+      </div>
+    </div>
+  </header>
+ 
+  <main>
+ 
+    <!-- ── OVERVIEW ─────────────────────────────────────────── -->
+    <section class="project-intro">
+      <div class="project-intro-inner">
+        <p class="project-kicker">AIrt Guide · ACM C&C '26</p>
+ 
+        <h1 class="project-title">
+          Designing Conversational AI that Scaffolds Art Beyond Initial Impressions  
+        </h1>
+ 
+        <div class="project-meta-grid">
+          <div class="meta-item">
+            <h3>Role & Team</h3>
+            <p>UX Researcher & Designer<br>First author</p>
+          </div>
+          <div class="meta-item">
+            <h3>Timeline</h3>
+            <p>Feb – Mar 2026<br>Published C&C '26</p>
+          </div>
+          <div class="meta-item">
+            <h3>Tools</h3>
+            <p>Node.js · OpenAI GPT-4o-mini<br>NLTK · MTLD<br>iPads · Davis Museum</p>
+          </div>
+          <div class="meta-item">
+            <h3>Methods</h3>
+            <p>Comparative evaluative study · linguistic analysis · thematic coding · survey</p>
+          </div>
+        </div>
+ 
+        <div class="project-impact-grid">
+          <div class="impact-item">
+            <h3>The Design Problem</h3>
+            <p>
+              Most museum AI tools function as information delivery systems, optimized for
+              navigation and retrieval, not reflection.
+              This work asks a different question: what if a conversational AI helped visitors
+              articulate and develop what <em>they</em> already notice, rather than redirecting
+              them toward what the system thinks they should attend to?
+            </p>
+          </div>
+          <div class="impact-item">
+            <h3>What I Built & Found</h3>
+            <p>
+              I designed two versions of the <strong>AIrt Guide</strong>, a chatbot built on two
+              established museum education pedagogies, and studied how each shaped
+              observation, articulation, and engagement across 24 participants at the Davis Museum.
+              The study surfaced clear value in conversational scaffolding and equally clear
+              design failure modes when that scaffolding becomes inflexible.
+            </p>
+            <div style="margin-top:14px;"><a href="https://dl.acm.org/doi/10.1145/3803784.3804484">Accepted at ACM C&C '26 &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- ── CHALLENGE ─────────────────────────────────────────── -->
+    <section id="challenge" class="split-section">
+      <div class="split-text">
+        <h2>The Design Challenge</h2>
+        <p>
+          Existing museum chatbots prioritize navigation, information retrieval, and gamified
+          interaction. They treat art engagement as a knowledge transfer problem. But meaning-making
+          in front of an artwork is a creative act: personal, iterative, and resistant to definitive 
+          answers.
+        </p>
+        <blockquote>
+          How might conversational AI scaffold interpretive creativity in a museum gallery,
+          without becoming the voice of authority it was designed to replace?
+        </blockquote>
+        <p>
+          The specific tension the system had to navigate: persistent follow-up questions can
+          deepen observation, but the same structure, applied too rigidly, overrides the user's
+          own line of inquiry, creates conversational loops, and gradually distances visitors from
+          the emotional experience of viewing the work.
+        </p>
+      </div>
+      <div class="split-image">
+        <!-- REPLACE: image of gallery or system in use -->
+        <div class="img-placeholder tall"> <img src="../media/museum/p1.JPG" alt="gallery hero image" /></div>
+      </div>
+    </section>
+ 
+    <!-- ── SYSTEM OVERVIEW ───────────────────────────────────── -->
+    <section id="system">
+      <h2>The AIrt Guide</h2>
+      <p>
+        The system presents six Impressionist works from the Davis Museum at Wellesley College.
+        Users select the artwork they are standing in front of, and a conversational interface appears
+        alongside it. The chat interface is visually identical across both conditions; the variable
+        is the underlying conversational logic, not the visual experience of the tool. This was a
+        deliberate design decision to isolate pedagogical structure as the thing being studied.
+      </p>
+ 
+      <h3>The Collection</h3>
+      <p>Six works from the Davis Museum's Impressionism gallery were included in the study, each paired with a museum-authored Object File that grounded the chatbot's responses.</p>
+ 
+      <div class="gallery-grid">
+        <figure class="gallery-cell">
+          <div class="img-placeholder medium">
+            <img src="../media/museum/eve.jpg" alt="Eve by Auguste Rodin" />
+          </div>
+          <figcaption>
+            <span class="art-title">Eve (after the Fall)</span>
+            <span class="art-artist">Auguste Rodin</span>
+          </figcaption>
+        </figure>
+        <figure class="gallery-cell">
+          <div class="img-placeholder medium">
+            <img src="../media/museum/monet.png" alt="Waterloo Bridge by Claude Monet" />
+          </div>
+          <figcaption>
+            <span class="art-title">Waterloo Bridge</span>
+            <span class="art-artist">Claude Monet</span>
+          </figcaption>
+        </figure>
+        <figure class="gallery-cell">
+          <div class="img-placeholder medium">
+            <img src="../media/museum/hassam.png" alt="Street in Provincetown by Childe Hassam" />
+          </div>
+          <figcaption>
+            <span class="art-title">Street in Provincetown</span>
+            <span class="art-artist">Childe Hassam</span>
+          </figcaption>
+        </figure>
+        <figure class="gallery-cell">
+          <div class="img-placeholder medium">
+            <img src="../media/museum/sisley.png" alt="Calanques au bord du Loing by Alfred Sisley" />
+          </div>
+          <figcaption>
+            <span class="art-title">Calanques au bord du Loing (Soleil du Matin)</span>
+            <span class="art-artist">Alfred Sisley</span>
+          </figcaption>
+        </figure>
+        <figure class="gallery-cell">
+          <div class="img-placeholder medium">
+            <img src="../media/museum/tarbell.png" alt="My Family at Cotuit by Childe Hassam" />
+          </div>
+          <figcaption>
+            <span class="art-title">My Family at Cotuit</span>
+            <span class="art-artist">Edmund Charles Tarbell</span>
+          </figcaption>
+        </figure>
+        <figure class="gallery-cell">
+          <div class="img-placeholder medium">
+            <img src="../media/museum/le_pho.png" alt="Untitled by Le Phô" />
+          </div>
+          <figcaption>
+            <span class="art-title">Untitled</span>
+            <span class="art-artist">Le Phô</span>
+          </figcaption>
+        </figure>
+      </div>
+ 
+      <h3>Two Pedagogical Conditions</h3>
+ 
+      <div class="condition-grid">
+        <div class="condition-card vts">
+          <h4>Visual Thinking Strategies (VTS)</h4>
+          <ul>
+            <li>Opens with: <em>"What do you see?"</em></li>
+            <li>Classifies responses as description, unsupported interpretation, or evidence-based interpretation</li>
+            <li>Follow-ups either expand observation or request visual justification</li>
+            <li>Avoids introducing interpretation; sustains ambiguity</li>
+            <li>Emphasizes open-ended, participant-driven discovery</li>
+          </ul>
+        </div>
+        <div class="condition-card fa">
+          <h4>Formal Analysis (FA)</h4>
+          <ul>
+            <li>Opens with prompting a descriptive observation of formal elements</li>
+            <li>Guides attention systematically: color → light → spatial structure → brushwork</li>
+            <li>Each turn paraphrases the user's observation, then introduces a new formal dimension</li>
+            <li>Emphasizes structural coherence and analytic progression</li>
+            <li>More instructional, closer to an art history class format</li>
+          </ul>
+        </div>
+      </div>
+ 
+      <h3>Safeguarding</h3>
+      <p>
+        Both conditions operate under strict information controls: all responses are grounded
+        in museum-authored Object Files for each artwork. Out-of-scope queries are redirected
+        to museum staff rather than answered. This was an intentional preliminary design choice
+        to reduce hallucination risk, and it produced a real limitation in the results, discussed below.
+      </p>
+ 
+      <div class="imgrow">
+        <!-- REPLACE: interface screenshots -->
+        <div class="slot">
+          <div class="img-placeholder medium" style="width:100%;">          
+              <img src="../media/museum/interface.png" alt="" />
+          </div>
+          <small>Gallery selection interface</small>
+        </div>
+        <div class="slot">
+          <div class="img-placeholder medium" style="width:100%;">              
+            <img src="../media/museum/interface2.png" alt="" />
+          </div>
+          <small>Conversational chat interface</small>
+        </div>
+      </div>
+ 
+      <!-- REPLACE: conversation flow diagrams -->
+      <h3>Conversation Flow Examples</h3>
+      <div class="imgrow">
+        <div class="slot">
+          <div class="img-placeholder tall" style="width:100%;">            <img src="../media/museum/flow2.png" alt="" />
+          </div>
+          <small>VTS flow: Hassam's Street in Provincetown</small>
+        </div>
+        <div class="slot">
+          <div class="img-placeholder tall" style="width:100%;">            <img src="../media/museum/flow1.png" alt="" />
+          </div>
+          <small>Formal Analysis flow: Hassam's Street in Provincetown</small>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- ── RESEARCH APPROACH ─────────────────────────────────── -->
+    <section id="approach">
+      <h2>Research Approach</h2>
+ 
+      <h3>Study Design</h3>
+      <p>
+        This is a <strong>comparative evaluative study</strong>: two versions of the same system with
+        different underlying logic, tested against each other to understand how pedagogical
+        framing shapes behavior and articulation. Students were assigned to one condition
+        (between-subjects, n=10 per condition), which prevents order effects. Four museum faculty
+        and staff experienced both conditions sequentially, functioning as a <strong>within-subjects expert
+        panel</strong> for richer qualitative comparison.
+      </p>
+      <p>
+        There is no no-chatbot baseline condition; the study can tell you how
+        the two conditions differ from each other, and what participants said qualitatively, but cannot
+        directly address the chatbot's ability to improve engagement relative to no chatbot at all. The AReA
+        pre/post survey was included partly to address this: it measures whether the chatbot shifted
+        participant's baseline attitudes toward engaging with art, acting as a partial answer, not a complete
+        substitute for a behavioral baseline.
+      </p>
+ 
+      <h3>Methods</h3>
+ 
+      <div class="methods-header-row">
+        <div class="methods-type-label quant">Quantitative</div>
+        <p class="methods-type-desc">Primarily independent t-tests comparing VTS vs. Formal Analysis and arts-experienced vs. non-arts-experienced participants across open-ended written responses.</p>
+      </div>
+ 
+      <div class="methods-grid">
+        <div class="method-card">
+          <div class="method-tag">Survey</div>
+          <h4>AReA Pre/Post</h4>
+          <p>Aesthetic Responsiveness Assessment Likert surveys administered before and after the session, analyzed via paired t-tests to measure shifts in attitudes toward art engagement.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-tag">NLP</div>
+          <h4>Parts-of-Speech Ratios</h4>
+          <p>Nouns, verbs, adjectives, and adverbs extracted from written responses using NLTK. Expressed as ratios to total word count to compare linguistic framing across conditions.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-tag">Coding</div>
+          <h4>Keyword Thematic Coding</h4>
+          <p>Responses coded across four predefined categories: visual/formal language, subject matter, interpretive/reflective language, and contextual/comparative language (normalized by word count).</p>
+        </div>
+        <div class="method-card">
+          <div class="method-tag">NLP</div>
+          <h4>Lexical Diversity (MTLD)</h4>
+          <p>Measure of Textual Lexical Diversity computed at the participant level and compared across conditions and experience groups. Higher values indicate more varied vocabulary.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-tag">Quantitative</div>
+          <h4>Word Count & Sentence Length</h4>
+          <p>Total word count and average sentence length measured across all four open-ended response prompts to assess differences in overall expressive output between conditions.</p>
+        </div>
+      </div>
+ 
+      <div class="methods-header-row" style="margin-top: 32px;">
+        <div class="methods-type-label qual">Qualitative</div>
+        <p class="methods-type-desc">Thematic analysis of group discussion recordings to surface the experiential dimensions that linguistic measures can't capture.</p>
+      </div>
+ 
+      <div class="methods-grid" style="grid-template-columns: 1fr;">
+        <div class="method-card qual-card">
+          <div class="method-tag qual-tag">Discussion Analysis</div>
+          <h4>Guided Group Discussion Transcripts</h4>
+          <p>Audio-recorded sessions were anonymously transcribed and analyzed thematically. Guided questions covered: how the chatbot affected visual observation; connection to artworks; sense of the gallery as a whole; and for faculty and staff only, a direct comparison between the VTS and Formal Analysis conditions.</p>
+        </div>
+      </div>
+ 
+      <h3>Why This Design</h3>
+      <p>
+        Two conditions rather than one make visible <em>how</em> conversational structure shapes
+        interpretation; not just whether AI helps, but which kind and for whom. The mixed-methods
+        approach was necessary because the core questions are partly behavioral (does language
+        change?) and partly experiential (does the interaction feel meaningful, approachable, useful?).
+        Quantitative linguistic measures capture what changed; qualitative discussion analysis captures
+        why: the social dynamics, the moments of discovery, the points of friction that numbers
+        can't surface.
+      </p>
+ 
+ 
+    <!-- ── FINDINGS ───────────────────────────────────────────── -->
+    <section id="findings">
+      <h2>What We Found</h2>
+ 
+      <h3>Attitudes Toward Art Did Not Significantly Change </h3>
+      <p>
+        Pre/post AReA scores showed no significant changes for most items, suggesting the
+        chatbot did not artificially inflate or disrupt participants' existing orientation toward art
+        engagement. This is a reassuring null result: the system scaffolded experience without
+        manufacturing enthusiasm that wouldn't otherwise be there.
+      </p>
+ 
+      <div class="finding-callout">
+        <p>
+          <strong>One exception:</strong> arts-experienced students showed a significant increase on
+          Statement 12 (sense of connectedness or oneness when viewing art) from
+          pre (M=3.00) to post (M=3.44), t(18)=2.53, p=.035. This suggests that for participants
+          who already had a framework for engaging with art, the conversational tool may have
+          deepened momentary reflective experience. 
+        </p>
+      </div>
+ 
+      <h3>Three Modes of Value — Both Conditions </h3>
+      <p>
+        Qualitative discussion analysis surfaced three consistent modes of value across both
+        conditions, and four equally consistent limitations:
+      </p>
+ 
+      <div class="pattern-row">
+        <div class="pattern-card value">
+          <div class="pattern-label">Value 1</div>
+          <p><strong style="color:var(--ink);">Deeper, longer observation.</strong> Persistent follow-up questions prompted participants to notice details they would not have attended to independently: texture, shadow, spatial relationships, compositional choices.</p>
+        </div>
+        <div class="pattern-card value">
+          <div class="pattern-label">Value 2</div>
+          <p><strong style="color:var(--ink);">Articulation through paraphrasing.</strong> The system's tendency to reflect responses back in more structured language helped participants clarify and sometimes revise their own interpretations. Especially valued by participants less confident in art vocabulary.</p>
+        </div>
+        <div class="pattern-card value">
+          <div class="pattern-label">Value 3</div>
+          <p><strong style="color:var(--ink);">Low-stakes interaction.</strong> The non-human conversational partner reduced social pressure, allowing participants to share partial observations without worrying about being judged or misunderstood.</p>
+        </div>
+      </div>
+ 
+      <div class="pattern-row">
+        <div class="pattern-card limitation">
+          <div class="pattern-label">Limitation 1</div>
+          <p><strong style="color:var(--ink);">Conversational looping.</strong> The structure modeled on pedagogical questioning created circular exchanges; participants felt they had reached the limits of what they could say, but the chatbot kept asking.</p>
+        </div>
+        <div class="pattern-card limitation">
+          <div class="pattern-label">Limitation 2</div>
+          <p><strong style="color:var(--ink);">Structured questioning overrode user-led exploration.</strong> When participants wanted to shift topics, the chatbot continued probing the same dimension. The system prioritized its own analytical categories over the participant's line of inquiry.</p>
+        </div>
+        <div class="pattern-card limitation">
+          <div class="pattern-label">Limitation 3</div>
+          <p><strong style="color:var(--ink);">Emotional engagement underserved.</strong> The chatbot was effective for analytical observation but rarely acknowledged or extended participants' emotional responses to works. Some participants described the continued questioning as distancing them from their initial feeling about a piece.</p>
+        </div>
+      </div>
+ 
+      <div class="pattern-row" style="grid-template-columns: 1fr;">
+        <div class="pattern-card limitation">
+          <div class="pattern-label">Limitation 4</div>
+          <p><strong style="color:var(--ink);">Device-based interaction divided attention.</strong> Participants spent more time looking at the iPad than the artwork itself. The interaction also reshaped how they experienced the gallery, from a cohesive spatial environment to six discrete case studies. One participant described forgetting "the presence of the gallery or other people."</p>
+        </div>
+      </div>
+ 
+      <h3>Participant Voices</h3>
+      <div class="quote-grid">
+        <div class="quote-card">
+          <blockquote>"Only she's smooth, but the rest of it isn't. I wouldn't have focused on that if I didn't interact with the chatbot."</blockquote>
+          <div class="quote-attr">On Rodin's Eve, deeper observation</div>
+        </div>
+        <div class="quote-card">
+          <blockquote>"It felt more low stakes… I didn't feel like I had to write it in a specific way or be afraid that I was misunderstood."</blockquote>
+          <div class="quote-attr">On approachability of non-human interaction</div>
+        </div>
+        <div class="quote-card">
+          <blockquote>"At first I felt a little more connected to the artwork… but the more I talked to the chatbot, the more it kind of took away from the more primitive feelings."</blockquote>
+          <div class="quote-attr">On emotional distancing from structured questioning</div>
+        </div>
+        <div class="quote-card">
+          <blockquote>"I spent more time looking at the iPad rather than looking at the art. I did feel a little disconnected, but it definitely made me sit on one piece longer."</blockquote>
+          <div class="quote-attr">On device-based attention division</div>
+        </div>
+      </div>
+ 
+      <h3>Condition Differences Were Targeted, Not Broad</h3>
+      <p>
+        No significant differences between VTS and Formal Analysis in overall lexical diversity
+        (MTLD), total word count, or average sentence length; suggesting neither approach
+        broadly altered the richness of participants' writing. The two conditions produced subtly
+        different linguistic behaviors in specific contexts, rather than fundamentally different
+        expressive outcomes.
+      </p>
+ 
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-num">FA &gt; VTS</span>
+          <span class="stat-label">Interpretive & emotional language in Q4 (artwork addition rationale)<br><em>t(18)=−2.54, p=.022</em></span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">FA &gt; VTS</span>
+          <span class="stat-label">Noun-to-word ratio in Q2 (favorite work)<br><em>t(18)=2.15, p=.050</em>, more object-focused description</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">FA &gt; VTS</span>
+          <span class="stat-label">Verb-to-word ratio in Q3 (remaining questions)<br><em>t(18)=2.44, p=.028</em>, more action-oriented inquiry</span>
+        </div>
+      </div>
+ 
+      <div class="finding-callout">
+        <p>
+          <strong>VTS exception:</strong> among arts-experienced participants only, VTS produced significantly
+          longer average sentence length in Q2 (favorite work): t(7)=−2.67, p=.032, suggesting more
+          elaborated, expressive responses when participants had existing art vocabulary to draw on.
+        </p>
+      </div>
+ 
+      <h3>Experience Level Moderated Effects </h3>
+      <p>
+        Significant condition-based linguistic differences emerged only among arts-experienced
+        participants. No significant differences were observed for non-arts-experienced participants
+        across any measure. This suggests that conversational framing influences how people
+        articulate responses when they already have a framework for discussing art for participants
+        without that framework, both conditions appeared to support basic observation and description
+        at similar levels, with paraphrasing functioning as conversational scaffolding rather than
+        producing distinct stylistic shifts.
+      </p>
+      <p>
+        Given the small sample sizes and exploratory nature of these analyses, these patterns
+        should be interpreted cautiously and warrant further investigation.
+      </p>
+    </section>
+ 
+    <!-- ── DESIGN PRINCIPLES ─────────────────────────────────── -->
+    <section id="principles">
+      <h2>Design Principles for Conversational AI in Learning Contexts</h2>
+      <p>
+        These four principles are derived from the study's findings and limitations; each
+        addresses a specific failure mode or opportunity that the results surfaced.
+      </p>
+ 
+      <div class="principles-grid">
+        <div class="principle-card">
+          <div class="p-num">01</div>
+          <h4>Flexible Scaffold Pedagogy & Identify Conversation Endpoints</h4>
+          <p>Open-ended prompting supports exploration, but without natural conversational boundaries it creates repetitive exchanges. Systems need lightweight milestones or implicit signals that allow the AI to recognize when meaningful engagement has been achieved and let the user conclude gracefully.</p>
+        </div>
+        <div class="principle-card">
+          <div class="p-num">02</div>
+          <h4>Support Safe Contextual Interactions</h4>
+          <p>Restricting the chatbot to Object File content reduced hallucination risk but created moments where the conversation stalled on legitimate questions. Future systems should explicitly signal the limits of their knowledge and offer structured pathways to contextual expansion, rather than redirecting to staff or going silent.</p>
+        </div>
+        <div class="principle-card">
+          <div class="p-num">03</div>
+          <h4>Connection Across Works and Ideas</h4>
+          <p>The per-artwork structure encouraged deep focus on individual pieces but disrupted the gallery as a cohesive whole. Systems that surface thematic or compositional connections across works could support a more integrated experience, helping visitors trace ideas rather than treating each artwork as a separate case study.</p>
+        </div>
+        <div class="principle-card">
+          <div class="p-num">04</div>
+          <h4>Flexible Interaction Modalities</h4>
+          <p>Typing on an iPad in front of an artwork divides attention in a fundamentally disruptive way. Voice-based interaction would allow visitors to maintain visual focus on the work. Augmented reality interfaces could eliminate the screen entirely. The modality of interaction should support the spatial and visual demands of the environment, not fight them.</p>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- ── BROADER IMPLICATIONS ───────────────────────────────── -->
+    <section id="implications">
+      <h2>Broader Implications</h2>
+ 
+      <p>
+        This research is directly relevant to any product team building conversational AI features
+        in content-rich, attention-demanding environments, not just museums: <strong style="color:var(--ink);">AI prompting works best when it helps users articulate and develop
+        what they already notice, not when it redirects them toward what the system thinks they
+        should attend to.</strong>
+      </p>
+ 
+      <p>
+        The conversational looping problem, where the system keeps pushing when the user
+        is done, is a product design failure that appears in chatbots, recommendation flows,
+        and onboarding experiences across industries. Recognizing conversation endpoints is not
+        a museum-specific challenge.
+      </p>
+ 
+      <p>
+        The experience-moderation finding also has a product analog: users without an existing
+        framework for a domain may not benefit from nuanced conversational scaffolding until
+        more foundational engagement is established. This is an implication from the data, not
+        a direct finding, but it suggests that adaptive scaffolding, which responds to what a user
+        already knows rather than applying the same structure to everyone, is a meaningful
+        design direction.
+      </p>
+ 
+      <p>
+        Finally, the device-attention finding maps directly onto any mobile product used in a
+        physically engaging context. Designing for divided attention and eyes-up interaction is
+        a UX challenge that extends well beyond gallery walls, from retail fitting rooms
+        to cooking apps to navigation to any experience where the user's primary attention
+        belongs somewhere other than the screen.
+      </p>
+    </section>
+ 
+    <!-- ── LIMITATIONS ───────────────────────────────────────── 
+    <section id="limitations">
+      <h2>Limitations & Future Work</h2>
+      <p>
+        The study has three main limitations worth naming directly. First, the participant sample
+        was all women from a single institution, which limits generalizability across populations
+        and museum contexts. Second, the sample size (n=24, n=10 per condition) means that
+        significant findings, particularly the experience-moderated effects, should be treated
+        as exploratory and warrant replication with larger groups. Third, there is no no-chatbot
+        baseline condition; the study compares the two conditions against each other but
+        cannot claim the chatbot improved engagement relative to no chatbot.
+      </p>
+      <p>
+        Future work should explore voice-based or AR interaction modalities that reduce the
+        attention cost of device-based input; systems that facilitate cross-artwork connection rather
+        than per-piece isolation; and the integration of deeper art-historical and contextual knowledge
+        with appropriate safeguarding — moving beyond object files toward curated knowledge graphs
+        that can support inquiry-based learning without hallucination risk.
+      </p>
+    </section>-->
+ 
+  </main>
+ 
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p style="font-size:18px;"><b>Glad you made it! &#9734;</b></p>
+        <p class="footer-credit">more @ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="29484a181a11695e4c45454c5a454c50074c4d5c">[email&#160;protected]</a></p>
+      </div>
+      <a href="#top" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const sidenav = document.querySelector(".sidenav");
+    let lastScrollY = window.scrollY;
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY <= 10) {
+        sidenav.classList.remove("hide");
+      } else if (currentScrollY > lastScrollY) {
+        sidenav.classList.add("hide");
+      } else {
+        sidenav.classList.remove("hide");
+      }
+      lastScrollY = currentScrollY;
+    });
+  </script>
+</body>
+</html>

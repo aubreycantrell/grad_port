@@ -5,781 +5,165 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Collage Co-Collaborator — Aubrey Cantrell</title>
   <link rel="icon" type="image/png" href="../media/dolphin.png" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      --bg:#0d0e10;
-      --ink:#eaf1f3;
-      --blend:#c2d9ac;
-      --font:#1b1d1f;
-      --muted:#9fb0b6;
-      --accent:#77c7c9;
-      --sand:#77c7c9;
-      --terra:#77c7c9;
-      --leaf:#cc7a4a;
-      --card:#cecece;
-      --line:#000000;
-    }
+    :root{--bg:#0d0e10;--ink:#eaf1f3;--blend:#c2d9ac;--font:#1b1d1f;--muted:#9fb0b6;--accent:#77c7c9;--sand:#77c7c9;--terra:#77c7c9;--leaf:#cc7a4a;--card:#cecece;--line:#000000;}
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Space Grotesk",sans-serif;font-size:17px;line-height:1.7;}
+    a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
+    header{max-width:850px;margin:100px auto 60px;padding:0 24px;}
+    main{max-width:900px;margin:0 auto;padding:0 24px 100px;}
+    section{margin:80px 0;}section:first-of-type{margin-top:0;}
+    h1{margin:0 0 0.3em;color:var(--sand);font-size:clamp(40px,5vw,68px);font-weight:600;letter-spacing:-0.02em;}
+    h2{margin-bottom:12px;color:var(--sand);font-size:26px;font-weight:600;letter-spacing:-0.01em;}
+    h3{margin:36px 0 8px;color:var(--accent);font-size:20px;font-weight:500;}
+    p,ul,small{color:var(--muted);}p,ul{margin-top:10px;}ul{padding-left:22px;}
+    blockquote{margin:20px 0;padding-left:16px;border-left:3px solid var(--accent);color:var(--muted);font-style:italic;}
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    header {
-      max-width: 850px;
-      margin: 100px auto 60px;
-      padding: 0 24px;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 24px 100px;
-    }
-
-    section {
-      margin: 80px 0;
-    }
-
-    section:first-of-type {
-      margin-top: 0;
-    }
-
-    h1 {
-      margin: 0 0 0.3em;
-      color: var(--sand);
-      font-size: clamp(40px, 5vw, 68px);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      margin-bottom: 12px;
-      color: var(--sand);
-      font-size: 26px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-
-    h3 {
-      margin: 36px 0 8px;
-      color: var(--accent);
-      font-size: 20px;
-      font-weight: 500;
-    }
-
-    p,
-    ul,
-    small {
-      color: var(--muted);
-    }
-
-    p,
-    ul {
-      margin-top: 10px;
-    }
-
-    ul {
-      padding-left: 22px;
-    }
-
-    blockquote {
-      margin: 20px 0;
-      padding-left: 16px;
-      border-left: 3px solid var(--accent);
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    /* Top navigation */
-    .sidenav {
-      position: fixed;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      padding: 8px 18px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      line-height: 1.3;
-      white-space: nowrap;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .sidenav.hide {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateX(-50%) translateY(-18px);
-    }
-
-    .dot {
-      border: none;
-      background: transparent;
-      color: var(--bg);
-      font-size: 14px;
-      cursor: pointer;
-      padding: 4px 0;
-      text-decoration: none;
-    }
-
-    .dot:hover,
-    .dot:focus,
-    .dot:active,
-    .dot[aria-current="true"] {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .dot span {
-      color: inherit;
-      font-size: inherit;
-      transition: color 0.2s;
-    }
-
-    .home-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .home-icon img {
-      display: block;
-      width: auto;
-      height: 20px;
-    }
+    /* Nav */
+    .sidenav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:200;display:flex;align-items:center;justify-content:center;gap:24px;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,0.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);line-height:1.3;white-space:nowrap;transition:opacity 0.3s ease,transform 0.3s ease;}
+    .sidenav.hide{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-18px);}
+    .dot{border:none;background:transparent;color:var(--bg);font-size:14px;cursor:pointer;padding:4px 0;text-decoration:none;}
+    .dot:hover,.dot:focus,.dot:active,.dot[aria-current="true"]{color:var(--accent);text-decoration:none;}
+    .dot span{color:inherit;font-size:inherit;transition:color 0.2s;}
+    .home-icon{display:flex;align-items:center;justify-content:center;}
+    .home-icon img{display:block;width:auto;height:20px;}
 
     /* Hero */
-    .hero {
-      width: 100%;
-      max-width: 1000px;
-      margin: 60px auto;
-      overflow: hidden;
-      border-radius: 16px;
-    }
-
-    .hero img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .subtitle {
-      max-width: 900px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 20px;
-      text-align: center;
-    }
-
-    /* Embedded frames */
-    .prototype-frame {
-      display: block;
-      width: 50%;
-      height: 85vh;
-      margin: 0 auto;
-      border: 0;
-    }
-
-    .figma-frame,
-    .miro-frame {
-      display: block;
-      margin: 20px auto 0;
-      border: 0;
-    }
-
-    .figma-frame {
-      width: 800px;
-      max-width: 100%;
-      height: 450px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .miro-frame {
-      width: 768px;
-      max-width: 100%;
-      height: 432px;
-    }
+    .hero{width:100%;max-width:1000px;margin:60px auto;overflow:hidden;border-radius:16px;}
+    .hero img{display:block;width:100%;height:auto;}
 
     /* Image rows */
-    .imgrow {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin: 18px 0 8px;
-    }
+    .imgrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0 8px;}
+    .slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:10px;text-align:center;border-radius:10px;}
+    .slot img{display:block;width:100%;height:auto;border-radius:8px;object-fit:cover;}
+    .slot small{font-size:12px;line-height:1.4;color:var(--muted);}
 
-    .slot {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-    }
+    /* Split */
+    .split-section{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
+    .split-image img{width:100%;height:auto;border-radius:12px;display:block;}
 
-    .slot img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      object-fit: cover;
-    }
+    /* Project intro */
+    .project-intro{width:100%;}
+    .project-intro-inner{max-width:980px;margin:0 auto;}
+    .project-kicker{margin:0 0 24px;font-size:14px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent);}
+    .project-title{max-width:900px;margin:0 0 56px;font-size:clamp(36px,4.2vw,56px);line-height:1.08;font-weight:500;letter-spacing:-0.03em;color:var(--muted);}
+    .project-meta-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px;margin-bottom:64px;}
+    .project-impact-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(0,0,0,0.08);}
+    .meta-item h3,.impact-item h3{margin:0 0 10px;font-size:16px;font-weight:500;color:var(--terra);}
+    .meta-item p,.impact-item p{margin:0;font-size:18px;line-height:1.5;color:var(--muted);}
 
-    .slot small {
-      font-size: 12px;
-      line-height: 1.4;
-    }
+    /* Stats */
+    .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0;}
+    .stat-card{background:rgba(119,199,201,0.08);border:1px solid rgba(119,199,201,0.18);border-radius:14px;padding:20px 18px;text-align:center;}
+    .stat-card .stat-num{display:block;font-size:28px;font-weight:600;color:var(--accent);letter-spacing:-0.02em;line-height:1.1;}
+    .stat-card .stat-label{display:block;font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4;}
 
-    /* Personas */
-/* GRID: force 3 columns */
-.persona-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 40px;
-}
+    /* Engagement */
+    .pattern-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0;}
+    .pattern-card{border-radius:14px;padding:22px 20px;}
+    .pattern-card.adapted{background:rgba(119,199,201,0.10);border:1px solid rgba(119,199,201,0.20);}
+    .pattern-card.reinterpreted{background:rgba(194,217,172,0.10);border:1px solid rgba(194,217,172,0.20);}
+    .pattern-card.resisted{background:rgba(204,122,74,0.10);border:1px solid rgba(204,122,74,0.20);}
+    .pattern-card .pattern-num{font-size:32px;font-weight:600;color:var(--accent);letter-spacing:-0.02em;}
+    .pattern-card.reinterpreted .pattern-num{color:var(--blend);}
+    .pattern-card.resisted .pattern-num{color:var(--leaf);}
+    .pattern-card .pattern-label{font-size:14px;font-weight:600;color:var(--ink);margin:4px 0 8px;text-transform:uppercase;letter-spacing:0.04em;}
+    .pattern-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.5;}
 
-/* CARD BASE */
-.persona-card {
-  padding: 24px;
-  border-radius: 16px;
-  color: #1a1a1a;
-  background: #f5f5f5;
-  flex-direction: column;
-  gap: 12px;
-  font-size: 10px;
-}
+    /* Principles */
+    .principles-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;}
+    .principle-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:22px 24px;}
+    .principle-card .p-num{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);opacity:0.7;}
+    .principle-card h4{margin:6px 0 8px;font-size:15px;font-weight:600;color:var(--ink);}
+    .principle-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.55;}
 
-/* TEXT */
-.persona-card h4 {
-  font-size: 14px;
-  margin-bottom: 4px;
-}
+    /* Case cells */
+    .case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:1.5rem 0;}
+    .case-cell{margin:0;background:rgba(255,255,255,0.02);border-radius:12px;padding:8px;border:1px solid rgba(255,255,255,0.04);}
+    .case-cell img{width:100%;height:auto;display:block;border-radius:8px;}
+    .case-cell figcaption{margin-top:6px;font-size:0.85rem;line-height:1.3;color:var(--muted);}
 
-/* TAGS */
-.persona-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+    /* Methods cards */
+    .methods-header-row{display:flex;align-items:baseline;gap:16px;margin:20px 0 12px;flex-wrap:wrap;}
+    .methods-type-label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;white-space:nowrap;}
+    .methods-type-label.quant{background:rgba(119,199,201,0.12);color:var(--accent);border:1px solid rgba(119,199,201,0.25);}
+    .methods-type-label.qual{background:rgba(194,217,172,0.12);color:var(--blend);border:1px solid rgba(194,217,172,0.25);}
+    .methods-type-desc{margin:0;font-size:14px;color:var(--muted);line-height:1.5;flex:1;min-width:200px;}
+    .methods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:8px;}
+    .method-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px 20px;}
+    .method-card.qual-card{background:rgba(194,217,172,0.04);border-color:rgba(194,217,172,0.12);}
+    .method-card h4{margin:8px 0 6px;font-size:14px;font-weight:600;color:var(--ink);}
+    .method-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.55;}
+    .method-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:rgba(119,199,201,0.1);color:var(--accent);border:1px solid rgba(119,199,201,0.18);}
+    .method-tag.qual-tag{background:rgba(194,217,172,0.1);color:var(--blend);border-color:rgba(194,217,172,0.18);}
 
-.tag {
-  font-size: 10px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.08);
-}
-    /* Low-fi wireframes */
-    .lofi-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(200px, 0.5fr));
-      gap: 12px;
-      margin: 10px 0 0;
-    }
+    /* Flow steps */
+    .flow-steps{display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;align-items:start;gap:8px;margin:24px 0 32px;}
+    .flow-step{display:flex;flex-direction:column;gap:0;}
+    .flow-img-wrap{width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);}
+    .flow-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px;}
+    .flow-step-num{font-size:10px;font-weight:600;letter-spacing:0.08em;color:var(--accent);opacity:0.7;margin:10px 0 2px;text-transform:uppercase;}
+    .flow-step h4{margin:0 0 4px;font-size:13px;font-weight:600;color:var(--ink);}
+    .flow-step p{margin:0;font-size:12px;color:var(--muted);line-height:1.5;}
+    .flow-arrow{display:flex;align-items:center;justify-content:center;color:rgba(119,199,201,0.35);font-size:18px;padding-top:40px;}
 
-    .lofi-card {
-      padding: 0;
-      background: none;
-      border: none;
-    }
-
-    .lofi-imgwrap {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-
-    .lofi-imgwrap img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      object-fit: cover;
-      object-position: center;
-      cursor: pointer;
-      transition: transform 0.25s ease;
-    }
-
-    .lofi-imgwrap img:hover {
-      transform: scale(1.02);
-    }
-
-    /* Lightbox */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: none;
-      place-items: center;
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .lightbox.open {
-      display: grid;
-    }
-
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 14px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    .lightbox .close {
-      position: absolute;
-      top: 18px;
-      right: 22px;
-      color: #fff;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    /* Slideshow */
-    .slideshow {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin: 30px auto;
-      overflow: hidden;
-      border-radius: 14px;
-    }
-
-    .slides {
-      display: flex;
-      transition: transform 0.6s ease;
-    }
-
-    .slides img {
-      width: 100%;
-      height: 100%;
-      flex-shrink: 0;
-      border-radius: 14px;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .slide-btn {
-      position: absolute;
-      top: 50%;
-      z-index: 5;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 100%;
-      background: rgba(0, 0, 0, 0.001);
-      color: #fff;
-      font-size: 32px;
-      cursor: pointer;
-      transform: translateY(-50%);
-      transition: background 0.2s ease;
-    }
-
-    .slide-btn:hover {
-      background: rgba(0, 0, 0, 0.7);
-    }
-
-    .slide-btn.prev {
-      left: 10px;
-    }
-
-    .slide-btn.next {
-      right: 10px;
-    }
+    /* Variation grid */
+    .variation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
+    .variation-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;}
+    .variation-card-custom{background:rgba(119,199,201,0.04);border-color:rgba(119,199,201,0.15);}
+    .variation-img-wrap{width:100%;aspect-ratio:4/3;overflow:hidden;background:rgba(255,255,255,0.03);}
+    .variation-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+    .variation-label{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);padding:12px 14px 4px;}
+    .variation-card p{margin:0;font-size:12px;color:var(--muted);line-height:1.5;padding:0 14px 14px;}
 
     /* Footer */
-    .site-footer {
-      margin-top: 80px;
-      padding: 28px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: auto;
-      margin: 0 5%;
-    }
-
-    .footer-left p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .footer-credit {
-      margin-top: 4px;
-    }
-
-    .back-to-top {
-      padding: 6px 12px;
-      border: 1px solid var(--muted);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 13px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .back-to-top:hover {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: var(--bg);
-      text-decoration: none;
-    }
-
-    .project-intro {
-  width: 100%;
-}
-
-.project-intro-inner {
-  max-width: 980px;
-  margin: 0 auto;
-}
-
-.project-kicker {
-  margin: 0 0 24px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--accent); /* change to your accent */
-}
-
-.project-title {
-  max-width: 900px;
-  margin: 0 0 56px;
-  font-size: clamp(36px, 4.2vw, 56px);
-  line-height: 1.08;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  color: var(--muted); /* change to your heading color */
-}
-
-.project-meta-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 36px;
-  margin-bottom: 64px;
-}
-
-.project-impact-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 48px;
-  padding-bottom: 56px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.meta-item h3,
-.impact-item h3 {
-  margin: 0 0 10px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--terra);
-}
-
-.meta-item p,
-.impact-item p {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--muted);
-}
-
-.split-section {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr; /* text slightly wider */
-  gap: 48px;
-  align-items: center;
-}
-
-.split-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  display: block;
-}
-
-.guidelines-section {
-  margin: 100px 0;
-}
-
-.guidelines-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-/* card base */
-.guidelines-card {
-  padding: 32px 36px;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* titles */
-.guidelines-card h3 {
-  margin-bottom: 16px;
-  font-size: 18px;
-  letter-spacing: 0.08em;
-}
-
-/* list */
-.guidelines-card ol {
-  padding-left: 20px;
-  margin: 0;
-}
-
-.guidelines-card li {
-  margin-bottom: 12px;
-  line-height: 1.6;
-  color: var(--muted);
-}
-
-/* specific styles */
-.objectives {
-  background: rgba(255, 255, 255, 0.08);
-  color: #eae6d9;
-}
-
-.design {
-  background: rgba(212, 176, 96, 0.65);
-  color: #2d2018;
-}
-.flow-grid {
-  grid-template-columns: repeat(3, minmax(400px, 1fr));
-  justify-content: center;
-
-}
-
-/* just adapt existing persona cards for images */
-/* make images fill more of the card */
-.flow-grid img {
-  width: 100%;
-  height: auto;
-  max-height: 320px;
-  object-fit: contain;
-}
-
-/* reduce extra padding so image feels bigger */
-.flow-grid .persona-card {
-  padding: 8px;
-  
-}
-
-/* tighten caption spacing */
-.flow-grid figcaption {
-  margin-top: 8px;
-  font-size: 13px;
-}
-
-.case-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:16px;
-  margin:1.5rem 0;
-}
-
-.case-cell{
-  margin:0;
-  background:rgba(255,255,255,0.02);
-  border-radius:12px;
-  padding:8px;
-  border:1px solid rgba(255,255,255,0.04);
-}
-
-.case-cell img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:8px;
-}
-
-.case-cell figcaption{
-  margin-top:6px;
-  font-size:0.85rem;
-  line-height:1.3;
-}
-
-/* mobile */
-@media (max-width: 800px) {
-  .guidelines-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* mobile */
-@media (max-width: 800px) {
-  .split-section {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
-@media (max-width: 900px) {
-  .project-meta-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-  }
-
-  .project-impact-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-}
-
-@media (max-width: 600px) {
-  .project-intro {
-    padding: 88px 20px 64px;
-  }
-
-  .project-title {
-    margin-bottom: 40px;
-    font-size: 40px;
-  }
-
-  .project-meta-grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 44px;
-  }
-
-  .meta-item p,
-  .impact-item p {
-    font-size: 17px;
-  }
-}
+    .site-footer{margin-top:80px;padding:28px 0;}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;width:auto;margin:0 5%;}
+    .footer-left p{margin:0;color:var(--muted);font-size:14px;}
+    .footer-credit{margin-top:4px;}
+    .back-to-top{padding:6px 12px;border:1px solid var(--muted);border-radius:999px;color:var(--muted);font-size:13px;text-decoration:none;transition:all 0.2s ease;}
+    .back-to-top:hover{border-color:var(--accent);background:var(--accent);color:var(--bg);text-decoration:none;}
 
     /* Responsive */
-    @media (max-width: 1100px) {
-      .lofi-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+    @media(max-width:800px){
+      .split-section{grid-template-columns:1fr;gap:24px;}
+      .stat-row{grid-template-columns:repeat(2,1fr);}
+      .principles-grid{grid-template-columns:1fr;}
+      .flow-steps{grid-template-columns:1fr 1fr;}
+      .flow-arrow{display:none;}
+      .variation-grid{grid-template-columns:1fr 1fr;}
+      .methods-grid{grid-template-columns:1fr 1fr;}
     }
-
-    @media (max-width: 900px) {
-      .sidenav {
-        top: 14px;
-        gap: 16px;
-        padding: 7px 14px;
-      }
-
-      .dot {
-        font-size: 13px;
-      }
-
-      .lofi-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .prototype-frame {
-        width: 100%;
-        height: 75vh;
-      }
+    @media(max-width:900px){
+      .project-meta-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;}
+      .project-impact-grid{grid-template-columns:1fr;gap:28px;}
+      .pattern-row{grid-template-columns:1fr;}
+      .sidenav{gap:16px;padding:7px 14px;}
+      .dot{font-size:13px;}
     }
-
-    @media (max-width: 700px) {
-      .slide-btn {
-        font-size: 26px;
-      }
-
-      .slides img {
-        height: 280px;
-      }
+    @media(max-width:600px){
+      .project-title{margin-bottom:40px;font-size:40px;}
+      .project-meta-grid{grid-template-columns:1fr;margin-bottom:44px;}
+      .sidenav{top:10px;gap:6px 18px;padding:10px 14px;border-radius:18px;}
+      .dot{padding:2px 0;font-size:12px;}
     }
-
-    @media (max-width: 640px) {
-      .lofi-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    @media(max-width:500px){
+      .flow-steps{grid-template-columns:1fr;}
+      .variation-grid{grid-template-columns:1fr;}
+      .methods-grid{grid-template-columns:1fr;}
     }
-
-    @media (max-width: 600px) {
-      .sidenav {
-        top: 10px;
-        gap: 6px 18px;
-        padding: 10px 14px;
-        border-radius: 18px;
-        text-align: center;
-      }
-
-      .sidenav.hide {
-        transform: translateX(-50%) translateY(-18px);
-      }
-
-      .dot {
-        padding: 2px 0;
-        font-size: 12px;
-      }
-
-      .prototype-frame {
-        height: 65vh;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .dot {
-        font-size: 11px;
-      }
-
-      .sidenav {
-        gap: 6px 12px;
-        padding: 8px 12px;
-      }
-    }
-
-    @media (max-width: 900px) {
-  .persona-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    @media(max-width:400px){.dot{font-size:11px;}.sidenav{gap:6px 12px;padding:8px 12px;}}
   </style>
 </head>
 
 <body id="top">
   <nav class="sidenav" aria-label="Section navigation">
-    <a href="../index.html" class="dot home-icon">
-      <img src="../media/dolphin.png" alt="Home" />
-    </a>
+    <a href="../index.html" class="dot home-icon"><img src="../media/dolphin.png" alt="Home" /></a>
     <a class="dot" href="../index.html#work"><span>Work</span></a>
     <a class="dot" href="../research.html"><span>Research</span></a>
     <a class="dot" href="../about.html"><span>About</span></a>
@@ -787,414 +171,368 @@
 
   <header>
     <div class="hero">
-      <img src="../media/collage /cc_bgrd.png" alt="Spam! project hero image" />
+      <img src="../media/collage /cc_bgrd.png" alt="Collage Collaborator project hero image" />
     </div>
-
-    
   </header>
 
   <main>
+
     <!-- OVERVIEW -->
     <section class="project-intro">
       <div class="project-intro-inner">
-        <p class="project-kicker">Collage Collaborator</p>
-
-        <h1 class="project-title">
-          Expanding creative ideation in physical collage making with generative AI.
-        </h1>
-        
+        <p class="project-kicker">Collage Collaborator · ACM IUI '26</p>
+        <h1 class="project-title">When AI Suggests and Humans Decide: designing for creative agency.</h1>
         <div class="project-meta-grid">
-          <div class="meta-item">
-            <h3>Role & Team</h3>
-            <p>UX researcher & designer</p>
-          </div>
-        
-          <div class="meta-item">
-            <h3>Timeline</h3>
-            <p>Fall 2026</p>
-          </div>
-        
-          <div class="meta-item">
-            <h3>Tools</h3>
-            <p>Node.js<br>OpenAI API<br>Web app prototyping</p>
-          </div>
-        
-          <div class="meta-item">
-            <h3>Methods</h3>
-            <p>User study, qualitative coding, quantitative analysis, interaction design</p>
-          </div>
+          <div class="meta-item"><h3>Role & Team</h3><p>UX Researcher & Designer<br>First author</p></div>
+          <div class="meta-item"><h3>Timeline</h3><p>Fall 2025<br>Published IUI '26</p></div>
+          <div class="meta-item"><h3>Tools</h3><p>Node.js · OpenAI API<br>NLTK · scikit-learn<br>SPSS · Figma</p></div>
+          <div class="meta-item"><h3>Methods</h3><p>Mixed methods · within-subjects study · thematic coding · quantitative analysis</p></div>
         </div>
-        
         <div class="project-impact-grid">
           <div class="impact-item">
-            <h3>Challenge</h3>
-            <p>
-              Generative AI can rapidly produce visual outputs, but that speed raises questions
-              of “creative agency, authorship, and ownership” when the system begins to shape
-              creative direction too strongly.
-            </p>
+            <h3>The Design Problem</h3>
+            <p>Most AI creativity tools automate execution, they make things <em>for</em> you. The real question is whether AI can instead expand what you <em>consider</em>, without taking over. When a user is in the middle of making something, does an AI suggestion help them explore more freely or does it anchor them to what the AI already decided?</p>
           </div>
-        
           <div class="impact-item">
-            <h3>Outcome</h3>
-            <p>
-              I designed the <strong>Collage Collaborator</strong>, a human-AI co-creation system that
-              generates visual suggestions to expand ideation without finalizing outcomes, helping
-              users explore more directions while retaining creative ownership.
-            </p>
-            <div ><a href = "https://dl.acm.org/doi/10.1145/3742414.3794772"> Published in IUI '26 &rarr;</a></div>
-
-
+            <h3>What I Built & Found</h3>
+            <p>I designed the <strong>Collage Collaborator</strong>: a human-AI co-creation system that generates visual suggestions without finalizing outcomes. A study with 30 participants showed AI significantly increased material exploration while participants retained full creative ownership over personal themes and direction.</p>
+            <div style="margin-top:14px;"><a href="https://dl.acm.org/doi/10.1145/3742414.3794772">Published at ACM IUI '26 &rarr;</a></div>
           </div>
         </div>
-        </div>      </div>
+      </div>
     </section>
-  
+
     <!-- CHALLENGE -->
     <section id="challenge" class="split-section">
       <div class="split-text">
-        <h2>Challenge</h2>
-        <p>
-          While generative AI can produce novel outputs, it often shifts control away from the user,
-          resulting in finished artifacts rather than supporting the creative process itself.
-        </p>
-        
-        <blockquote>
-          How might we use generative AI to expand creative ideation without replacing
-          the artist’s role in making and decision-making?
-        </blockquote>
-        
-        <p>
-          The challenge was to design a system that introduces new possibilities without
-          overriding the user’s intent — supporting creativity as an exploratory, iterative process.
-        </p>
+        <h2>The Design Challenge</h2>
+        <p>Generative AI is increasingly embedded in creative tools, but most implementations prioritize output speed over user agency. They produce finished artifacts rather than supporting the messy, iterative, deeply personal process of making something.</p>
+        <blockquote>How might we design an AI system that expands what a creator considers, without deciding what they make?</blockquote>
+        <p>Prior research had shown that exposure to AI-generated content can actually <em>reduce</em> creative fluency: users anchor to what they've seen and explore less. I wanted to know if the right design could reverse that effect. The hypothesis was that physical collage, where you can't paste a digital output directly onto paper, would create a productive friction that forced interpretation rather than imitation.</p>
       </div>
-  
       <div class="split-image">
-        <img src="../media/cs-1.png" alt="Campus spam boards at Wellesley" />
+        <img src="../media/cs-1.png" alt="Collage making workshop setup" />
       </div>
     </section>
 
-    <!-- 1. INTRODUCTION -->
-    <section id="intro">
-      <h2>1. Introduction</h2>
-      <p>
-        Human–AI creativity collaboration helps creators generate ideas, visualize alternatives, and explore beyond
-        their technical skill level. But these capabilities also raise concerns: When AI proposes most options, does the
-        user still direct the creative arc? How does rapid iteration shift authorship? And how can systems avoid
-        overwhelming users with too many possibilities?
-      </p>
-      <p>
-        This work emphasizes <strong>co-creation</strong>, where AI and user engage in reciprocal ideation while preserving
-        the user’s agency. Drawing on mini-c creativity—everyday creative interpretation—we explore how generative AI
-        can support broad, low-pressure idea expansion without overtaking artistic intent.
-      </p>
-      <p>
-        Collage offers a uniquely open, material-rich domain for this exploration. Its flexibility supports divergence,
-        experimentation, and playful visual thinking. Our system uses AI only to <em>suggest</em> additions, never to implement
-        or replace, preserving authorship while expanding creative adjacency.
-      </p>
-      <p><strong>Research Questions:</strong></p>
-      <ul>
-        <li>How does generative AI influence material, color, and texture choices in collage?</li>
-        <li>Does interaction with AI shift a creator’s perception of the collage they produce?</li>
-      </ul>
+    <!-- RESEARCH APPROACH -->
+    <section id="approach">
+      <h2>Research Approach</h2>
 
-      <div class="imgrow">
-        <div class="slot"><img src="../media/cs-2.png" alt=""><small></small></div>
-        <div class="slot"><img src="../media/cs-3.png" alt=""><small></small></div>
+      <h3>Study Design</h3>
+      <p>This is a <strong>within-subjects, before-after study</strong>, where each participant serves as their own baseline, which strengthens causal inference despite a modest sample size: the goal was to understand not just <em>what</em> changed in participant's collages, but <em>how and why</em> they engaged with or pushed back on AI suggestions.</p>
+      <p>I chose a mixed-methods approach because divergent thinking can't be directly observed. Quantitative proxies like semantic distance and material diversity capture the breadth of creative exploration; thematic coding of written reflections captures the depth: the personal reasoning, the moments of inspiration, and the moments of intentional rejection.</p>
+
+      <h3>Why Physical Collage</h3>
+      <p>Physical collage creates a natural separation between AI suggestion and human implementation: you can't copy and paste a generated image onto paper. Every AI suggestion requires active translation into available materials. That friction was hypothesized to prevent design fixation, and the results are consistent with that hypothesis: participants showed increased exploration rather than the convergence on AI suggestions that prior work had documented.</p>
+
+      <h3>Methods</h3>
+
+      <div class="methods-header-row">
+        <div class="methods-type-label quant">Quantitative</div>
+        <p class="methods-type-desc">Paired-samples t-tests on behavioral measures before and after AI use, comparing each participant against their own baseline.</p>
+      </div>
+      <div class="methods-grid">
+        <div class="method-card">
+          <div class="method-tag">Behavioral</div>
+          <h4>Total Additions & New Materials</h4>
+          <p>Count of discrete physical elements added and new material types introduced after AI use — operationalizing material fluency and breadth of exploration.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-tag">NLP</div>
+          <h4>Semantic Distance (NLTK)</h4>
+          <p>Semantic distance between newly introduced materials and existing collage elements, averaged per iteration. Higher scores indicate more conceptually diverse additions.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-tag">Computer Vision</div>
+          <h4>Color Diversity (CIELAB)</h4>
+          <p>Dominant colors extracted via k-means clustering in CIELAB color space. Color diversity index computed as weighted mean pairwise perceptual distance between palette colors.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-tag">Spatial</div>
+          <h4>Compositional Space Usage</h4>
+          <p>Collage surface divided into a 3×3 grid. Additions tracked per quadrant across tasks to detect localized changes in spatial engagement.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-tag">NLP</div>
+          <h4>Written Reflection Analysis</h4>
+          <p>Word count and semantic distance of written check-in responses before and after AI use, measuring changes in descriptive engagement and conceptual range.</p>
+        </div>
+        <div class="method-card">
+          <div class="method-tag">Survey</div>
+          <h4>Creative Self-Efficacy & AI Attitudes</h4>
+          <p>Likert pre-surveys on Creative Self-Efficacy and attitudes toward AI in art, analyzed via Pearson correlation to understand how prior orientation moderated AI engagement.</p>
+        </div>
+      </div>
+
+      <div class="methods-header-row" style="margin-top:32px;">
+        <div class="methods-type-label qual">Qualitative</div>
+        <p class="methods-type-desc">Dual-coder thematic analysis of open-ended reflections, independently coded for how and why participants engaged with or pushed back on AI suggestions.</p>
+      </div>
+      <div class="methods-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="method-card qual-card">
+          <div class="method-tag qual-tag">Adaptation</div>
+          <h4>Direct Use</h4>
+          <p>Direct use of AI suggestion — participant implemented specific materials, forms, or placements explicitly credited to a generated variation.</p>
+        </div>
+        <div class="method-card qual-card">
+          <div class="method-tag qual-tag">Reinterpretation</div>
+          <h4>AI as Inspiration</h4>
+          <p>AI as inspiration, not instruction — described being inspired but made the idea their own through different placement, related material, or conceptual spark without direct copying.</p>
+        </div>
+        <div class="method-card qual-card">
+          <div class="method-tag qual-tag">Resistance</div>
+          <h4>Deliberate Rejection</h4>
+          <p>Deliberate rejection with articulated reasoning — concerns about originality, personal meaning, aesthetic mismatch, or observed bias in generations.</p>
+        </div>
+      </div>
+
+      <div class="imgrow" style="margin-top:32px;">
+        <div class="slot"><img src="../media/cs-2.png" alt="Study procedure diagram"></div>
+        <div class="slot"><img src="../media/cs-3.png" alt="Materials available to participants"></div>
       </div>
     </section>
 
-    <!-- 2. RELATED WORKS -->
-    <section id="related">
-      <h2>2. Related Works</h2>
-
-      <h3>2.1 Tangible Co-Creation Interfaces</h3>
-      <p>
-        Existing creativity support tools heavily emphasize execution—sculpting, painting, rendering—and often limit user
-        control by placing the AI on the output side. Systems such as Sculpt-to-Image, FreeD, AIRBrush, and Sandbox focus
-        on convergent outcomes, helping users produce a specific finished artifact.
-      </p>
-      <p>
-        While powerful, they rarely support ideation itself: the divergent exploration of possibilities, themes, and
-        material directions that form the core of early creative development.
-      </p>
-
-      <h3>2.2 Collage as Interaction Material</h3>
-      <p>
-        Collage has been underexplored in computational creativity despite its strong ideational qualities. Work such
-        as Interactive Photo Book and Opal show computational manipulation of imagery, but not collage-specific
-        ideation workflows, nor hybrid tangible–digital feedback loops.
-      </p>
-
-      <h3>2.3 Co-Creation Workflows</h3>
-      <p>
-        Systems like AI-supported choreography and FashionQ demonstrate structured iteration cycles where users expand,
-        refine, and selectively adopt AI suggestions. Visual art, however, centers on a single continuously evolving
-        composition, making it harder to introduce AI without disrupting flow or authorship.
-      </p>
-
-    </section>
-
-    <!-- 3. SYSTEM OVERVIEW -->
+    <!-- SYSTEM OVERVIEW -->
     <section id="system">
-      <h2>3. System Overview</h2>
-      <p>
-        The Collage Co-Creator generates visual suggestions layered onto a user’s in-progress collage. Rather than
-        producing finished images, the system outputs conceptual prompts across materials, colors, textures, and themes.
-      </p>
+      <h2>The System</h2>
+      <p>The Collage Collaborator generates visual suggestions layered onto a user's in-progress collage. It never edits or finalizes the physical work; it only proposes, and the user decides what to do with it.</p>
 
-      <h3>3.1 Workflow & Interface</h3>
-      <ul>
-        <li>Step 1: User photographs or uploads their in-progress collage.</li>
-        <li>Step 2: System generates five blurred suggestion cards.</li>
-        <li>Step 3: User reveals each card to explore visual directions.</li>
-        <li>Step 4: User implements ideas physically using their own materials.</li>
-        <li>Step 5: Custom prompting unlocks for targeted ideation.</li>
-      </ul>
-
-      <div class="imgrow">
-        <div class="slot"><img src="../media/demo.png" alt=""></div>
+      <h3>How it works</h3>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-img-wrap">
+            <img src="../media/collage /p1.png" alt="User photographs collage" />
+          </div>
+          <div class="flow-step-num">01</div>
+          <h4>Capture</h4>
+          <p>User photographs or uploads their in-progress physical collage.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-img-wrap">
+            <img src="../media/collage /p2.png" alt="Five blurred variation cards generated" />
+          </div>
+          <div class="flow-step-num">02</div>
+          <h4>Generate</h4>
+          <p>System produces five blurred suggestion cards spanning distinct creative dimensions.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-img-wrap">
+            <img src="../media/collage /p3.png" alt="User reveals and explores cards" />
+          </div>
+          <div class="flow-step-num">03</div>
+          <h4>Explore</h4>
+          <p>User reveals each card at their own pace — blurring prevents premature anchoring.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-img-wrap">
+            <img src="../media/collage /p4.png" alt="User physically implements ideas" />
+          </div>
+          <div class="flow-step-num">04</div>
+          <h4>Interpret & Make</h4>
+          <p>User translates ideas into physical materials. AI cannot implement — only suggest.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-img-wrap">
+            <img src="../media/collage /p5.png" alt="Custom prompting interface" />
+          </div>
+          <div class="flow-step-num">05</div>
+          <h4>Direct</h4>
+          <p>Custom prompting unlocks — user articulates intent and steers the AI toward specific directions.</p>
+        </div>
       </div>
 
-      <h3>3.2 Variation Types</h3>
-      <ul>
-        <li><strong>New Materials:</strong> fabric, foil, feathers, yarn, tactile elements</li>
-        <li><strong>Color & Mark-Making:</strong> strokes, shapes, contrast</li>
-        <li><strong>Paper & Texture:</strong> layered scraps, torn edges</li>
-        <li><strong>Ironic Imagery:</strong> playful objects, humor, narrative twists</li>
-        <li><strong>Theme Reinforcement:</strong> symbols or motifs aligned with the collage</li>
-      </ul>
+      <div class="imgrow">
+        <div class="slot">
+          <img src="../media/demo.png" alt="Collage Collaborator interface showing five variation cards">
+          <small>Interface — five variation cards alongside the uploaded collage</small>
+        </div>
+      </div>
 
-      <h3>3.3 Custom Prompting</h3>
-      <p>
-        After exploring the five base variations, users can specify intentional directions—materials, theme, imagery,
-        mood, or spatial placement. Prompts are converted into structured instructions that maintain collage integrity
-        (“add but never replace,” “preserve edges”).
-      </p>
+      <h3>Variation types</h3>
+      <p>The five presets intentionally span different creative dimensions: materials, form, texture, and theme, so no single suggestion dominates attention and users are pushed to compare rather than simply accept or reject.</p>
 
-      <h3>3.4 Implementation & Safeguards</h3>
-      <p>
-        The system uses <code>gpt-image-1</code> with strict “add-only” constraints to preserve authorship. Prompts filter
-        out faces, text, and sensitive imagery. If a collage contains faces, users are asked to mask them physically
-        before uploading to ensure safe generation.
-      </p>
+      <div class="variation-grid">
+        <div class="variation-card">
+          <div class="variation-img-wrap"><img src="../media/collage /ex1.png" alt="New Materials variation example" /></div>
+          <div class="variation-label">New Materials</div>
+          <p>Fabric, metallic foil, iridescent film, feathers, yarn, pompoms — tactile elements not present in the original.</p>
+        </div>
+        <div class="variation-card">
+          <div class="variation-img-wrap"><img src="../media/collage /ex2.png" alt="Contemporary Shapes variation example" /></div>
+          <div class="variation-label">Contemporary Shapes</div>
+          <p>Contrasting colors, geometric forms, pen strokes, and chromatic emphasis layered over the composition.</p>
+        </div>
+        <div class="variation-card">
+          <div class="variation-img-wrap"><img src="../media/collage /ex3.png" alt="Paper Manipulation variation example" /></div>
+          <div class="variation-label">Paper & Texture</div>
+          <p>Scraps, layered surfaces, torn edges — traditional collage materials adding depth and texture.</p>
+        </div>
+        <div class="variation-card">
+          <div class="variation-img-wrap"><img src="../media/collage /ex4.png" alt="Thematic Playful variation example" /></div>
+          <div class="variation-label">Thematic Playful</div>
+          <p>Humorous or unexpected objects and imagery that interact with and subvert existing elements.</p>
+        </div>
+        <div class="variation-card">
+          <div class="variation-img-wrap"><img src="../media/collage /ex5.png" alt="Thematic Reinforcing variation example" /></div>
+          <div class="variation-label">Thematic Reinforcing</div>
+          <p>Symbols, motifs, or imagery that amplify and extend the collage's existing visual narrative.</p>
+        </div>
+        <div class="variation-card variation-card-custom">
+          <div class="variation-img-wrap"><img src="../media/collage /ex6.png" alt="Custom prompt variation example" /></div>
+          <div class="variation-label">Custom</div>
+          <p>User-directed generation — specify medium, theme, imagery, or partial ideas to steer the AI toward a specific conceptual direction.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="preliminary-findings">
-        <h2>4. Preliminary Findings</h2>
-      
-        <h3>4.1 Study Outline</h3>
-        <p>
-          We conducted a user study with <strong>n = 30</strong> participants during an in-person creative workshop.
-          Participants created physical collages for 20 minutes, then were asked to add at least three new additions.
-          They then used the Collage Co-Creator to add at least three additional collage pieces. Afterwards, they
-          provided open-ended reflections on how the AI influenced (or failed to influence) their artistic decisions.
-          We performed qualitative coding of these responses to identify emergent patterns in how users engaged with
-          AI-driven visual suggestions.
-        </p>
-      
-        <h3>4.2 Qualitative Results</h3>
-        <p>
-          Across participants, the Collage Co-Creator functioned primarily as an ideation tool for material expansion and existing thematic enforcement. In the inductive thematic analysis of an open response question asking how the Collage Co-Creator contributed to the participant’s final collage, categories were coded independently – positive, neutral, negative – and were not mutually exclusive. 19/30 of participants described clear benefits and implementation, especially for suggesting materials, textures, or ways to fill empty space. 14/30 responses reported instances of neutral experiences, mentioning gaining small sparks of inspiration while maintaining their own creative direction, and 9/30 responses reported negative experiences, discussing unoriginality and lack of feasibility in the results.
-We describe a case study that illustrates how a participant responds positively and neutrally to generated imagery, both through direct implementations of visual material, and conceptually through custom prompting:
+    <!-- FINDINGS -->
+    <section id="findings">
+      <h2>What We Found</h2>
+      <p>Across four significant quantitative measures, AI use expanded participant's creative exploration. Critically, this diverges from prior work showing AI exposure reduces fluency, the design decision to maintain separation between suggestion and implementation appears to be the mechanism that made the difference.</p>
 
-        </p>
-      
-        <h3>Case Study 1 — Material Expansion</h3>
-        <p>
-          This participant used the Collage Co-Creator to expand their palette of materials and lean into a 
-          “fun, whimsical vibe.” After exploring the AI-generated variations, they selectively incorporated details
-          from the <strong>New Materials</strong> prompt—most notably the iridescent sheet and feather—alongside their own
-          playful additions like a googly eye, buttons, ribbon, and gems. While they chose not to base their full
-          composition on the custom collage they generated, the diversity of automated examples proved useful. One
-          particular mock-up sparked new ideas, prompting experimentation with embellishments they “hadn't thought of
-          earlier.” In this case, the tool enriched the collage through material and stylistic exploration rather than
-          replacing the artist’s creative direction.
-        </p>
-      
-        <blockquote>
-          <strong>Describe your recent additions (After AI):</strong><br>
-          “I added small details, such as a googly eye for the cow, buttons, a feather, a ribbon, gems, etc. I added
-          these to give it a more fun, whimsical vibe which I think it accomplished. I added an iridescent sheet and
-          a feather because of one of the automated collages from the collage co-creator.”
-        </blockquote>
-      
-        <blockquote>
-          <strong>Collage Co-Creator Effect on the artistic process:</strong><br>
-          “I used one of the given, automated collages made by the collage co-creator. It inspired me to add items
-          onto my collage that I hadn't thought of earlier. I enjoyed how the collage co-creator provided many,
-          different types/styles of collages. I also liked how there was a custom option, even though I did not end
-          up using my custom image as inspiration.”
-        </blockquote>
-      
-        <div class="case-grid">
-            <!-- Row 1 -->
-            <figure class="case-cell blue-row">
-              <img src="../media/collage /601.png" alt="First Iteration collage">
-              <figcaption>First Iteration</figcaption>
-            </figure>
-          
-            <figure class="case-cell blue-row">
-              <img src="../media/collage /602.png" alt="New additions without AI">
-              <figcaption> New Additions (No AI)</figcaption>
-            </figure>
-          
-            <figure class="case-cell blue-row">
-              <img src="../media/collage /603.png" alt="Three new additions with AI">
-              <figcaption> New Additions (With AI)</figcaption>
-            </figure>
-          
-            <!-- Row 2 -->
-            <figure class="case-cell">
-              <img src="../media/collage /6.1.png" alt="New materials variation">
-              <figcaption>New Materials</figcaption>
-            </figure>
-          
-            <figure class="case-cell">
-              <img src="../media/collage /6.2.png" alt="Contemporary shapes variation">
-              <figcaption>Contemporary Shapes</figcaption>
-            </figure>
-          
-            <figure class="case-cell">
-              <img src="../media/collage /6.3.png" alt="Paper manipulation variation">
-              <figcaption>Paper Manipulation</figcaption>
-            </figure>
-          
-            <!-- Row 3 -->
-            <figure class="case-cell">
-              <img src="../media/collage /6.4.png" alt="Playful thematic variation">
-              <figcaption>Thematic Playful</figcaption>
-            </figure>
-          
-            <figure class="case-cell">
-              <img src="../media/collage /6.5.png" alt="Thematic reinforcing variation">
-              <figcaption>Thematic Reinforcing</figcaption>
-            </figure>
-          
-            <figure class="case-cell">
-              <img src="../media/collage /6.6.png" alt="Custom prompt collage">
-              <figcaption>
-                Custom Prompt:<br>
-                <span class="prompt-text">cutesy 2000s underground junk, more various textures, lots of color, surrealism</span>
-              </figcaption>
-            </figure>
-          </div>
-          
-      
-        <h3>Case Study 2 — Contextual Additions</h3>
-        <p>
-          This participant used the Collage Co-Creator to explore how to treat the empty green margins of their collage.
-          Instead of adopting the AI’s “bright and sparkly” suggestions, the generated mock-ups helped clarify the thematic
-          direction they wanted to emphasize. Seeing the system fill that space with natural darker colors and botanical
-          elements confirmed that the borders could carry visual weight, but they chose a different direction—adding trees,
-          birds, and organic textures from magazines. In this case, the tool acted as a <strong>visual preview mechanism</strong> rather
-          than a materials generator, allowing the participant to test possibilities in unused space and commit to a theme
-          aligned with their own vision.
-        </p>
-      
-        <blockquote>
-          <strong>Describe your recent additions (After AI):</strong><br>
-          “I took inspiration from the AI tool when it added natural stuff to the green parts of my image in the custom
-          image I made. But, I turned away from the bright and sparkly idea and went further into the more natural darker
-          colors of nature, taking images of trees, birds, and natural things from magazines. I like it much better now.”
-        </blockquote>
-      
-        <blockquote>
-          <strong>Collage Co-Creator Effect on the artistic process:</strong><br>
-          “A little bit, I wanted to put stuff in the margins (green space) of my collage but I wasn't sure how it'd look
-          so it was helpful to see how it would look with the AI and realize I want something similar but a bit different
-          than what it generated.”
-        </blockquote>
-      
-        <div class="case-grid">
-            <!-- Row 1 -->
-            <figure class="case-cell blue-row">
-              <img src="../media/collage /501.png" alt="First Iteration collage">
-              <figcaption>First Iteration</figcaption>
-            </figure>
-          
-            <figure class="case-cell blue-row">
-              <img src="../media/collage /502.png" alt="Three new additions without AI">
-              <figcaption> New Additions (No AI)</figcaption>
-            </figure>
-          
-            <figure class="case-cell blue-row">
-              <img src="../media/collage /503.png" alt="Three new additions with AI">
-              <figcaption> New Additions (With AI)</figcaption>
-            </figure>
-          
-            <!-- Row 2 -->
-            <figure class="case-cell">
-              <img src="../media/collage /5.1.png" alt="New materials variation">
-              <figcaption>New Materials</figcaption>
-            </figure>
-          
-            <figure class="case-cell">
-              <img src="../media/collage /5.2.png" alt="Contemporary shapes variation">
-              <figcaption>Contemporary Shapes</figcaption>
-            </figure>
-          
-            <figure class="case-cell">
-              <img src="../media/collage /5.3.png" alt="Paper manipulation variation">
-              <figcaption>Paper Manipulation</figcaption>
-            </figure>
-          
-            <!-- Row 3 -->
-            <figure class="case-cell">
-              <img src="../media/collage /5.4.png" alt="Playful thematic variation">
-              <figcaption>Thematic Playful</figcaption>
-            </figure>
-          
-            <figure class="case-cell">
-              <img src="../media/collage /5.5.png" alt="Thematic reinforcing variation">
-              <figcaption>Thematic Reinforcing</figcaption>
-            </figure>
-          
-            <figure class="case-cell">
-              <img src="../media/collage /5.6.png" alt="Custom prompt collage">
-              <figcaption>
-                Custom Prompt:<br>
-                <span class="prompt-text">"magazine imagery", "botanical"
-                </span>
-              </figcaption>
-            </figure>
-          </div>
-          
-      
-      </section>
-      <section id="conclusions">
-        <h2>5. Conclusions and Future Work</h2>
-              <p>
-          This paper introduces an interactive AI-based system designed to support small, iterative creative steps in art-making contexts such as collaging, with the goal of enabling creative autonomy and early-stage divergence. The system integrates an interactive web interface with a generative AI backend that enables rapid image generation, iterative variations across medium, color, and theme, automatic documentation of collage possibilities, and opportunities for customization of collage generation through the users’ articulation of their concepts. We report initial feedback on the system’s strengths and limitations from preliminary evaluation studies. Future work will refine the system and conduct more extensive evaluations to better understand its impact and inform the design of next-generation iterative, collaborative AI creativity-support tools.
+      <div class="stat-row">
+        <div class="stat-card"><span class="stat-num">+3.1</span><span class="stat-label">more additions after AI use<br><em>t(29)=2.53, p=.017</em></span></div>
+        <div class="stat-card"><span class="stat-num">+0.9</span><span class="stat-label">new material types introduced<br><em>t(29)=2.42, p=.022</em></span></div>
+        <div class="stat-card"><span class="stat-num">+0.11</span><span class="stat-num" style="font-size:14px;color:var(--muted);">semantic distance</span><span class="stat-label">materials more conceptually diverse<br><em>t(29)=2.07, p=.048</em></span></div>
+        <div class="stat-card"><span class="stat-num">+9 words</span><span class="stat-label">longer written reflections post-AI<br><em>t(29)=2.18, p=.038</em></span></div>
+      </div>
 
-        </p>
-        </section>
+      <h3>AI's Influence Was Dimension-Specific</h3>
+      <p>There were <strong>no significant changes</strong> in thematic diversity, color diversity, or global composition after AI use. This is an important finding: It suggests that AI expanded participant's material vocabulary, <b>concrete, distinct options the system could surface</b>, but did not touch their personal themes, which involve more abstract and emotionally rooted connections that resist external suggestion. The AI helped with <em>how</em> participants expressed their collage; it did not change <em>what</em> they were expressing.</p>
 
-        <section>
-          <h2>Demo Video</h2>
-          <iframe width="100%" height="500px" src="https://www.youtube.com/embed/vLkdRvSOpKg?si=npJTtWTgsH7QnjWu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <h3>Three Distinct Engagement Patterns</h3>
+      <p>Rather than a binary adopt-or-ignore relationship with AI suggestions, participants fell into three qualitatively distinct patterns:</p>
 
+      <div class="pattern-row">
+        <div class="pattern-card adapted">
+          <div class="pattern-num">9/30</div>
+          <div class="pattern-label">Adapted</div>
+          <p>Directly implemented AI suggestions: specific materials, forms, or placements credited to the Collage Collaborator. Custom prompting had the highest adaptation rate of any generation type.</p>
+        </div>
+        <div class="pattern-card reinterpreted">
+          <div class="pattern-num">12/30</div>
+          <div class="pattern-label">Reinterpreted</div>
+          <p>Used AI as a springboard, not a blueprint. Described being "inspired" but made the idea their own, different materials, different placement, same conceptual spark.</p>
+        </div>
+        <div class="pattern-card resisted">
+          <div class="pattern-num">9/30</div>
+          <div class="pattern-label">Resisted</div>
+          <p>Expressed deliberate skepticism: concerns about originality, AI's inability to understand personal meaning, and observed racial bias in generations. Resistance was articulate, not passive.</p>
+        </div>
+      </div>
 
+      <h3>The Resistance Finding</h3>
+      <p>The 9 participants who pushed back on AI suggestions are one of the most interesting findings in the study. Their critiques were substantive: one participant explained that their collage represented their relationship with their sister and they didn't want AI to influence it because "it doesn't understand my relationship with my sister." Another noted racial bias in generated imagery.</p>
+      <p>These aren't failed interactions, but users engaging critically with a system and making deliberate authorial decisions. The paper argues, as a design implication rather than a measured outcome, that resistance should be designed <em>for</em>, not designed away. Making rejection as easy as adoption, and treating skepticism as signal rather than failure, is the recommendation.</p>
 
-        </section>
-      
+      <h3>Experience Level Moderated Effects</h3>
+      <p><b>Arts-experienced</b> participants showed significantly stronger material semantic distance effects (p=.043), suggesting AI most effectively expanded the material vocabulary of people who already had a developed creative framework to filter suggestions through.</p>
+      <p><b>Non-arts</b> students showed localized compositional changes in one specific grid quadrant, suggesting they used AI as an entry point for spatial decision-making rather than material exploration.</p>
+    </section>
 
+    <!-- DESIGN PRINCIPLES -->
+    <section id="principles">
+      <h2>Design Principles for AI Creativity Tools</h2>
+      <p>The study produced <b>Five Principles for Designing AI Systems</b> that support divergent thinking without diminishing creative agency, where each is grounded in a specific finding or observed behavior from the study.</p>
 
-      
+      <div class="principles-grid">
+        <div class="principle-card">
+          <div class="p-num">01</div>
+          <h4>Design for Interpretation, Not Automation</h4>
+          <p>Maintain separation between AI suggestion and human implementation. Every suggestion should require active translation: that friction is what preserves agency and prevents fixation.</p>
+        </div>
+        <div class="principle-card">
+          <div class="p-num">02</div>
+          <h4>Generate Simultaneous Diverse Alternatives</h4>
+          <p>Presenting five distinct variations at once reduced anchoring to any single suggestion. Structured diversity, spanning different creative dimensions, outperforms iterative single-output generation.</p>
+        </div>
+        <div class="principle-card">
+          <div class="p-num">03</div>
+          <h4>Provide Dimension-Specific Support</h4>
+          <p>AI is effective for concrete, discrete dimensions like materials. Abstract, personally meaningful dimensions like theme require different support, perhaps reflective prompts rather than visual generations.</p>
+        </div>
+        <div class="principle-card">
+          <div class="p-num">04</div>
+          <h4>Support Both Breadth and Depth Modes</h4>
+          <p>The Collage Collaborator supported breadth well, exposing diverse possibilities. Depth support (sustained development of a specific concept) remains a design gap for future systems.</p>
+        </div>
+        <div class="principle-card" style="grid-column:1/-1;">
+          <div class="p-num">05</div>
+          <h4>Validate Resistance as Productive Engagement</h4>
+          <p>Design rejection as a first-class interaction. Make it as easy to dismiss a suggestion as to adopt one. Build in space for users to articulate why something doesn't work. The goal isn't maximizing AI adoption, it's maximizing useful exploration, whether that leads to incorporation or informed rejection. The right metric is whether the interaction expanded what the user ultimately created or decided, not how often they followed what AI suggested.</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- CASE STUDIES -->
+    <section id="cases">
+      <h2>Case Studies</h2>
 
+      <h3>Case Study 1 — Material Expansion</h3>
+      <p>This participant used the Collage Collaborator to expand their material palette and lean into a "fun, whimsical vibe." After exploring the generated variations, they selectively incorporated the iridescent sheet and feather from the New Materials prompt — alongside their own additions of a googly eye, buttons, ribbon, and gems. The AI suggestion acted as a springboard: it surfaced materials they hadn't considered, but the participant decided what to incorporate, where, and why.</p>
+      <p>This is adaptation: the participant credited the AI directly and implemented specific suggestions. But they also exercised clear creative judgment: they chose not to use the custom-generated collage as a blueprint, only as inspiration for individual elements.</p>
+      <blockquote>"I used one of the given, automated collages made by the collage co-creator. It inspired me to add items onto my collage that I hadn't thought of earlier."</blockquote>
 
+      <div class="case-grid">
+        <figure class="case-cell"><img src="../media/collage /601.png" alt="First iteration"><figcaption>First Iteration</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /602.png" alt="No AI"><figcaption>New Additions (No AI)</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /603.png" alt="With AI"><figcaption>New Additions (With AI)</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /6.1.png" alt="New materials"><figcaption>New Materials</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /6.2.png" alt="Contemporary shapes"><figcaption>Contemporary Shapes</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /6.3.png" alt="Paper manipulation"><figcaption>Paper Manipulation</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /6.4.png" alt="Thematic playful"><figcaption>Thematic Playful</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /6.5.png" alt="Thematic reinforcing"><figcaption>Thematic Reinforcing</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /6.6.png" alt="Custom"><figcaption>Custom Prompt:<br><span>cutesy 2000s underground junk, more various textures, lots of color, surrealism</span></figcaption></figure>
+      </div>
 
-</main>
-    <footer class="site-footer">
+      <h3>Case Study 2 — Reinterpretation as Authorship</h3>
+      <p>This participant used the system not for material ideas but as a <strong>compositional preview mechanism</strong>, a way to see what the empty green margins of their collage could look like before committing. The AI suggested bright, sparkly botanical imagery. The participant used that as a negative reference: seeing the space filled confirmed it could carry visual weight, but they chose a darker, more personal direction: trees, birds, organic magazine cutouts.</p>
+      <p>This is reinterpretation. The AI suggestion didn't provide the answer; it helped the participant clarify what they actually wanted. The system functioned as a thinking tool, not a design tool.</p>
+      <blockquote>"I wanted to put stuff in the margins but I wasn't sure how it'd look, it was helpful to see how it would look with the AI and realize I want something similar but a bit different than what it generated."</blockquote>
+
+      <div class="case-grid">
+        <figure class="case-cell"><img src="../media/collage /501.png" alt="First iteration"><figcaption>First Iteration</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /502.png" alt="No AI"><figcaption>New Additions (No AI)</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /503.png" alt="With AI"><figcaption>New Additions (With AI)</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /5.1.png" alt="New materials"><figcaption>New Materials</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /5.2.png" alt="Contemporary shapes"><figcaption>Contemporary Shapes</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /5.3.png" alt="Paper manipulation"><figcaption>Paper Manipulation</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /5.4.png" alt="Thematic playful"><figcaption>Thematic Playful</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /5.5.png" alt="Thematic reinforcing"><figcaption>Thematic Reinforcing</figcaption></figure>
+        <figure class="case-cell"><img src="../media/collage /5.6.png" alt="Custom"><figcaption>Custom Prompt:<br><span>"magazine imagery", "botanical"</span></figcaption></figure>
+      </div>
+    </section>
+
+    <!-- CONCLUSIONS -->
+    <section id="conclusions">
+      <h2>Conclusions & Broader Implications</h2>
+      <p>This study demonstrates that generative AI can scaffold divergent thinking without causing design fixation: a result that directly contradicts prior work. The key mechanism isn't the AI model itself; it's the design decision to maintain clear separation between what AI suggests and what the user implements.</p>
+      <p>The broader implication for any product team building AI-powered features: AI works best as a thinking partner that expands the space of what users consider, not a system that narrows it toward a single recommended output. This applies well beyond collage making; to personalization systems, recommendation engines, AI writing tools, and any experience where the risk is that AI suggestion displaces rather than enriches human decision-making.</p>
+      <p>The success metric shouldn't be how often users follow AI suggestions. It should be whether the interaction expanded what they ultimately created or decided, and whether they felt the outcome was still genuinely theirs.</p>
+    <!-- CONCLUSIONS
+
+      <h3>Limitations & Future Work</h3>
+      <p>The study is limited by a homogeneous participant sample (all women, single institution) and a single one-hour session, which captures novelty effects but not sustained behavior over time. The within-subjects design strengthens causal inference but lacks a true no-AI control condition. Future work should test longitudinal exposure: does AI's influence on material exploration persist, diminish, or evolve with repeated use? As well as explore depth-oriented AI support, where the system helps users develop and refine a specific idea rather than generating many alternatives simultaneously.</p>
+    </section> -->
+
+    <section>
+      <h2>Demo Video</h2>
+      <iframe width="100%" height="500px" src="https://www.youtube.com/embed/vLkdRvSOpKg?si=npJTtWTgsH7QnjWu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-left">
-        <p style="font-size: 18px;"><b>Glad you made it! &#9734;</b></p>
+        <p style="font-size:18px;"><b>Glad you made it! &#9734;</b></p>
         <p class="footer-credit">more @ ac138@wellesley.edu</p>
       </div>
-
       <a href="#top" class="back-to-top">Back to top ↑</a>
     </div>
   </footer>
@@ -1202,71 +540,13 @@ We describe a case study that illustrates how a participant responds positively 
   <script>
     const sidenav = document.querySelector(".sidenav");
     let lastScrollY = window.scrollY;
-
     window.addEventListener("scroll", () => {
       const currentScrollY = window.scrollY;
-
-      if (currentScrollY <= 10) {
-        sidenav.classList.remove("hide");
-      } else if (currentScrollY > lastScrollY) {
-        sidenav.classList.add("hide");
-      } else {
-        sidenav.classList.remove("hide");
-      }
-
+      if (currentScrollY <= 10) { sidenav.classList.remove("hide"); }
+      else if (currentScrollY > lastScrollY) { sidenav.classList.add("hide"); }
+      else { sidenav.classList.remove("hide"); }
       lastScrollY = currentScrollY;
     });
-
-    (function () {
-      const lightbox = document.getElementById("lofiLightbox");
-      const lightboxImg = document.getElementById("lofiLightboxImg");
-
-      document.querySelectorAll(".lofi-imgwrap img").forEach((img) => {
-        img.addEventListener("click", () => {
-          lightboxImg.src = img.src;
-          lightboxImg.alt = img.alt || "Wireframe";
-          lightbox.classList.add("open");
-          lightbox.setAttribute("aria-hidden", "false");
-        });
-      });
-
-      function closeLightbox() {
-        lightbox.classList.remove("open");
-        lightbox.setAttribute("aria-hidden", "true");
-        lightboxImg.src = "";
-      }
-
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) closeLightbox();
-      });
-
-      lightbox.querySelector(".close").addEventListener("click", closeLightbox);
-
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeLightbox();
-      });
-    })();
-
-    function initSlideshow(slideshowId) {
-      const slideshow = document.getElementById(slideshowId);
-      if (!slideshow) return;
-
-      const slides = slideshow.querySelector(".slides");
-      const imgs = slides.querySelectorAll("img");
-      const prev = slideshow.querySelector(".prev");
-      const next = slideshow.querySelector(".next");
-      let index = 0;
-
-      function showSlide(i) {
-        index = (i + imgs.length) % imgs.length;
-        slides.style.transform = `translateX(-${index * 100}%)`;
-      }
-
-      prev.addEventListener("click", () => showSlide(index - 1));
-      next.addEventListener("click", () => showSlide(index + 1));
-    }
-
-    initSlideshow("needsSlideshow");
   </script>
 </body>
 </html>
